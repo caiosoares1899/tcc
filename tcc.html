@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCC — Relação Comercial Brasil-China: O Caso Baiano</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde:       #1a3a2a;
+    --verde-medio: #224753;
+    --verde-claro: #c3efff;
+    --vermelho:    #8B2E2E;
+    --dourado:     #C8952A;
+    --creme:       #F5F0E8;
+    --cinza:       #6B6560;
+    --texto:       #1C1A17;
+    --branco:      #FAFAF8;
+    --col-prim:    #C8952A;
+    --col-semi:    #224753;
+    --col-manuf:   #2E7D52;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--creme); color: var(--texto); line-height: 1.7; overflow-x: hidden; }
+
+  /* HERO */
+  .hero { min-height: 100vh; background: var(--verde); display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+  .hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at 70% 50%, rgba(194,239,255,.07) 0%, transparent 60%); }
+  .hero-left { display:flex; flex-direction:column; justify-content:center; padding:80px 60px 80px 80px; position:relative; z-index:2; }
+  .hero-label { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--verde-claro); opacity:.7; margin-bottom:32px; }
+  .hero h1 { font-family:'Playfair Display',serif; font-size:clamp(34px,4vw,54px); font-weight:900; line-height:1.1; color:var(--branco); margin-bottom:24px; }
+  .hero h1 em { font-style:italic; color:var(--verde-claro); }
+  .hero-sub { font-size:15px; color:rgba(250,250,248,.6); max-width:420px; margin-bottom:48px; font-weight:300; }
+  .hero-autor { font-family:'DM Mono',monospace; font-size:12px; color:rgba(250,250,248,.4); letter-spacing:1px; }
+  .hero-right { display:flex; align-items:center; justify-content:center; padding:80px 60px; position:relative; z-index:2; }
+  .hero-stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; width:100%; max-width:380px; }
+  .stat-card { background:rgba(255,255,255,.04); border:1px solid rgba(194,239,255,.12); padding:30px 22px; transition:background .3s; }
+  .stat-card:hover { background:rgba(194,239,255,.07); }
+  .stat-card:nth-child(1){border-radius:12px 0 0 0} .stat-card:nth-child(2){border-radius:0 12px 0 0}
+  .stat-card:nth-child(3){border-radius:0 0 0 12px} .stat-card:nth-child(4){border-radius:0 0 12px 0}
+  .stat-num { font-family:'Playfair Display',serif; font-size:34px; font-weight:900; color:var(--verde-claro); line-height:1; margin-bottom:8px; }
+  .stat-label { font-size:11px; color:rgba(250,250,248,.5); letter-spacing:.5px; line-height:1.4; }
+
+  /* NAV */
+  nav { background:var(--branco); border-bottom:1px solid rgba(0,0,0,.08); position:sticky; top:0; z-index:100; padding:0 80px; overflow-x:auto; }
+  nav ul { list-style:none; display:flex; gap:0; white-space:nowrap; }
+  nav a { display:block; padding:15px 16px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none; color:var(--cinza); border-bottom:2px solid transparent; transition:all .2s; }
+  nav a:hover { color:var(--verde-medio); border-bottom-color:var(--verde-medio); }
+
+  /* SEÇÃO GENÉRICA */
+  section { padding:96px 80px; max-width:1200px; margin:0 auto; }
+  .section-label { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--dourado); margin-bottom:18px; }
+  .section-title { font-family:'Playfair Display',serif; font-size:clamp(26px,3vw,42px); font-weight:700; line-height:1.2; color:var(--verde); margin-bottom:40px; max-width:700px; }
+  .section-title em { font-style:italic; color:var(--vermelho); }
+
+  /* PARADOXO — fundo claro cinza-azulado para boa leitura */
+  #paradoxo { background:#edf2f4; max-width:100%; padding:96px 80px; border-top:3px solid var(--verde-medio); }
+  #paradoxo .inner { max-width:1200px; margin:0 auto; }
+  #paradoxo .section-label { color:var(--verde-medio); }
+  #paradoxo .section-title { color:var(--verde); }
+  .paradox-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:48px; }
+  .paradox-card { background:#fff; border:1px solid rgba(0,0,0,.1); border-radius:8px; padding:36px 30px; box-shadow:0 2px 12px rgba(0,0,0,.05); }
+  .paradox-card.ok      { border-top:4px solid var(--col-manuf); }
+  .paradox-card.destaque{ border-top:4px solid var(--vermelho); }
+  .paradox-year { font-family:'Playfair Display',serif; font-size:52px; font-weight:900; color:rgba(26,58,42,.1); line-height:1; margin-bottom:20px; }
+  .paradox-card-title { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; color:var(--verde); margin-bottom:18px; padding-bottom:12px; border-bottom:1px solid rgba(0,0,0,.08); }
+  .paradox-items { list-style:none; }
+  .paradox-items li { display:flex; justify-content:space-between; align-items:baseline; padding:9px 0; border-bottom:1px solid rgba(0,0,0,.05); font-size:14px; color:var(--cinza); gap:16px; }
+  .paradox-items li:last-child { border-bottom:none; }
+  .val { font-family:'Playfair Display',serif; font-weight:700; white-space:nowrap; }
+  .val.up      { color:var(--col-manuf); }
+  .val.down    { color:var(--vermelho); }
+  .val.neutral { color:var(--verde-medio); }
+  .paradox-nota { grid-column:1/-1; padding:26px 30px; background:rgba(200,149,42,.09); border-left:4px solid var(--dourado); border-radius:0 8px 8px 0; }
+  .paradox-nota p { font-family:'Playfair Display',serif; font-style:italic; font-size:16px; color:#5a3e10; line-height:1.65; }
+  .paradox-nota cite { display:block; margin-top:10px; font-family:'DM Mono',monospace; font-size:11px; font-style:normal; color:rgba(90,62,16,.5); letter-spacing:1px; }
+
+  /* MUNICÍPIOS */
+  .mun-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
+  .mun-card { border:1px solid rgba(0,0,0,.1); padding:34px 26px; background:var(--branco); position:relative; overflow:hidden; transition:transform .3s,box-shadow .3s; border-radius:4px; }
+  .mun-card:hover { transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,.08); }
+  .mun-card::before { content:''; position:absolute; top:0;left:0;right:0; height:4px; }
+  .mun-card.agro::before       { background:#4A8C5C; }
+  .mun-card.industrial::before { background:var(--verde-medio); }
+  .mun-card.marginal::before   { background:var(--cinza); }
+  .mun-nome  { font-family:'Playfair Display',serif; font-size:19px; font-weight:700; color:var(--verde); margin-bottom:4px; }
+  .mun-tipo  { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); margin-bottom:18px; }
+  .mun-valor { font-family:'Playfair Display',serif; font-size:32px; font-weight:900; color:var(--verde); margin-bottom:4px; }
+  .mun-label { font-size:12px; color:var(--cinza); margin-bottom:18px; }
+  .mun-pauta { list-style:none; }
+  .mun-pauta li { font-size:13px; color:var(--cinza); padding:7px 0; border-bottom:1px solid rgba(0,0,0,.06); display:flex; justify-content:space-between; }
+  .mun-pauta li:last-child { border:none; }
+  .mun-pauta .pct { font-weight:500; color:var(--texto); }
+
+  /* TEORIA */
+  #teoria { background:var(--branco); max-width:100%; padding:96px 80px; }
+  #teoria .inner { max-width:1200px; margin:0 auto; }
+  #teoria .section-label { color:var(--dourado); }
+  .autores-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-top:48px; }
+  .autor-card { padding:36px 26px; background:var(--creme); position:relative; }
+  .autor-card.destaque { background:var(--verde); }
+  .autor-card.santos   { background:#edf2f4; border-top:4px solid var(--verde-medio); }
+  .autor-sigla { font-family:'Playfair Display',serif; font-size:68px; font-weight:900; line-height:.9; opacity:.08; position:absolute; top:14px; right:14px; color:var(--verde); }
+  .autor-card.destaque .autor-sigla { color:var(--verde-claro); opacity:.15; }
+  .autor-card.santos   .autor-sigla { color:var(--verde-medio); opacity:.1; }
+  .autor-nome { font-family:'Playfair Display',serif; font-size:19px; font-weight:700; margin-bottom:4px; color:var(--verde); }
+  .autor-card.destaque .autor-nome { color:var(--branco); }
+  .autor-card.santos   .autor-nome { color:var(--verde-medio); }
+  .autor-obra { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:1px; color:var(--cinza); margin-bottom:18px; line-height:1.5; }
+  .autor-card.destaque .autor-obra { color:rgba(250,250,248,.4); }
+  .autor-card.santos   .autor-obra { color:var(--verde-medio); opacity:.7; }
+  .autor-conceito { font-size:13px; line-height:1.75; color:var(--cinza); margin-bottom:16px; }
+  .autor-card.destaque .autor-conceito { color:rgba(250,250,248,.75); }
+  .autor-card.santos   .autor-conceito { color:#334; }
+  .autor-tag { display:inline-block; background:rgba(34,71,83,.08); color:var(--verde-medio); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:1px; padding:4px 10px; border-radius:2px; }
+  .autor-card.destaque .autor-tag { background:rgba(194,239,255,.15); color:var(--verde-claro); }
+  .autor-card.santos   .autor-tag { background:rgba(34,71,83,.1); color:var(--verde-medio); }
+
+  /* REGRESSÃO */
+  #regressao { background:var(--creme); }
+  .chart-wrap { background:#fff; border:1px solid rgba(0,0,0,.1); border-radius:8px; padding:44px; margin-top:36px; box-shadow:0 2px 12px rgba(0,0,0,.05); }
+  .chart-title { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; color:var(--verde); margin-bottom:6px; }
+  .chart-sub   { font-size:12px; color:var(--cinza); margin-bottom:32px; }
+
+  /* tabela */
+  .data-table { width:100%; border-collapse:collapse; }
+  .data-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:1px; text-transform:uppercase; padding:10px 14px; text-align:right; background:#f7f7f5; color:var(--cinza); border-bottom:2px solid rgba(0,0,0,.1); }
+  .data-table th:first-child { text-align:left; }
+  .data-table td { padding:10px 14px; font-size:13px; text-align:right; border-bottom:1px solid rgba(0,0,0,.05); color:var(--texto); }
+  .data-table td:first-child { text-align:left; font-family:'DM Mono',monospace; font-size:12px; color:var(--cinza); }
+  .data-table tr:hover td { background:#f9f9f7; }
+  .data-table .hl td { font-weight:600; background:#fff8f0; }
+  .td-prim  { color:var(--col-prim)   !important; font-weight:500 !important; }
+  .td-semi  { color:var(--col-semi)   !important; font-weight:500 !important; }
+  .td-manuf { color:var(--col-manuf)  !important; font-weight:700 !important; }
+  .td-low   { color:var(--vermelho)   !important; font-weight:700 !important; }
+  .spark-wrap { display:flex; align-items:center; gap:7px; }
+  .spark { height:10px; border-radius:2px; display:inline-block; min-width:2px; }
+
+  /* legenda interativa */
+  .legend-interactive { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; align-items:center; }
+  .leg-btn { display:flex; align-items:center; gap:8px; padding:8px 14px; border-radius:4px; cursor:pointer; border:1px solid rgba(0,0,0,.12); background:#fff; font-size:12px; font-family:'DM Mono',monospace; letter-spacing:.5px; transition:all .2s; user-select:none; }
+  .leg-btn:hover { transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,.08); }
+  .leg-btn.active { outline:2px solid currentColor; }
+  .leg-dot { width:12px; height:12px; border-radius:2px; flex-shrink:0; }
+  .leg-hint { font-size:11px; color:var(--cinza); font-family:'DM Mono',monospace; }
+
+  /* tooltip */
+  .tooltip-box { display:none; position:fixed; z-index:300; background:#fff; border:1px solid rgba(0,0,0,.12); border-radius:8px; padding:22px 26px; max-width:340px; box-shadow:0 20px 60px rgba(0,0,0,.15); }
+  .tooltip-box.show { display:block; }
+  .tooltip-title { font-family:'Playfair Display',serif; font-size:15px; font-weight:700; color:var(--verde); margin-bottom:8px; }
+  .tooltip-desc  { font-size:13px; color:var(--cinza); line-height:1.7; margin-bottom:10px; }
+  .tooltip-ex    { font-size:12px; color:var(--cinza); opacity:.8; font-style:italic; }
+  .tooltip-close { position:absolute; top:10px; right:14px; font-size:18px; cursor:pointer; color:var(--cinza); }
+
+  /* MILTON SANTOS */
+  #santos { background:var(--verde); max-width:100%; padding:96px 80px; }
+  #santos .inner { max-width:1200px; margin:0 auto; }
+  #santos .section-label { color:rgba(194,239,255,.6); }
+  #santos .section-title { color:var(--branco); }
+  .santos-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:48px; }
+  .santos-card { padding:40px 34px; }
+  .santos-card.heg { background:rgba(139,46,46,.3); border:1px solid rgba(139,46,46,.4); }
+  .santos-card.pos { background:rgba(194,239,255,.07); border:1px solid rgba(194,239,255,.15); }
+  .santos-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+  .santos-card.heg .santos-label { color:rgba(250,180,180,.7); }
+  .santos-card.pos .santos-label { color:rgba(194,239,255,.6); }
+  .santos-card-title { font-family:'Playfair Display',serif; font-size:21px; font-weight:700; margin-bottom:14px; }
+  .santos-card.heg .santos-card-title { color:rgba(250,200,200,.9); }
+  .santos-card.pos .santos-card-title { color:var(--verde-claro); }
+  .santos-card-body { font-size:14px; line-height:1.8; }
+  .santos-card.heg .santos-card-body { color:rgba(250,250,248,.7); }
+  .santos-card.pos .santos-card-body { color:rgba(250,250,248,.75); }
+  .santos-card-body + .santos-card-body { margin-top:12px; }
+  .santos-quote { grid-column:1/-1; padding:30px 36px; background:rgba(200,149,42,.12); border-left:4px solid var(--dourado); }
+  .santos-quote blockquote { font-family:'Playfair Display',serif; font-style:italic; font-size:17px; color:var(--dourado); line-height:1.65; margin-bottom:10px; }
+  .santos-quote cite { font-family:'DM Mono',monospace; font-size:11px; color:rgba(200,149,42,.5); letter-spacing:1px; font-style:normal; }
+
+  /* CONCLUSÃO */
+  #conclusao { background:var(--branco); }
+  .conclusao-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:48px; }
+  .conclusao-bloco h3 { font-family:'Playfair Display',serif; font-size:21px; font-weight:700; color:var(--verde); margin-bottom:16px; padding-bottom:14px; border-bottom:2px solid var(--verde-claro); }
+  .conclusao-bloco p { font-size:14px; color:var(--cinza); line-height:1.8; margin-bottom:12px; }
+  .politicas { list-style:none; margin-top:14px; }
+  .politicas li { display:flex; gap:14px; padding:12px 0; border-bottom:1px solid rgba(0,0,0,.06); font-size:13px; color:var(--cinza); line-height:1.6; }
+  .pol-num { font-family:'Playfair Display',serif; font-size:18px; font-weight:900; color:var(--dourado); opacity:.5; min-width:22px; line-height:1.4; }
+
+  /* FECHO */
+  .fecho { background:var(--verde); padding:96px 80px; text-align:center; }
+  .fecho blockquote { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(20px,3vw,32px); font-weight:400; color:var(--branco); max-width:720px; margin:0 auto 24px; line-height:1.5; }
+  .fecho cite { font-family:'DM Mono',monospace; font-size:12px; color:rgba(250,250,248,.35); letter-spacing:2px; font-style:normal; text-transform:uppercase; }
+
+  /* FOOTER */
+  footer { background:#111; padding:34px 80px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  footer p { font-family:'DM Mono',monospace; font-size:11px; color:rgba(255,255,255,.28); letter-spacing:1px; }
+
+  /* ANIMAÇÕES */
+  @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+  .hero-left > * { animation:fadeUp .8s ease both; }
+  .hero-label{animation-delay:.1s} .hero h1{animation-delay:.25s} .hero-sub{animation-delay:.4s} .hero-autor{animation-delay:.55s}
+  .hero-right { animation:fadeUp .8s ease .4s both; }
+
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr} .hero-right{display:none}
+    section,nav,#paradoxo,#teoria,#santos,.fecho,footer{padding-left:24px;padding-right:24px}
+    .paradox-grid,.mun-grid,.autores-grid,.conclusao-grid,.santos-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-left">
+    <p class="hero-label">TCC · Economia · UNIFACS · 2026</p>
+    <h1>Relação Comercial<br>Brasil–China:<br><em>o caso baiano</em></h1>
+    <p class="hero-sub">Uma leitura da inserção da Bahia no comércio com a China no século XXI sob a perspectiva furtadiana — entre dependência estrutural e possibilidade de desenvolvimento.</p>
+    <p class="hero-autor">Caio Oliveira dos Santos Soares</p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">+5.100%</div>
+        <div class="stat-label">Crescimento das exportações brasileiras para a China (2001–2025)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">0,2%</div>
+        <div class="stat-label">Participação de manufaturados na pauta em 2025 — era 16,9% em 2001</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">56,3%</div>
+        <div class="stat-label">Participação da soja nas exportações baianas para a China em 2025</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">+6.600%</div>
+        <div class="stat-label">Crescimento das exportações baianas para a China (2001–2025)</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <ul>
+    <li><a href="#paradoxo">O Paradoxo</a></li>
+    <li><a href="#municipios">Municípios</a></li>
+    <li><a href="#teoria">Referencial</a></li>
+    <li><a href="#regressao">Regressão Industrial</a></li>
+    <li><a href="#santos">Milton Santos</a></li>
+    <li><a href="#conclusao">Conclusão</a></li>
+  </ul>
+</nav>
+
+<!-- INTRO -->
+<section id="problema">
+  <p class="section-label">01 — O Problema</p>
+  <h2 class="section-title">Crescimento não é<br><em>desenvolvimento</em></h2>
+  <p style="max-width:680px;color:var(--cinza);font-size:15px;line-height:1.85;">
+    A relação comercial entre o Brasil e a China cresceu de forma extraordinária desde 2001. Mas esse crescimento quantitativo ocorreu ao mesmo tempo em que a pauta exportadora brasileira regrediu estruturalmente: de automóveis e aeronaves no início do período, para soja e minério em 2025. É o paradoxo que este trabalho documenta e explica à luz do pensamento de Celso Furtado.
+  </p>
+</section>
+
+<!-- PARADOXO — fundo claro -->
+<div id="paradoxo">
+  <div class="inner">
+    <p class="section-label">02 — O Paradoxo Central</p>
+    <h2 class="section-title">O volume multiplicou por 50.<br>Os manufaturados <em>desapareceram</em>.</h2>
+    <div class="paradox-grid">
+      <div class="paradox-card ok">
+        <div class="paradox-year">2001</div>
+        <p class="paradox-card-title">Pauta com indústria relevante</p>
+        <ul class="paradox-items">
+          <li>Total exportado para a China <span class="val neutral">US$ 1,9 bi</span></li>
+          <li>Manufaturados na pauta       <span class="val up">16,9%</span></li>
+          <li>Automóveis exportados        <span class="val up">US$ 62,7 mi</span></li>
+          <li>Aeronaves Embraer            <span class="val up">US$ 37,5 mi</span></li>
+          <li>Equipamentos industriais     <span class="val up">relevantes</span></li>
+        </ul>
+      </div>
+      <div class="paradox-card destaque">
+        <div class="paradox-year">2025</div>
+        <p class="paradox-card-title">Pauta reprimarizada</p>
+        <ul class="paradox-items">
+          <li>Total exportado para a China <span class="val up">US$ 100,3 bi</span></li>
+          <li>Manufaturados na pauta       <span class="val down">0,2%</span></li>
+          <li>Soja na pauta brasileira     <span class="val down">34,5%</span></li>
+          <li>Petróleo bruto               <span class="val down">20,0%</span></li>
+          <li>Minério de ferro             <span class="val down">19,5%</span></li>
+        </ul>
+      </div>
+      <div class="paradox-nota">
+        <p>"O crescimento quantitativo do fluxo comercial, desacompanhado de uma estratégia deliberada de política industrial, opera, na leitura furtadiana, como modernização: muda a escala, não a estrutura."</p>
+        <cite>Soares, 2026 — Seção 4.3</cite>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MUNICÍPIOS -->
+<section id="municipios">
+  <p class="section-label">03 — O Caso Baiano</p>
+  <h2 class="section-title">Três municípios,<br>três faces da <em>mesma lógica</em></h2>
+  <div class="mun-grid">
+    <div class="mun-card agro">
+      <p class="mun-tipo">Agronegócio · Oeste Baiano</p>
+      <h3 class="mun-nome">Luís Eduardo Magalhães</h3>
+      <div class="mun-valor">US$ 1,22 bi</div>
+      <p class="mun-label">exportado para a China em 2025</p>
+      <ul class="mun-pauta">
+        <li>Soja        <span class="pct">89,6%</span></li>
+        <li>Algodão     <span class="pct">10,4%</span></li>
+        <li>Em 2001     <span class="pct">US$ 0,1 mi</span></li>
+        <li>Crescimento <span class="pct">+12.000×</span></li>
+      </ul>
+    </div>
+    <div class="mun-card industrial">
+      <p class="mun-tipo">Polo Petroquímico · Grande Salvador</p>
+      <h3 class="mun-nome">Camaçari</h3>
+      <div class="mun-valor">US$ 250 mi</div>
+      <p class="mun-label">exportado para a China em 2025</p>
+      <ul class="mun-pauta">
+        <li>Pasta química de madeira <span class="pct">88,7%</span></li>
+        <li>Polímeros de etileno     <span class="pct">7,3%</span></li>
+        <li>Em 2009                  <span class="pct">US$ 306 mi</span></li>
+        <li>Tendência pós-2017       <span class="pct">↓ declínio</span></li>
+      </ul>
+    </div>
+    <div class="mun-card marginal">
+      <p class="mun-tipo">Inserção marginal · Recôncavo</p>
+      <h3 class="mun-nome">São Francisco do Conde</h3>
+      <div class="mun-valor">US$ 1,5 mi</div>
+      <p class="mun-label">exportado para a China em 2025</p>
+      <ul class="mun-pauta">
+        <li>Derivados de petróleo <span class="pct">100%</span></li>
+        <li>Exportações erráticas <span class="pct">—</span></li>
+        <li>Relevância analítica  <span class="pct">marginal</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCIAL -->
+<div id="teoria">
+  <div class="inner">
+    <p class="section-label">04 — Referencial Teórico</p>
+    <h2 class="section-title" style="color:var(--verde)">Quatro autores,<br>um argumento <em>articulado</em></h2>
+    <div class="autores-grid">
+      <div class="autor-card">
+        <div class="autor-sigla">CF</div>
+        <h3 class="autor-nome">Celso Furtado</h3>
+        <p class="autor-obra">Formação Econômica do Brasil (2007)<br>O Mito do Desenvolvimento (2024)</p>
+        <p class="autor-conceito">O subdesenvolvimento não é etapa a superar: é condição estrutural reproduzida pela especialização em atividades de baixo conteúdo tecnológico. Furtado distingue modernização (expansão do produto) de desenvolvimento (transformação estrutural).</p>
+        <span class="autor-tag">Marco teórico central</span>
+      </div>
+      <div class="autor-card destaque">
+        <div class="autor-sigla">RP</div>
+        <h3 class="autor-nome">Raúl Prebisch</h3>
+        <p class="autor-obra">Manifesto da CEPAL (1949)</p>
+        <p class="autor-conceito">Teoria centro-periferia e deterioração dos termos de troca: países exportadores de commodities precisam exportar quantidades crescentes para importar a mesma quantidade de manufaturados. A industrialização deliberada é a saída.</p>
+        <span class="autor-tag">Fundação cepalina</span>
+      </div>
+      <div class="autor-card">
+        <div class="autor-sigla">HC</div>
+        <h3 class="autor-nome">Ha-Joon Chang</h3>
+        <p class="autor-obra">Chutando a Escada (2004)</p>
+        <p class="autor-conceito">Todos os países hoje desenvolvidos usaram proteção tarifária, empresas estatais e política industrial ativa. Ao prescrever abertura irrestrita às economias periféricas, os países ricos "chutam a escada" pela qual subiram.</p>
+        <span class="autor-tag">Crítica histórica</span>
+      </div>
+      <div class="autor-card santos">
+        <div class="autor-sigla">MS</div>
+        <h3 class="autor-nome">Milton Santos</h3>
+        <p class="autor-obra">Por uma Outra Globalização (2000)</p>
+        <p class="autor-conceito">A globalização hegemônica integra territórios periféricos a partir de funções de extração, sem gerar transformação local. Mas existe a globalização como possibilidade — orientada pelas necessidades humanas e pelo desenvolvimento dos territórios.</p>
+        <span class="autor-tag">Horizonte normativo</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REGRESSÃO INDUSTRIAL -->
+<section id="regressao">
+  <p class="section-label">05 — A Evidência Central</p>
+  <h2 class="section-title">A regressão industrial<br>na pauta <em>Brasil → China</em></h2>
+
+  <div class="legend-interactive">
+    <button class="leg-btn" onclick="showTip('prim',this)" style="color:var(--col-prim)">
+      <span class="leg-dot" style="background:var(--col-prim)"></span>Primários
+    </button>
+    <button class="leg-btn" onclick="showTip('semi',this)" style="color:var(--col-semi)">
+      <span class="leg-dot" style="background:var(--col-semi)"></span>Semimanufaturados
+    </button>
+    <button class="leg-btn" onclick="showTip('manuf',this)" style="color:var(--col-manuf)">
+      <span class="leg-dot" style="background:var(--col-manuf)"></span>Manufaturados
+    </button>
+    <span class="leg-hint">← clique para abrir o Quadro 1</span>
+  </div>
+
+  <div class="tooltip-box" id="tt">
+    <span class="tooltip-close" onclick="closeTip()">×</span>
+    <div class="tooltip-title" id="tt-t"></div>
+    <div class="tooltip-desc"  id="tt-d"></div>
+    <div class="tooltip-ex"    id="tt-e"></div>
+  </div>
+
+  <div class="chart-wrap">
+    <p class="chart-title">Participação por intensidade tecnológica — exportações brasileiras para a China</p>
+    <p class="chart-sub">Anos selecionados, 2001–2025 · Fonte: MDIC/Comex Stat (2026) · Classificação própria com base nos códigos NCM (Quadro 1)</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Ano</th>
+          <th>Total (US$ bi)</th>
+          <th style="color:var(--col-prim)">Primários %</th>
+          <th style="color:var(--col-semi)">Semiman. %</th>
+          <th style="color:var(--col-manuf)">Manuf. %</th>
+          <th>Manufaturados (visual)</th>
+        </tr>
+      </thead>
+      <tbody id="tb"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- MILTON SANTOS -->
+<div id="santos">
+  <div class="inner">
+    <p class="section-label">06 — Milton Santos</p>
+    <h2 class="section-title">A globalização que existe<br>e a que <em>poderia existir</em></h2>
+    <div class="santos-grid">
+      <div class="santos-card heg">
+        <p class="santos-label">Globalização hegemônica</p>
+        <h3 class="santos-card-title">O que é</h3>
+        <p class="santos-card-body">A globalização real, operada pelo capital financeiro transnacional, integra os territórios periféricos a partir de funções de extração e fornecimento. Não há compromisso com a transformação das estruturas produtivas locais.</p>
+        <p class="santos-card-body">É nessa lógica que a Bahia opera na relação com a China: exporta soja, celulose e minério — o que não transforma — enquanto importa manufaturados de alto conteúdo tecnológico produzidos na China.</p>
+      </div>
+      <div class="santos-card pos">
+        <p class="santos-label">Globalização como possibilidade</p>
+        <h3 class="santos-card-title">O que poderia ser</h3>
+        <p class="santos-card-body">Santos não se limita ao diagnóstico. A outra globalização possível é aquela orientada pelas necessidades dos territórios e de suas populações, onde a integração econômica gera transformação produtiva local.</p>
+        <p class="santos-card-body">Para a Bahia, isso significa negociar as condições da presença chinesa em função de objetivos de desenvolvimento: exigência de conteúdo local, transferência tecnológica e adensamento das cadeias produtivas regionais.</p>
+      </div>
+      <div class="santos-quote">
+        <blockquote>"A periferia produz e exporta o que não transforma; o centro importa, processa e devolve com valor agregado. A forma é diferente da relação histórica com o Norte Global, mas a lógica estrutural é a mesma."</blockquote>
+        <cite>Soares, 2026 — Seção 4.3 · à luz de Santos (2000)</cite>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONCLUSÃO -->
+<section id="conclusao">
+  <p class="section-label">07 — Conclusão</p>
+  <h2 class="section-title">O diagnóstico não precisa<br>ser o <em>destino</em></h2>
+  <div class="conclusao-grid">
+    <div class="conclusao-bloco">
+      <h3>O que os dados mostram</h3>
+      <p>A inserção da Bahia na relação com a China reproduz o padrão de dependência estrutural identificado por Furtado: especialização em commodities, ausência de diversificação produtiva e incapacidade de capturar os ganhos tecnológicos da relação bilateral.</p>
+      <p>A relação opera, nos termos de Milton Santos, como globalização hegemônica: o território fornece o que não transforma; o centro importa, processa e devolve com valor agregado.</p>
+      <p>O crescimento de 6.600% no valor exportado não se traduziu em nenhuma transformação estrutural relevante na economia do estado.</p>
+    </div>
+    <div class="conclusao-bloco">
+      <h3>O que poderia mudar — Chang (2004)</h3>
+      <p>A presença de capital industrial chinês no território baiano pode ser uma janela de oportunidade, desde que mediada por política industrial ativa:</p>
+      <ul class="politicas">
+        <li><span class="pol-num">1</span>Exigência de conteúdo local nos contratos de investimento industrial estrangeiro</li>
+        <li><span class="pol-num">2</span>Formação técnica orientada: energias renováveis, mobilidade elétrica, química fina</li>
+        <li><span class="pol-num">3</span>Incentivos fiscais condicionados à performance tecnológica e ao uso de insumos regionais</li>
+        <li><span class="pol-num">4</span>Uso estratégico das receitas do agronegócio para financiar diversificação industrial endógena</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FECHO -->
+<div class="fecho">
+  <blockquote>"Essa transformação não virá do mercado. Virá, se vier, da política."</blockquote>
+  <cite>Soares, 2026 — Considerações Finais</cite>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Caio Oliveira dos Santos Soares · TCC · UNIFACS · 2026</p>
+  <p>Dados: MDIC/Comex Stat (2026) · SEI-BA (2026)</p>
+</footer>
+
+<script>
+/* tabela */
+const rows = [
+  {y:'2001',t:'1,90', p:62.3,s:20.1,m:17.7},
+  {y:'2003',t:'4,53', p:56.3,s:33.3,m:10.4},
+  {y:'2005',t:'6,83', p:69.0,s:25.5,m:5.5},
+  {y:'2007',t:'10,78',p:76.6,s:19.9,m:3.5},
+  {y:'2009',t:'20,99',p:79.3,s:18.1,m:2.6},
+  {y:'2010',t:'30,75',p:86.5,s:11.4,m:2.1},
+  {y:'2013',t:'46,02',p:87.8,s:10.7,m:1.5},
+  {y:'2015',t:'35,16',p:81.7,s:16.2,m:2.1},
+  {y:'2018',t:'63,93',p:87.7,s:11.6,m:0.7},
+  {y:'2020',t:'67,79',p:87.5,s:12.1,m:0.4},
+  {y:'2022',t:'89,57',p:89.6,s:10.0,m:0.4},
+  {y:'2025',t:'100,31',p:88.7,s:11.1,m:0.2},
+];
+const tb = document.getElementById('tb');
+rows.forEach(r => {
+  const low = r.m < 3;
+  const w = Math.max(r.m * 5, 2);
+  const clr = low ? '#8B2E2E' : '#2E7D52';
+  const tr = document.createElement('tr');
+  if(r.y==='2025') tr.className='hl';
+  tr.innerHTML = `
+    <td>${r.y}</td>
+    <td>${r.t}</td>
+    <td class="td-prim">${r.p.toFixed(1)}%</td>
+    <td class="td-semi">${r.s.toFixed(1)}%</td>
+    <td class="${low?'td-low':'td-manuf'}">${r.m.toFixed(1)}%</td>
+    <td>
+      <div class="spark-wrap">
+        <span class="spark" style="width:${w}px;background:${clr};border-radius:2px"></span>
+        <span style="font-size:11px;color:${clr};font-family:'DM Mono',monospace">${r.m.toFixed(1)}%</span>
+      </div>
+    </td>`;
+  tb.appendChild(tr);
+});
+
+/* tooltip quadro 1 */
+const quadro = {
+  prim:  { t:'Primários — Quadro 1', d:'Commodities agrícolas e minerais brutos, sem transformação industrial ou com processamento mínimo. Seu valor é determinado essencialmente pela dotação de recursos naturais e pelos preços internacionais.', e:'Exemplos: soja, algodão, milho, café, açúcar, carnes in natura, petróleo bruto, minérios de ferro, cobre, níquel e manganês.' },
+  semi:  { t:'Semimanufaturados — Quadro 1', d:'Produtos com algum grau de transformação industrial, mas ainda de baixo conteúdo tecnológico. Passam por processo industrial, mas cumprem papel de insumo nas cadeias produtivas dos países compradores.', e:'Exemplos: pastas químicas de madeira, produtos laminados de aço, polímeros em formas primárias, ferroligas e madeira serrada.' },
+  manuf: { t:'Manufaturados — Quadro 1', d:'Bens com transformação industrial significativa e maior conteúdo tecnológico. São os produtos que, segundo Furtado (2024) e Chang (2004), permitem à economia capturar os ganhos do progresso técnico e avançar nas cadeias de valor.', e:'Exemplos: veículos automotores, aeronaves, máquinas e equipamentos, instrumentos, componentes industriais, calçados e medicamentos.' },
+};
+
+let activBtn = null;
+function showTip(type, btn) {
+  const d = quadro[type];
+  document.getElementById('tt-t').textContent = d.t;
+  document.getElementById('tt-d').textContent = d.d;
+  document.getElementById('tt-e').textContent = d.e;
+  const tt = document.getElementById('tt');
+  tt.classList.add('show');
+  // position:fixed usa coordenadas da viewport, sem scrollY
+  const rect = btn.getBoundingClientRect();
+  const top  = rect.bottom + 10;
+  const left = Math.min(rect.left, window.innerWidth - 360);
+  tt.style.top  = top  + 'px';
+  tt.style.left = left + 'px';
+  document.querySelectorAll('.leg-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  activBtn = btn;
+}
+function closeTip() {
+  document.getElementById('tt').classList.remove('show');
+  document.querySelectorAll('.leg-btn').forEach(b=>b.classList.remove('active'));
+}
+document.addEventListener('click', e => {
+  const tt = document.getElementById('tt');
+  if (!tt.contains(e.target) && !e.target.closest('.leg-btn')) closeTip();
+});
+</script>
+</body>
+</html>
