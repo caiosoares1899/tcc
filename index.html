@@ -276,9 +276,9 @@
   .santos-card.heg .santos-card-body { color: rgba(250,250,248,.7); }
   .santos-card.pos .santos-card-body { color: rgba(250,250,248,.75); }
   .santos-card-body + .santos-card-body { margin-top: 12px; }
-  .santos-quote { grid-column: 1/-1; padding: clamp(22px, 4vw, 30px) clamp(22px, 4vw, 36px); background: rgba(200,149,42,.12); border-left: 4px solid var(--dourado); }
-  .santos-quote blockquote { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(14px, 2.5vw, 17px); color: var(--dourado); line-height: 1.65; margin-bottom: 10px; }
-  .santos-quote cite { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(200,149,42,.5); letter-spacing: 1px; font-style: normal; }
+  .santos-quote { grid-column: 1/-1; padding: clamp(22px, 4vw, 30px) clamp(22px, 4vw, 36px); background: rgba(255,255,255,.08); border-left: 4px solid rgba(250,250,248,.5); }
+  .santos-quote blockquote { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(14px, 2.5vw, 17px); color: var(--branco); line-height: 1.65; margin-bottom: 10px; }
+  .santos-quote cite { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(250,250,248,.45); letter-spacing: 1px; font-style: normal; }
 
   /* ─── CONCLUSÃO ─── */
   #conclusao { background: var(--branco); }
@@ -356,6 +356,18 @@
     .hero-stat-grid { grid-template-columns: 1fr; }
   }
 
+  /* ─── TABS ─── */
+  .tab-bar { display: flex; gap: 4px; margin-bottom: 20px; }
+  .tab-btn {
+    padding: 10px 20px; border: 1.5px solid rgba(0,0,0,.15); border-radius: 4px;
+    background: #fff; font-family: 'DM Mono', monospace; font-size: 12px;
+    letter-spacing: .5px; cursor: pointer; color: var(--cinza);
+    transition: all .2s; min-height: 44px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tab-btn.active { background: var(--verde); color: #fff; border-color: var(--verde); }
+  .tab-btn:not(.active):hover { border-color: var(--verde-medio); color: var(--verde-medio); }
+
   /* ─── REDUCED MOTION ─── */
   @media (prefers-reduced-motion: reduce) {
     *, .hero-left > *, .hero-right { animation: none !important; transition: none !important; }
@@ -370,7 +382,7 @@
   <div class="hero-left">
     <p class="hero-label">TCC · Economia · UNIFACS · 2026</p>
     <h1>Relação Comercial<br>Brasil–China:<br><em>o caso baiano</em></h1>
-    <p class="hero-sub">Uma leitura da inserção da Bahia no comércio com a China no século XXI sob a perspectiva furtadiana — entre dependência estrutural e possibilidade de desenvolvimento.</p>
+    <p class="hero-sub">Artigo de conclusão de curso em Economia pela UNIFACS (2026). Analisa a inserção da Bahia nas relações comerciais com a China no século XXI, investigando se o crescimento do fluxo bilateral avançou ou aprofundou a desindustrialização baiana, sob a perspectiva teórica de Celso Furtado.</p>
     <p class="hero-autor">Caio Oliveira dos Santos Soares</p>
 
     <a
@@ -603,8 +615,15 @@
 <!-- REGRESSÃO INDUSTRIAL -->
 <section id="regressao">
   <p class="section-label">05 — A Evidência Central</p>
-  <h2 class="section-title">A regressão industrial<br>na pauta <em>Brasil → China</em></h2>
+  <h2 class="section-title">A regressão industrial<br>na pauta <em>exportadora</em></h2>
 
+  <!-- menu tabbed -->
+  <div class="tab-bar" role="tablist" aria-label="Escolher recorte geográfico">
+    <button class="tab-btn active" role="tab" aria-selected="true"  id="tab-br" onclick="switchTab('br')">🇧🇷 Brasil → China</button>
+    <button class="tab-btn"        role="tab" aria-selected="false" id="tab-ba" onclick="switchTab('ba')">📍 Bahia → China</button>
+  </div>
+
+  <!-- legenda interativa -->
   <div class="legend-interactive" role="group" aria-label="Categorias de produtos — clique para abrir o Quadro 1">
     <button class="leg-btn" onclick="showTip('prim',this)" style="color:var(--col-prim)">
       <span class="leg-dot" style="background:var(--col-prim)"></span>Primários
@@ -625,10 +644,11 @@
     <div class="tooltip-ex"    id="tt-e"></div>
   </div>
 
-  <div class="chart-wrap">
+  <!-- painel Brasil -->
+  <div class="chart-wrap" id="panel-br">
     <p class="chart-title">Participação por intensidade tecnológica — exportações brasileiras para a China</p>
-    <p class="chart-sub">Anos selecionados, 2001–2025 · Fonte: MDIC/Comex Stat (2026) · Classificação própria com base nos códigos NCM (Quadro 1)<br><em>Role a tabela horizontalmente se necessário →</em></p>
-    <table class="data-table" aria-label="Dados de exportação por intensidade tecnológica">
+    <p class="chart-sub">Anos selecionados, 2001–2025 · Fonte: MDIC/Comex Stat (2026) · Classificação própria (Quadro 1)<br><em>Role a tabela horizontalmente se necessário →</em></p>
+    <table class="data-table" aria-label="Exportações Brasil para China por intensidade tecnológica">
       <thead>
         <tr>
           <th scope="col">Ano</th>
@@ -639,8 +659,30 @@
           <th scope="col">Visual</th>
         </tr>
       </thead>
-      <tbody id="tb"></tbody>
+      <tbody id="tb-br"></tbody>
     </table>
+  </div>
+
+  <!-- painel Bahia -->
+  <div class="chart-wrap" id="panel-ba" style="display:none">
+    <p class="chart-title">Composição da pauta exportadora baiana para a China</p>
+    <p class="chart-sub">Anos selecionados, 2001–2025 · Fonte: MDIC/Comex Stat (2026)<br><em>Role a tabela horizontalmente se necessário →</em></p>
+    <table class="data-table" aria-label="Exportações Bahia para China por produto">
+      <thead>
+        <tr>
+          <th scope="col">Ano</th>
+          <th scope="col">Total (US$ bi)</th>
+          <th scope="col" style="color:#4A8C5C">Soja %</th>
+          <th scope="col" style="color:var(--col-semi)">Celulose %</th>
+          <th scope="col" style="color:var(--col-prim)">Algodão %</th>
+          <th scope="col" style="color:var(--cinza)">Outros %</th>
+        </tr>
+      </thead>
+      <tbody id="tb-ba"></tbody>
+    </table>
+    <div style="margin-top:20px; padding:16px 20px; background:rgba(34,71,83,.06); border-left:3px solid var(--verde-medio); border-radius:0 4px 4px 0;">
+      <p style="font-size:13px; color:var(--cinza); line-height:1.7;"><strong style="color:var(--verde)">Leitura:</strong> A pauta baiana é ainda mais concentrada do que a nacional. Em 2025, soja e celulose juntas respondem por mais de 81% do total exportado. A soja, que representava menos de 18% em 2001, tornou-se o produto dominante — reflexo da expansão do agronegócio no oeste baiano (MATOPIBA), não de uma estratégia industrial deliberada.</p>
+    </div>
   </div>
 </section>
 
@@ -703,12 +745,36 @@
 <!-- FOOTER -->
 <footer>
   <p>Caio Oliveira dos Santos Soares · TCC · UNIFACS · 2026</p>
-  <p>Dados: MDIC/Comex Stat (2026) · SEI-BA (2026)</p>
+  <button onclick="openRefs()" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px;border-radius:3px;cursor:pointer;transition:all .2s;min-height:36px;" onmouseover="this.style.borderColor='rgba(255,255,255,.5)';this.style.color='rgba(255,255,255,.8)'" onmouseout="this.style.borderColor='rgba(255,255,255,.2)';this.style.color='rgba(255,255,255,.5)'">Referências</button>
 </footer>
 
+<!-- POPUP REFERÊNCIAS -->
+<div id="refs-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:500;overflow-y:auto;padding:40px 20px;" onclick="if(event.target===this)closeRefs()">
+  <div style="background:#fff;max-width:720px;margin:0 auto;border-radius:8px;padding:clamp(28px,5vw,48px);position:relative;">
+    <button onclick="closeRefs()" aria-label="Fechar referências" style="position:absolute;top:16px;right:20px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--cinza);line-height:1;">×</button>
+    <p style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--dourado);margin-bottom:16px;">Referências bibliográficas</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,28px);font-weight:700;color:var(--verde);margin-bottom:32px;">Fontes do artigo</h2>
+    <div style="display:flex;flex-direction:column;gap:18px;" id="refs-list"></div>
+    <p style="margin-top:28px;font-size:11px;color:var(--cinza);font-family:'DM Mono',monospace;letter-spacing:.5px;">Formatação: ABNT NBR 6023:2018</p>
+  </div>
+</div>
+
 <script>
-/* ── tabela ── */
-const rows = [
+/* ── tab switch Brasil / Bahia ── */
+function switchTab(which) {
+  document.getElementById('panel-br').style.display = which === 'br' ? '' : 'none';
+  document.getElementById('panel-ba').style.display = which === 'ba' ? '' : 'none';
+  document.getElementById('tab-br').classList.toggle('active', which === 'br');
+  document.getElementById('tab-ba').classList.toggle('active', which === 'ba');
+  document.getElementById('tab-br').setAttribute('aria-selected', which === 'br');
+  document.getElementById('tab-ba').setAttribute('aria-selected', which === 'ba');
+  // legenda só faz sentido no painel Brasil
+  document.querySelector('.legend-interactive').style.opacity = which === 'br' ? '1' : '0.4';
+  document.querySelector('.legend-interactive').style.pointerEvents = which === 'br' ? '' : 'none';
+}
+
+/* ── tabela Brasil ── */
+const rowsBR = [
   {y:'2001',t:'1,90',  p:62.3, s:20.1, m:17.7},
   {y:'2003',t:'4,53',  p:56.3, s:33.3, m:10.4},
   {y:'2005',t:'6,83',  p:69.0, s:25.5, m:5.5 },
@@ -722,8 +788,9 @@ const rows = [
   {y:'2022',t:'89,57', p:89.6, s:10.0, m:0.4 },
   {y:'2025',t:'100,31',p:88.7, s:11.1, m:0.2 },
 ];
-const tb = document.getElementById('tb');
-rows.forEach(r => {
+
+const tbBR = document.getElementById('tb-br');
+rowsBR.forEach(r => {
   const low = r.m < 3;
   const w   = Math.max(r.m * 5, 2);
   const clr = low ? '#8B2E2E' : '#2E7D52';
@@ -741,7 +808,35 @@ rows.forEach(r => {
         <span style="font-size:11px;color:${clr};font-family:'DM Mono',monospace">${r.m.toFixed(1)}%</span>
       </div>
     </td>`;
-  tb.appendChild(tr);
+  tbBR.appendChild(tr);
+});
+
+/* ── tabela Bahia ── */
+const rowsBA = [
+  {y:'2001',t:'0,049', soja:17.8, cel:64.1, alg:0.0,  out:18.1},
+  {y:'2005',t:'0,244', soja:28.2, cel:42.3, alg:5.1,  out:24.4},
+  {y:'2009',t:'1,077', soja:27.5, cel:52.8, alg:4.2,  out:15.5},
+  {y:'2013',t:'1,851', soja:42.1, cel:31.4, alg:9.8,  out:16.7},
+  {y:'2015',t:'2,233', soja:30.0, cel:38.6, alg:12.3, out:19.1},
+  {y:'2018',t:'2,947', soja:52.3, cel:26.1, alg:8.4,  out:13.2},
+  {y:'2020',t:'2,255', soja:44.0, cel:31.2, alg:7.1,  out:17.7},
+  {y:'2022',t:'3,338', soja:58.1, cel:22.4, alg:6.3,  out:13.2},
+  {y:'2025',t:'3,270', soja:56.3, cel:24.8, alg:5.4,  out:13.5},
+];
+
+const tbBA = document.getElementById('tb-ba');
+rowsBA.forEach(r => {
+  const tr = document.createElement('tr');
+  if (r.y === '2025') tr.className = 'hl';
+  const mkBar = (pct, clr) => `<div class="spark-wrap"><span class="spark" style="width:${Math.max(pct*.8,2)}px;background:${clr}"></span><span style="font-size:11px;color:${clr};font-family:'DM Mono',monospace">${pct.toFixed(1)}%</span></div>`;
+  tr.innerHTML = `
+    <td>${r.y}</td>
+    <td>${r.t}</td>
+    <td style="color:#4A8C5C;font-weight:600">${r.soja.toFixed(1)}%</td>
+    <td style="color:var(--col-semi);font-weight:500">${r.cel.toFixed(1)}%</td>
+    <td style="color:var(--col-prim);font-weight:500">${r.alg.toFixed(1)}%</td>
+    <td style="color:var(--cinza)">${r.out.toFixed(1)}%</td>`;
+  tbBA.appendChild(tr);
 });
 
 /* ── tooltip / quadro 1 ── */
@@ -772,19 +867,15 @@ function showTip(type, btn) {
   document.getElementById('tt-d').textContent = d.d;
   document.getElementById('tt-e').textContent = d.e;
   tt.classList.add('show');
-
   if (!isMobile()) {
-    /* desktop: posiciona abaixo do botão */
     const rect = btn.getBoundingClientRect();
     tt.style.top       = (rect.bottom + 10) + 'px';
     tt.style.left      = Math.min(rect.left, window.innerWidth - 360) + 'px';
     tt.style.transform = 'none';
   } else {
-    /* mobile: centralizado via CSS (transform: translate(-50%,-50%)) */
     tt.style.top  = '50%';
     tt.style.left = '50%';
   }
-
   document.querySelectorAll('.leg-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 }
@@ -798,9 +889,38 @@ document.addEventListener('click', e => {
   const tt = document.getElementById('tt');
   if (!tt.contains(e.target) && !e.target.closest('.leg-btn')) closeTip();
 });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeTip(); closeRefs(); } });
 
-/* fecha tooltip no Escape */
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeTip(); });
+/* ── popup referências ── */
+const refs = [
+  { autor: 'BAHIA. Superintendência de Estudos Econômicos e Sociais da Bahia (SEI).', titulo: 'Informativo de Comércio Exterior n. 12 — Dezembro 2025 (Acumulado).', resto: 'Salvador: SEI, mar. 2026. Disponível em: https://www.ba.gov.br/sei/. Acesso em: abr. 2026.' },
+  { autor: 'BLACK, Clarissa.', titulo: 'Preços de commodities, termos de troca e crescimento econômico brasileiro nos anos 2000.', resto: 'Indicadores Econômicos FEE, Porto Alegre, v. 42, n. 3, p. 27-44, 2015.' },
+  { autor: 'BRASIL. Ministério do Desenvolvimento, Indústria, Comércio e Serviços.', titulo: 'Comex Stat: sistema de estatísticas de comércio exterior.', resto: 'Brasília: MDIC, 2026. Disponível em: https://comexstat.mdic.gov.br. Acesso em: abr. 2026.' },
+  { autor: 'CHANG, Ha-Joon.', titulo: 'Chutando a escada: a estratégia do desenvolvimento em perspectiva histórica.', resto: 'São Paulo: Editora UNESP, 2004.' },
+  { autor: 'FURTADO, Celso.', titulo: 'Formação econômica do Brasil.', resto: '34. ed. São Paulo: Companhia das Letras, 2007.' },
+  { autor: 'FURTADO, Celso.', titulo: 'O mito do desenvolvimento econômico.', resto: 'Rio de Janeiro: Paz e Terra, 2024.' },
+  { autor: 'PORTAL DA INDÚSTRIA.', titulo: 'Perfil da indústria nos estados: Bahia.', resto: 'Brasília: CNI, 2025. Disponível em: https://perfil.portaldaindustria.com.br. Acesso em: abr. 2026.' },
+  { autor: 'PREBISCH, Raúl.', titulo: 'O desenvolvimento econômico da América Latina e alguns de seus principais problemas.', resto: 'In: BIELSCHOWSKY, Ricardo (org.). Cinquenta anos de pensamento na CEPAL. Rio de Janeiro: Record, 2000. p. 69-136. [Publicado originalmente em 1949.]' },
+  { autor: 'SANTOS, Milton.', titulo: 'Por uma outra globalização: do pensamento único à consciência universal.', resto: 'Rio de Janeiro: Record, 2000.' },
+  { autor: 'SPINOLA, Noelio Dantaslé.', titulo: 'A trilha perdida: caminhos e descaminhos do desenvolvimento baiano no século XX.', resto: 'Salvador: UNIFACS, 2001.' },
+];
+
+const refsList = document.getElementById('refs-list');
+refs.forEach(r => {
+  const div = document.createElement('div');
+  div.style.cssText = 'padding:14px 0;border-bottom:1px solid rgba(0,0,0,.07);font-size:13px;line-height:1.75;color:#444;';
+  div.innerHTML = `<strong style="color:#1C1A17">${r.autor}</strong> <em>${r.titulo}</em> ${r.resto}`;
+  refsList.appendChild(div);
+});
+
+function openRefs()  {
+  document.getElementById('refs-overlay').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+function closeRefs() {
+  document.getElementById('refs-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
 </script>
 </body>
 </html>
