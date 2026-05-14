@@ -332,6 +332,7 @@
     .conclusao-grid { grid-template-columns: 1fr; gap: 40px; }
     .santos-grid { grid-template-columns: 1fr; }
     .santos-quote { grid-column: 1; }
+    #tese-grid { grid-template-columns: 1fr !important; }
 
     /* tooltip: modal centralizado */
     .tooltip-box {
@@ -412,6 +413,7 @@
 <!-- NAV -->
 <nav aria-label="Navegação principal">
   <ul>
+    <li><a href="#tese">A Tese</a></li>
     <li><a href="#paradoxo">O Paradoxo</a></li>
     <li><a href="#municipios">Municípios</a></li>
     <li><a href="#teoria">Referencial</a></li>
@@ -429,6 +431,57 @@
     A relação comercial entre o Brasil e a China cresceu de forma extraordinária desde 2001. Mas esse crescimento quantitativo ocorreu ao mesmo tempo em que a pauta exportadora brasileira regrediu estruturalmente: de automóveis e aeronaves no início do período, para soja e minério em 2025. É o paradoxo que este trabalho documenta e explica à luz do pensamento de Celso Furtado.
   </p>
 </section>
+
+<!-- TESE CENTRAL -->
+<div id="tese" style="background:var(--branco); max-width:100%; padding:clamp(60px,10vw,96px) var(--px); border-top:1px solid rgba(0,0,0,.07);">
+  <div style="max-width:1200px; margin:0 auto;">
+    <p class="section-label">02 — A Tese Central</p>
+    <h2 class="section-title">Três ideias que explicam<br>o <em>mesmo fenômeno</em></h2>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:clamp(32px,5vw,48px);" id="tese-grid">
+
+      <!-- BLOCO 1 -->
+      <div style="padding:clamp(28px,4vw,44px) clamp(20px,3vw,36px); background:var(--creme); border-top:4px solid var(--verde);">
+        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); margin-bottom:16px;">Furtado · Desenvolvimento</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:clamp(17px,2.5vw,22px); font-weight:700; color:var(--verde); margin-bottom:18px; line-height:1.3;">O que é<br>desenvolvimento<br>de verdade?</h3>
+        <p style="font-size:clamp(13px,1.8vw,14px); color:var(--cinza); line-height:1.8; margin-bottom:14px;">Para Celso Furtado, desenvolvimento não é sinônimo de crescimento econômico. Um país pode crescer — aumentar seu PIB, expandir exportações, atrair investimentos — e permanecer subdesenvolvido.</p>
+        <p style="font-size:clamp(13px,1.8vw,14px); color:var(--cinza); line-height:1.8; margin-bottom:14px;">O que define o desenvolvimento genuíno é a <strong style="color:var(--verde)">transformação estrutural</strong>: a capacidade de uma economia de diversificar sua base produtiva, internalizar o progresso técnico e gerar riqueza a partir de capacidades próprias — e não apenas da venda de recursos naturais.</p>
+        <p style="font-size:clamp(13px,1.8vw,14px); color:var(--cinza); line-height:1.8;">Quando um país cresce sem transformar sua estrutura produtiva, Furtado chama isso de <strong style="color:var(--vermelho)">modernização</strong>: adota padrões de consumo e tecnologias dos países ricos, mas sem construir a capacidade de gerá-los. A escala muda. A dependência, não.</p>
+        <div style="margin-top:20px; padding:16px 18px; background:rgba(26,58,42,.05); border-left:3px solid var(--verde); font-family:'Playfair Display',serif; font-style:italic; font-size:13px; color:var(--verde); line-height:1.6;">
+          "O subdesenvolvimento é uma condição estrutural — não uma etapa a ser superada pelo simples crescimento econômico."
+          <span style="display:block; margin-top:8px; font-family:'DM Mono',monospace; font-size:10px; font-style:normal; color:var(--cinza); letter-spacing:1px;">Furtado, 2024</span>
+        </div>
+      </div>
+
+      <!-- BLOCO 2 -->
+      <div style="padding:clamp(28px,4vw,44px) clamp(20px,3vw,36px); background:var(--verde); border-top:4px solid var(--dourado);">
+        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(194,239,255,.6); margin-bottom:16px;">Prebisch · Dependência</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:clamp(17px,2.5vw,22px); font-weight:700; color:var(--branco); margin-bottom:18px; line-height:1.3;">Por que a periferia<br>exporta o que<br>não transforma?</h3>
+        <p style="font-size:clamp(13px,1.8vw,14px); color:rgba(250,250,248,.75); line-height:1.8; margin-bottom:14px;">Raúl Prebisch identificou, ainda em 1949, um padrão estrutural no comércio internacional: os países do <strong style="color:var(--verde-claro)">centro</strong> produzem e exportam manufaturados de alto valor; os países da <strong style="color:rgba(250,180,180,.9)">periferia</strong> produzem e exportam matérias-primas de baixo valor.</p>
+        <p style="font-size:clamp(13px,1.8vw,14px); color:rgba(250,250,248,.75); line-height:1.8; margin-bottom:14px;">Ao longo do tempo, os preços das commodities tendem a cair em relação aos preços dos manufaturados. Isso significa que a periferia precisa exportar <em>quantidades cada vez maiores</em> de grãos, minério ou petróleo para importar a mesma quantidade de máquinas ou veículos.</p>
+        <p style="font-size:clamp(13px,1.8vw,14px); color:rgba(250,250,248,.75); line-height:1.8;">Esse mecanismo — a <strong style="color:var(--verde-claro)">deterioração dos termos de troca</strong> — torna a especialização primária uma armadilha: quanto mais eficiente a periferia fica em produzir commodities, mais ela precisa produzir para manter o mesmo padrão de importações. A dependência se aprofunda, não se resolve.</p>
+        <div style="margin-top:20px; padding:16px 18px; background:rgba(200,149,42,.15); border-left:3px solid var(--dourado); font-family:'Playfair Display',serif; font-style:italic; font-size:13px; color:var(--dourado); line-height:1.6;">
+          "O centro retém os ganhos do progresso técnico. A periferia os transfere sob a forma de queda nos preços das exportações."
+          <span style="display:block; margin-top:8px; font-family:'DM Mono',monospace; font-size:10px; font-style:normal; color:rgba(200,149,42,.5); letter-spacing:1px;">Prebisch, 1949</span>
+        </div>
+      </div>
+
+      <!-- BLOCO 3 -->
+      <div style="padding:clamp(28px,4vw,44px) clamp(20px,3vw,36px); background:#edf2f4; border-top:4px solid var(--vermelho);">
+        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--cinza); margin-bottom:16px;">Desindustrialização · Globalização</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:clamp(17px,2.5vw,22px); font-weight:700; color:var(--verde); margin-bottom:18px; line-height:1.3;">Como a globalização<br>aprofundou<br>a dependência?</h3>
+        <p style="font-size:clamp(13px,1.8vw,14px); color:var(--cinza); line-height:1.8; margin-bottom:14px;">A partir dos anos 1990, a abertura comercial e financeira integrou o Brasil à economia global — mas numa posição subordinada. Sem política industrial ativa, os setores manufatureiros foram expostos à concorrência internacional antes de terem capacidade de competir.</p>
+        <p style="font-size:clamp(13px,1.8vw,14px); color:var(--cinza); line-height:1.8; margin-bottom:14px;">Na década seguinte, o boom das commodities — impulsionado pela demanda chinesa — tornou ainda mais lucrativa a especialização primária. O Brasil cresceu exportando soja e minério, mas foi <strong style="color:var(--vermelho)">desindustrializando</strong> sua pauta: a participação da indústria de transformação no PIB recuou sistematicamente.</p>
+        <p style="font-size:clamp(13px,1.8vw,14px); color:var(--cinza); line-height:1.8;">O resultado é o que os dados deste trabalho documentam: em 2025, o Brasil exporta para a China 0,2% de manufaturados — contra 16,9% em 2001. A globalização, em vez de romper a dependência estrutural, a aprofundou. É o que Milton Santos chama de <strong style="color:var(--verde-medio)">globalização hegemônica</strong>: integração que não transforma, apenas extrai.</p>
+        <div style="margin-top:20px; padding:16px 18px; background:rgba(139,46,46,.07); border-left:3px solid var(--vermelho); font-family:'Playfair Display',serif; font-style:italic; font-size:13px; color:var(--vermelho); line-height:1.6;">
+          "A forma mudou. A lógica estrutural permaneceu."
+          <span style="display:block; margin-top:8px; font-family:'DM Mono',monospace; font-size:10px; font-style:normal; color:rgba(139,46,46,.5); letter-spacing:1px;">Soares, 2026</span>
+        </div>
+      </div>
+
+    </div><!-- fim tese-grid -->
+  </div>
+</div>
 
 <!-- PARADOXO -->
 <div id="paradoxo">
