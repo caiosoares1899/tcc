@@ -180,7 +180,8 @@ section,.fs{padding:56px 24px}.fecho{padding:56px 24px}footer{padding:24px}
 .ttbox{position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;width:calc(100vw - 48px);max-width:340px}
 .dbox{grid-template-columns:1fr}.asig{display:none}
 }
-@media(max-width:400px){.agrid{grid-template-columns:1fr}.stat-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.agrid{grid-template-columns:repeat(2,1fr)!important}}
+@media(max-width:400px){.agrid{grid-template-columns:1fr!important}.stat-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,.hero-left>*,.hero-right{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -338,8 +339,8 @@ section,.fs{padding:56px 24px}.fecho{padding:56px 24px}footer{padding:24px}
 <div id="teoria" class="fs" style="background:var(--branco)">
   <div class="fi">
     <p class="slbl">05 — Referencial Teórico</p>
-    <h2 class="stit" style="color:var(--verde)">Quatro vertentes,<br>um argumento <em>articulado</em></h2>
-    <div class="agrid">
+    <h2 class="stit" style="color:var(--verde)">Cinco vertentes,<br>um argumento <em>articulado</em></h2>
+    <div class="agrid" style="grid-template-columns:repeat(5,1fr)">
       <div class="acard">
         <div class="asig">CF</div>
         <h3 class="anome">Celso Furtado</h3>
@@ -353,6 +354,13 @@ section,.fs{padding:56px 24px}.fecho{padding:56px 24px}footer{padding:24px}
         <p class="aobra">Manifesto da CEPAL (1949)</p>
         <p class="aconc">Fundação cepalina. A teoria centro-periferia e a deterioração dos termos de troca mostram que países exportadores de commodities precisam exportar quantidades crescentes para importar a mesma quantidade de manufaturados. A industrialização deliberada é a saída.</p>
         <span class="atag">Fundação cepalina</span>
+      </div>
+      <div class="acard">
+        <div class="asig">HC</div>
+        <h3 class="anome">Ha-Joon Chang</h3>
+        <p class="aobra">Chutando a Escada (2004)</p>
+        <p class="aconc">Crítica histórica ao liberalismo. Todos os países hoje desenvolvidos usaram proteção tarifária, empresas estatais e política industrial ativa. Ao prescrever abertura irrestrita às economias periféricas, os países ricos "chutam a escada" pela qual subiram.</p>
+        <span class="atag">Crítica histórica</span>
       </div>
       <div class="acard sa">
         <div class="asig">MS</div>
