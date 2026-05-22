@@ -3,1539 +3,1136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TCC — Caio Soares | Defesa</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<title>Defesa TCC — Caio Soares | 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0e1318;
-    --surface: #141c24;
-    --card: #1a2433;
-    --border: #263040;
-    --gold: #c9a84c;
-    --gold-light: #e2c47a;
-    --gold-dim: #7a6030;
-    --teal: #3d8c8c;
-    --teal-light: #5bbcbc;
-    --red: #b04040;
-    --text: #e8e0d0;
-    --text-dim: #9a9080;
-    --text-muted: #5c5850;
-    --accent: #c9a84c;
-    --serif: 'Playfair Display', Georgia, serif;
-    --body: 'Source Serif 4', Georgia, serif;
-    --mono: 'DM Mono', monospace;
-  }
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE SCALE SYSTEM
+   font-size base = 1.5vw (scales with screen width)
+   All spacing uses em/% so everything grows together
+   ═══════════════════════════════════════════════════════ */
+:root{
+  --bg:#0c1118;--surface:#121a22;--card:#18232e;--card2:#1d2a37;
+  --border:#243040;--border2:#2e3d50;
+  --gold:#c9a84c;--gold-l:#dfc070;--gold-d:#7a6030;
+  --teal:#3a8a8a;--teal-l:#5bbcbc;
+  --red:#a83838;--red-l:#c85050;
+  --purple:#7060a8;--purple-l:#9880cc;
+  --text:#e6ddd0;--text-d:#9a9080;--text-m:#556070;
+  --serif:'Playfair Display',Georgia,serif;
+  --body:'Source Serif 4',Georgia,serif;
+  --mono:'DM Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* ROOT FONT = 1.5vw so EVERYTHING scales with viewport */
+html{font-size:clamp(12px, 1.45vw, 22px)}
+body{
+  width:100vw;height:100vh;overflow:hidden;
+  background:var(--bg);color:var(--text);
+  font-family:var(--body);line-height:1.6;
+}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--body);
-    font-size: 15px;
-    line-height: 1.7;
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
-  }
+/* ── TOPBAR ── */
+#topbar{
+  position:fixed;top:0;left:0;right:0;height:3em;
+  background:rgba(12,17,24,.97);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2em;z-index:9000;backdrop-filter:blur(10px);
+}
+.tb-left{display:flex;align-items:center;gap:1em}
+.tb-tag{font-family:var(--mono);font-size:.62em;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-d);padding:.25em .75em;background:rgba(201,168,76,.05)}
+.tb-sub{font-family:var(--mono);font-size:.58em;letter-spacing:.1em;text-transform:uppercase;color:var(--text-m)}
+.tb-right{display:flex;align-items:center;gap:.6em}
+.tb-btn{background:none;border:1px solid var(--border);color:var(--text-d);padding:.3em .9em;font-family:var(--mono);font-size:.6em;letter-spacing:.1em;cursor:pointer;transition:.18s;white-space:nowrap}
+.tb-btn:hover{border-color:var(--gold);color:var(--gold)}
+.tb-btn:disabled{opacity:.2;cursor:default}
+.tb-dots{display:flex;gap:.35em;align-items:center}
+.tb-dot{width:.42em;height:.42em;border-radius:50%;background:var(--border2);cursor:pointer;transition:.2s;border:1px solid transparent;flex-shrink:0}
+.tb-dot.active{background:var(--gold)}
+.tb-dot:hover{border-color:var(--gold-d)}
+.tb-cnt{font-family:var(--mono);font-size:.6em;color:var(--text-m);letter-spacing:.08em;min-width:3em;text-align:center}
 
-  /* LAYOUT */
-  #presentation {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-  }
+/* ── DECK ── */
+#deck{position:fixed;inset:3em 0 0 0;overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease;overflow:hidden;cursor:pointer}
+.slide.active{opacity:1;pointer-events:all}
+.noise{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.018}
 
-  .slide {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-    padding: 0;
-    overflow: hidden;
-  }
-  .slide.active {
-    opacity: 1;
-    pointer-events: all;
-  }
+/* ── SLIDE INNER ── */
+/* All slides use 100% of available space */
+.si{
+  position:relative;z-index:1;
+  width:100%;height:100%;
+  display:flex;flex-direction:column;
+  padding:1.6em 3.2em 1.4em;
+}
+.slide-rule{height:1px;background:linear-gradient(90deg,var(--gold-d),transparent);margin-bottom:.8em;margin-top:.15em}
 
-  /* SLIDE GRID STRUCTURES */
-  .slide-inner {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 52px 72px 44px;
-    position: relative;
-  }
-  .slide-inner.two-col {
-    flex-direction: row;
-    gap: 56px;
-    align-items: flex-start;
-  }
-  .col { flex: 1; }
-  .col-narrow { flex: 0 0 38%; }
-  .col-wide { flex: 0 0 58%; }
+/* ── GRID LAYOUTS — always fill space ── */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1.2em;flex:1;min-height:0}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.9em}
+.four{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.7em}
+.col{display:flex;flex-direction:column;gap:.6em;min-height:0}
 
-  /* SLIDE NUMBER */
-  .slide-num {
-    position: absolute;
-    bottom: 28px;
-    right: 72px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-  }
+/* ── TYPOGRAPHY — all em so they scale ── */
+.eyebrow{font-family:var(--mono);font-size:.62em;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4em}
+h1{font-family:var(--serif);font-size:2.2em;font-weight:700;line-height:1.18;color:var(--text);letter-spacing:-.01em}
+h1 em{color:var(--gold);font-style:italic}
+h2{font-family:var(--serif);font-size:1.55em;font-weight:700;line-height:1.22;color:var(--text);margin-bottom:.5em;letter-spacing:-.01em}
+h2 em{color:var(--teal-l);font-style:normal}
+h3{font-family:var(--serif);font-size:.98em;font-weight:600;color:var(--gold);margin-bottom:.3em}
+p{color:var(--text-d);font-size:.84em;line-height:1.65;margin-bottom:.4em}
+p strong{color:var(--text);font-weight:600}
+p em{color:var(--gold-l);font-style:italic}
 
-  /* HEADER BAR */
-  .slide-header {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin-bottom: 44px;
-  }
-  .slide-tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    padding: 4px 12px;
-    border: 1px solid var(--gold-dim);
-    background: rgba(201,168,76,0.06);
-  }
-  .slide-rule {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, var(--gold-dim) 0%, transparent 100%);
-  }
-  .slide-title-sm {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
+/* ── CARD SYSTEM ── */
+.card{background:var(--card);border:1px solid var(--border);padding:.75em 1em}
+.card.gold-t{border-top:2px solid var(--gold)}
+.card.teal-t{border-top:2px solid var(--teal)}
+.card.red-t{border-top:2px solid var(--red)}
+.card.purple-t{border-top:2px solid var(--purple)}
+.card.gold-l{border-left:3px solid var(--gold)}
+.card.teal-l{border-left:3px solid var(--teal)}
+.card.red-l{border-left:3px solid var(--red)}
+.card.gold-bg{background:rgba(201,168,76,.05);border-color:rgba(201,168,76,.22)}
+.card.teal-bg{background:rgba(58,138,138,.06);border-color:rgba(58,138,138,.22)}
+.card.red-bg{background:rgba(168,56,56,.06);border-color:rgba(168,56,56,.22)}
+.card h3{margin-bottom:.2em}
+.card p{margin:0}
 
-  /* TYPOGRAPHY */
-  h1 {
-    font-family: var(--serif);
-    font-size: 2.8em;
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--text);
-    letter-spacing: -0.01em;
-  }
-  h1 em { color: var(--gold); font-style: italic; }
-  h2 {
-    font-family: var(--serif);
-    font-size: 1.9em;
-    font-weight: 600;
-    line-height: 1.25;
-    color: var(--text);
-    margin-bottom: 24px;
-  }
-  h2 em { color: var(--teal-light); font-style: normal; }
-  h3 {
-    font-family: var(--serif);
-    font-size: 1.15em;
-    font-weight: 600;
-    color: var(--gold);
-    margin-bottom: 12px;
-  }
-  p { margin-bottom: 14px; color: var(--text-dim); font-size: 0.95em; }
-  p strong { color: var(--text); font-weight: 600; }
+/* ── STATS ── */
+.stat-row{display:flex;gap:.6em;margin-bottom:.7em}
+.stat{flex:1;background:var(--card);border:1px solid var(--border);padding:.7em .8em;text-align:center}
+.sval{font-family:var(--serif);font-size:1.8em;font-weight:700;line-height:1;margin-bottom:.1em}
+.slbl{font-family:var(--mono);font-size:.58em;letter-spacing:.12em;text-transform:uppercase;color:var(--text-m);margin-bottom:.2em;display:block}
+.ssub{font-size:.72em;color:var(--text-d);line-height:1.4}
 
-  /* DECORATIVE */
-  .gold-line {
-    width: 48px;
-    height: 2px;
-    background: var(--gold);
-    margin-bottom: 20px;
-  }
-  .noise-overlay {
-    position: absolute;
-    inset: 0;
-    opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    pointer-events: none;
-  }
+/* ── TABLE ── */
+.tbl{width:100%;border-collapse:collapse;font-size:.78em;margin-bottom:.7em}
+.tbl th{font-family:var(--mono);font-size:.75em;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,.08);padding:.5em .7em;text-align:left;border:1px solid var(--border)}
+.tbl td{padding:.45em .7em;border:1px solid var(--border);color:var(--text-d);vertical-align:middle}
+.tbl tr:nth-child(even) td{background:rgba(29,42,55,.4)}
+.tbl td:first-child{font-weight:600;color:var(--text)}
+.tbl .num{text-align:right;font-family:var(--mono);font-size:.95em}
+.tbl .pct{text-align:right;font-family:var(--mono);color:var(--gold)}
+.tbl .bar-td{padding:.25em .7em}
+.ibar{height:.35em;background:rgba(201,168,76,.15);border-radius:.2em;overflow:hidden}
+.ifill{height:100%;border-radius:.2em;background:var(--gold);transition:width 1.2s cubic-bezier(.4,0,.2,1)}
 
-  /* =================== SLIDE 0: CAPA =================== */
-  #slide-0 {
-    background: var(--bg);
-  }
-  #slide-0 .capa-inner {
-    display: flex;
-    height: 100%;
-    position: relative;
-  }
-  #slide-0 .capa-left {
-    width: 58%;
-    padding: 64px 72px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
-  }
-  #slide-0 .capa-right {
-    width: 42%;
-    position: relative;
-    overflow: hidden;
-  }
-  .capa-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 40px 40px;
-    opacity: 0.5;
-  }
-  .capa-orb {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 40% 40%, rgba(61,140,140,0.25), rgba(201,168,76,0.08) 60%, transparent 100%);
-    border: 1px solid rgba(61,140,140,0.2);
-  }
-  .capa-ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 480px;
-    height: 480px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,168,76,0.1);
-  }
-  .capa-ring2 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 640px;
-    height: 640px;
-    border-radius: 50%;
-    border: 1px solid rgba(61,140,140,0.06);
-  }
-  .capa-stat {
-    position: absolute;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    color: var(--teal);
-    border: 1px solid rgba(61,140,140,0.3);
-    padding: 8px 14px;
-    background: rgba(14,19,24,0.8);
-  }
-  .capa-stat.s1 { top: 22%; left: 10%; }
-  .capa-stat.s2 { top: 40%; right: 6%; }
-  .capa-stat.s3 { bottom: 28%; left: 18%; }
+/* ── STACKED BAR CHART ── */
+.legend{display:flex;gap:.9em;margin-bottom:.5em}
+.leg{display:flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.65em;color:var(--text-d)}
+.leg-d{width:.7em;height:.7em;border-radius:.1em;flex-shrink:0}
+.brow{display:flex;align-items:center;gap:.6em;margin-bottom:.4em}
+.bylbl{font-family:var(--mono);font-size:.65em;color:var(--text-m);width:2.8em;flex-shrink:0}
+.bvis{flex:1;height:1.4em;display:flex;border-radius:.1em;overflow:hidden;background:rgba(38,48,64,.3);position:relative}
+.bseg{height:100%;transition:width 1.1s cubic-bezier(.4,0,.2,1);position:relative;cursor:default}
+.bseg:hover::after{content:attr(data-tip);position:absolute;top:-1.8em;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.7em;background:var(--card2);border:1px solid var(--border2);padding:.2em .5em;color:var(--text);white-space:nowrap;z-index:10;pointer-events:none}
+.bp{background:rgba(168,56,56,.8)}
+.bs{background:rgba(201,168,76,.75)}
+.bm{background:rgba(58,138,138,.85)}
+.btot{font-family:var(--mono);font-size:.65em;color:var(--text-m);width:3.5em;text-align:right;flex-shrink:0}
 
-  .capa-eyebrow {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 20px;
-  }
-  .capa-h1 {
-    font-family: var(--serif);
-    font-size: 2.1em;
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--text);
-    margin-bottom: 28px;
-    letter-spacing: -0.01em;
-  }
-  .capa-h1 em {
-    color: var(--gold);
-    font-style: italic;
-  }
-  .capa-sub {
-    font-family: var(--body);
-    font-size: 0.9em;
-    color: var(--text-dim);
-    margin-bottom: 40px;
-    line-height: 1.6;
-    max-width: 460px;
-  }
-  .capa-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding-top: 28px;
-    border-top: 1px solid var(--border);
-  }
-  .capa-meta-row {
-    display: flex;
-    gap: 16px;
-    align-items: baseline;
-  }
-  .capa-meta-label {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    width: 80px;
-    flex-shrink: 0;
-  }
-  .capa-meta-value {
-    font-size: 0.85em;
-    color: var(--text-dim);
-  }
+/* ── TIMELINE ── */
+.timeline{display:flex;position:relative;padding-top:1.8em;margin-top:.6em}
+.timeline::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold-d),var(--teal),var(--gold-d))}
+.tm{flex:1;position:relative;padding:0 .4em}
+.tm-dot{position:absolute;top:-.55em;left:50%;transform:translateX(-50%);width:.75em;height:.75em;background:var(--gold);border-radius:50%;border:.15em solid var(--bg);z-index:2}
+.tm-dot.teal{background:var(--teal)}.tm-dot.red{background:var(--red)}
+.tm-yr{font-family:var(--mono);font-size:.68em;color:var(--gold);text-align:center;margin-bottom:.6em;margin-top:.3em;font-weight:500;letter-spacing:.06em}
+.tm-box{background:var(--card);border:1px solid var(--border);border-top:2px solid var(--gold);padding:.6em .7em;overflow:hidden}
+.tm-box.teal{border-top-color:var(--teal)}.tm-box.red{border-top-color:var(--red)}
+.tm-tit{font-family:var(--serif);font-size:.88em;font-weight:700;color:var(--text);margin-bottom:.25em}
+.tm-dsc{font-size:.75em;color:var(--text-d);line-height:1.5}
+.tm-ref{font-family:var(--mono);font-size:.65em;color:var(--text-m);margin-top:.35em;font-style:italic}
 
-  /* =================== SLIDE 1: APRESENTAÇÃO =================== */
-  #slide-1 { background: var(--bg); }
+/* ── THEORY FLOW ── */
+.theory-flow{display:flex;align-items:stretch;gap:0;margin-bottom:.9em;flex:1;min-height:0}
+.tf-card{flex:1;padding:.75em .9em;background:var(--card);border:1px solid var(--border);display:flex;flex-direction:column}
+.tf-card.prebisch{border-top:3px solid #6a9fc0}
+.tf-card.furtado{border-top:3px solid var(--gold)}
+.tf-card.chang{border-top:3px solid var(--teal)}
+.tf-card.santos{border-top:3px solid var(--purple-l)}
+.tf-arrow{display:flex;align-items:center;justify-content:center;padding:0 .35em;color:var(--text-m);font-size:1.1em;flex-shrink:0}
+.tf-num{font-family:var(--mono);font-size:.62em;color:var(--text-m);margin-bottom:.4em;letter-spacing:.1em}
+.tf-card h3{font-size:.92em;margin-bottom:.25em}
+.tf-card p{font-size:.76em;margin:0;line-height:1.55;flex:1}
+.tf-card .tf-contrib{margin-top:.5em;padding-top:.45em;border-top:1px solid var(--border);font-size:.72em;color:var(--text-m);font-style:italic;line-height:1.5}
+.tf-card.prebisch h3{color:#8ab5d0}.tf-card.furtado h3{color:var(--gold)}
+.tf-card.chang h3{color:var(--teal-l)}.tf-card.santos h3{color:var(--purple-l)}
 
-  .bio-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-  .bio-item {
-    padding: 18px 20px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--gold);
-    position: relative;
-    overflow: hidden;
-  }
-  .bio-item::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 40px; height: 40px;
-    background: radial-gradient(circle at top right, rgba(201,168,76,0.08), transparent);
-  }
-  .bio-item-icon {
-    font-size: 1.2em;
-    margin-bottom: 8px;
-  }
-  .bio-item h4 {
-    font-family: var(--serif);
-    font-size: 0.85em;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-  .bio-item p {
-    font-size: 0.8em;
-    color: var(--text-dim);
-    margin: 0;
-    line-height: 1.5;
-  }
-  .bio-item.accent {
-    border-left-color: var(--teal);
-  }
-  .bio-item.accent::before {
-    background: radial-gradient(circle at top right, rgba(61,140,140,0.1), transparent);
-  }
+/* ── MUN CARDS ── */
+.mun-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8em;margin-bottom:.8em}
+.mun{background:var(--card);border:1px solid var(--border);padding:.85em 1em}
+.mun.lem{border-top:3px solid var(--gold)}.mun.cam{border-top:3px solid var(--teal)}.mun.sfc{border-top:3px solid var(--text-m)}
+.mun-nm{font-family:var(--mono);font-size:.62em;letter-spacing:.12em;text-transform:uppercase;color:var(--text-m);margin-bottom:.4em}
+.mun-val{font-family:var(--serif);font-size:1.45em;font-weight:700;line-height:1;margin-bottom:.2em}
+.mun.lem .mun-val{color:var(--gold)}.mun.cam .mun-val{color:var(--teal-l)}.mun.sfc .mun-val{color:var(--text-m)}
+.mun-prod{font-size:.76em;color:var(--text-d);margin-bottom:.4em}
+.mun-bar{height:.3em;background:var(--border);border-radius:.2em;overflow:hidden;margin-bottom:.2em}
+.mun-fill{height:100%;border-radius:.2em}
+.mun.lem .mun-fill{background:var(--gold)}.mun.cam .mun-fill{background:var(--teal)}.mun.sfc .mun-fill{background:var(--text-m)}
+.mun-note{font-family:var(--mono);font-size:.62em;color:var(--text-m);line-height:1.5}
 
-  .thesis-box {
-    padding: 20px 24px;
-    background: rgba(201,168,76,0.05);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-left: 4px solid var(--gold);
-    margin-top: 4px;
-  }
-  .thesis-box .label {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 8px;
-  }
-  .thesis-box p {
-    font-style: italic;
-    font-size: 0.88em;
-    color: var(--text);
-    margin: 0;
-    line-height: 1.6;
-  }
+/* ── POPPER BOX ── */
+.popper-vs{display:grid;grid-template-columns:1fr auto 1fr;gap:0;border:1px solid var(--border);overflow:hidden;margin-bottom:.8em}
+.pv-side{padding:1em 1.1em;display:flex;flex-direction:column;gap:.5em}
+.pv-left{background:rgba(106,159,192,.06)}.pv-right{background:rgba(58,138,138,.08)}
+.pv-mid{display:flex;align-items:center;justify-content:center;background:var(--card2);padding:0 .9em;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+.pv-mid span{font-family:var(--serif);font-size:1.5em;color:var(--text-m)}
+.pv-lbl{font-family:var(--mono);font-size:.62em;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.25em}
+.pv-left .pv-lbl{color:#6a9fc0}.pv-right .pv-lbl{color:var(--teal-l)}
+.pv-head{font-family:var(--serif);font-size:.98em;font-weight:700;line-height:1.2;color:var(--text)}
+.pv-desc{font-size:.78em;color:var(--text-d);line-height:1.55}
 
-  /* =================== SLIDE 2: PROBLEMÁTICA =================== */
-  #slide-2 { background: var(--bg); }
+/* ── SCALE FLOW (escala argumento) ── */
+.scale-flow{display:flex;align-items:flex-start;gap:0;flex:1;min-height:0}
+.scale-block{flex:1;padding:.85em 1em;background:var(--card);border:1px solid var(--border);display:flex;flex-direction:column}
+.scale-block.br{border-top:2px solid #6a9fc0}.scale-block.ba{border-top:2px solid var(--gold)}.scale-block.mn{border-top:2px solid var(--teal)}
+.scale-arrow-h{display:flex;align-items:center;padding:0 .3em;color:var(--text-m);font-size:1.2em;flex-shrink:0;margin-top:1.8em}
+.scale-block h3{font-size:.92em;margin-bottom:.25em}
+.scale-block p{font-size:.86em;margin:0 0 .45em;line-height:1.6}
+.scale-block .s-finding{margin-top:.5em;padding-top:.4em;border-top:1px solid var(--border);font-family:var(--mono);font-size:.72em;color:var(--text-d);line-height:1.55}
+.scale-block.br h3{color:#8ab5d0}.scale-block.ba h3{color:var(--gold)}.scale-block.mn h3{color:var(--teal-l)}
 
-  .paradox-box {
-    display: flex;
-    align-items: stretch;
-    gap: 0;
-    margin-bottom: 28px;
-    border: 1px solid var(--border);
-    overflow: hidden;
-  }
-  .paradox-side {
-    flex: 1;
-    padding: 24px 28px;
-  }
-  .paradox-side.left { background: rgba(61,140,140,0.06); }
-  .paradox-side.right { background: rgba(176,64,64,0.06); }
-  .paradox-side .label {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .paradox-side.left .label { color: var(--teal); }
-  .paradox-side.right .label { color: var(--red); }
-  .paradox-num {
-    font-family: var(--serif);
-    font-size: 2.4em;
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-  .paradox-side.left .paradox-num { color: var(--teal-light); }
-  .paradox-side.right .paradox-num { color: #d06060; }
-  .paradox-mid {
-    width: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--card);
-    border-left: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-    font-family: var(--serif);
-    font-size: 1.4em;
-    color: var(--text-muted);
-  }
+/* ── ANSWER / CHECKLIST ── */
+.ans-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65em;margin-bottom:.8em}
+.ans{padding:.8em 1em;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--teal)}
+.ans .a-lbl{font-family:var(--mono);font-size:.62em;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-l);margin-bottom:.3em}
+.ans p{font-size:.8em;margin:0;line-height:1.55}
+.check-list{display:flex;flex-direction:column;gap:.45em;margin-bottom:.7em;flex:1}
+.chk{display:flex;align-items:flex-start;gap:.65em;padding:.6em .85em;background:var(--card);border:1px solid var(--border)}
+.chk-icon{width:1.2em;height:1.2em;border-radius:.15em;background:rgba(58,138,138,.18);border:1px solid var(--teal);color:var(--teal-l);font-size:.75em;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1em}
+.chk-txt{display:flex;flex-direction:column;gap:.05em}
+.chk-lbl{font-family:var(--mono);font-size:.64em;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-l)}
+.chk-desc{font-size:.78em;color:var(--text-d)}
 
-  .question-box {
-    padding: 22px 28px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-top: 3px solid var(--gold);
-  }
-  .question-box .label {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 12px;
-  }
-  .question-box p {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.05em;
-    color: var(--text);
-    margin: 0;
-    line-height: 1.6;
-  }
+/* ── FINAL QUOTE ── */
+.fquote{padding:1em 1.4em;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--gold);margin-top:.7em}
+.fquote q{font-family:var(--serif);font-style:italic;font-size:.95em;color:var(--text);line-height:1.6;display:block;margin-bottom:.35em}
+.fquote .attr{font-family:var(--mono);font-size:.6em;color:var(--text-m);letter-spacing:.1em}
 
-  .context-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  .tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    padding: 5px 12px;
-    border: 1px solid var(--border);
-    color: var(--text-dim);
-    background: var(--card);
-  }
-  .tag.gold { border-color: var(--gold-dim); color: var(--gold); background: rgba(201,168,76,0.06); }
-  .tag.teal { border-color: rgba(61,140,140,0.4); color: var(--teal-light); background: rgba(61,140,140,0.06); }
+/* ── SVG CHART ── */
+.chart-wrap{background:var(--card);border:1px solid var(--border);padding:.65em .9em .5em;position:relative;flex:1;display:flex;flex-direction:column}
+.chart-wrap svg{display:block;width:100%;flex:1}
 
-  /* =================== SLIDE 3: ARRANJO TEÓRICO =================== */
-  #slide-3 { background: var(--bg); }
+/* ── CAPA ── */
+#sl0 .capa-inner{display:flex;height:100%;position:relative;width:100%}
+#sl0 .capa-l{width:54%;padding:0 2.5em;display:flex;flex-direction:column;justify-content:center;z-index:2}
+#sl0 .capa-r{flex:1;position:relative;overflow:hidden}
+.capa-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:2.5em 2.5em;opacity:.28}
+.capa-orb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:22vw;height:22vw;border-radius:50%;background:radial-gradient(circle at 38% 38%,rgba(58,138,138,.32),rgba(201,168,76,.1) 55%,transparent 100%);border:1px solid rgba(58,138,138,.22);animation:float 6s ease-in-out infinite}
+.capa-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:34vw;height:34vw;border-radius:50%;border:1px solid rgba(201,168,76,.12);animation:spin 20s linear infinite}
+.capa-ring2{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46vw;height:46vw;border-radius:50%;border:1px solid rgba(58,138,138,.07);animation:spin 32s linear infinite reverse}
+.capa-badge{position:absolute;font-family:var(--mono);font-size:.72em;color:var(--teal-l);background:rgba(12,17,24,.92);padding:.55em .9em;border:1px solid var(--teal);z-index:5;white-space:nowrap;transition:.25s;cursor:default}
+.capa-badge:hover{border-color:var(--gold);color:var(--gold);transform:scale(1.04)}
+.cb1{top:22%;left:5%}.cb2{top:46%;right:5%}.cb3{bottom:24%;left:14%}
+.capa-meta{margin-top:1.5em;padding-top:1.2em;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:.8em}
+.meta-i{display:flex;flex-direction:column;gap:.15em}
+.meta-l{font-family:var(--mono);font-size:.6em;color:var(--text-m);text-transform:uppercase;letter-spacing:.1em}
+.meta-v{font-size:.82em;color:var(--text-d)}
 
-  .theory-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-  .theory-card {
-    padding: 20px 22px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-  .theory-card:hover { border-color: var(--gold-dim); }
-  .theory-card .num {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-  }
-  .theory-card h3 { font-size: 1em; margin-bottom: 6px; }
-  .theory-card p { font-size: 0.8em; margin: 0; line-height: 1.55; }
-  .theory-card .quote {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border);
-    font-style: italic;
-    font-size: 0.78em;
-    color: var(--text-muted);
-  }
-  .theory-card.prebisch { border-top: 2px solid #6a8fa0; }
-  .theory-card.prebisch h3 { color: #8ab5cc; }
-  .theory-card.furtado { border-top: 2px solid var(--gold); }
-  .theory-card.furtado h3 { color: var(--gold); }
-  .theory-card.chang { border-top: 2px solid var(--teal); }
-  .theory-card.chang h3 { color: var(--teal-light); }
-  .theory-card.santos { border-top: 2px solid #8a7ab0; }
-  .theory-card.santos h3 { color: #b09ad8; }
+/* ── COMPACT SLIDES (less content = scale down to fit) ── */
+.si-compact{font-size:.82em}
+.si-compact h2{font-size:1.3em;margin-bottom:.4em}
+.si-compact .sval{font-size:1.45em}
+.si-compact .slide-rule{margin-bottom:.6em}
+.si-compact .theory-flow{gap:0}
+.si-compact .tf-card{padding:.55em .7em}
+.si-compact .tf-card p{font-size:.72em}
+.si-compact .tf-contrib{font-size:.66em;margin-top:.4em;padding-top:.35em}
+.si-compact .check-list{gap:.3em}
+.si-compact .chk{padding:.4em .72em}
+.si-compact .chk-desc{font-size:.72em}
+.si-compact .chk-lbl{font-size:.6em}
+.si-compact .fquote{padding:.65em 1em;margin-top:.4em}
+.si-compact .fquote q{font-size:.85em}
+.si-compact .popper-vs{margin-bottom:.6em}
+.si-compact .pv-side{padding:.75em .9em;gap:.35em}
+.si-compact .pv-head{font-size:.92em}
+.si-compact .pv-desc{font-size:.74em}
+.si-compact .card{padding:.62em .85em}
+.si-compact p{font-size:.8em;margin-bottom:.35em}
+.si-compact .eyebrow{margin-bottom:.3em}
 
-  .theory-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 14px 20px;
-    background: rgba(201,168,76,0.05);
-    border: 1px solid rgba(201,168,76,0.15);
-    font-size: 0.82em;
-    color: var(--text-dim);
-  }
-  .theory-arrow .hl { color: var(--gold); font-weight: 600; }
-
-  /* =================== SLIDE 4: METODOLOGIA =================== */
-  #slide-4 { background: var(--bg); }
-
-  .method-row {
-    display: flex;
-    gap: 14px;
-    margin-bottom: 16px;
-  }
-  .method-block {
-    flex: 1;
-    padding: 16px 18px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-bottom: 2px solid var(--border);
-  }
-  .method-block.gold { border-bottom-color: var(--gold); }
-  .method-block.teal { border-bottom-color: var(--teal); }
-  .method-block.blue { border-bottom-color: #6a8fa0; }
-  .method-block .label {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-  .method-block .value {
-    font-family: var(--serif);
-    font-size: 0.95em;
-    color: var(--text);
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .method-block p { font-size: 0.78em; margin: 0; color: var(--text-dim); }
-
-  .quadro-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.8em;
-    margin-top: 16px;
-  }
-  .quadro-table th {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gold);
-    background: rgba(201,168,76,0.08);
-    padding: 10px 14px;
-    text-align: left;
-    border: 1px solid var(--border);
-  }
-  .quadro-table td {
-    padding: 10px 14px;
-    border: 1px solid var(--border);
-    color: var(--text-dim);
-    vertical-align: top;
-    line-height: 1.5;
-  }
-  .quadro-table tr:nth-child(even) td { background: var(--card); }
-  .quadro-table td:first-child {
-    font-weight: 600;
-    color: var(--text);
-    white-space: nowrap;
-  }
-  .cat-primary td:first-child { color: #d06060; }
-  .cat-semi td:first-child { color: #c9a84c; }
-  .cat-manuf td:first-child { color: var(--teal-light); }
-
-  /* =================== SLIDE 5: RESULTADOS =================== */
-  #slide-5 { background: var(--bg); }
-
-  /* CHART */
-  .chart-container {
-    position: relative;
-    margin-bottom: 18px;
-  }
-  .chart-title {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-  }
-
-  /* BAR CHART */
-  .bar-chart {
-    display: flex;
-    align-items: flex-end;
-    gap: 6px;
-    height: 140px;
-    padding: 12px 0 0;
-    position: relative;
-  }
-  .bar-chart::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 1px;
-    background: var(--border);
-  }
-  .bar-group {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    position: relative;
-  }
-  .bar-stack {
-    width: 100%;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: stretch;
-    transition: opacity 0.2s;
-  }
-  .bar-stack:hover { opacity: 0.85; }
-  .bar-seg { width: 100%; transition: height 0.8s ease; }
-  .bar-seg.primary { background: #d06060; }
-  .bar-seg.semi { background: #c9a84c; }
-  .bar-seg.manuf { background: var(--teal); }
-  .bar-label {
-    font-family: var(--mono);
-    font-size: 8px;
-    color: var(--text-muted);
-    text-align: center;
-  }
-  .bar-val {
-    font-family: var(--mono);
-    font-size: 7px;
-    color: var(--text-dim);
-    text-align: center;
-    position: absolute;
-    top: -14px;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-  }
-
-  /* STACKED VISUAL */
-  .composition-bars {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 18px;
-  }
-  .comp-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .comp-year {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    width: 32px;
-    flex-shrink: 0;
-  }
-  .comp-bar {
-    flex: 1;
-    height: 22px;
-    display: flex;
-    overflow: hidden;
-    border-radius: 1px;
-  }
-  .comp-bar .seg {
-    height: 100%;
-    transition: width 1s ease;
-    position: relative;
-  }
-  .comp-bar .seg:hover::after {
-    content: attr(data-label);
-    position: absolute;
-    top: -24px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--text);
-    background: var(--card);
-    padding: 2px 6px;
-    border: 1px solid var(--border);
-    white-space: nowrap;
-    z-index: 10;
-  }
-  .seg.p { background: rgba(176,64,64,0.75); }
-  .seg.s { background: rgba(201,168,76,0.75); }
-  .seg.m { background: rgba(61,140,140,0.85); }
-  .comp-total {
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--text-muted);
-    width: 52px;
-    flex-shrink: 0;
-    text-align: right;
-  }
-
-  .legend {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 14px;
-  }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--text-dim);
-  }
-  .legend-dot {
-    width: 10px; height: 10px;
-    flex-shrink: 0;
-  }
-  .legend-dot.p { background: rgba(176,64,64,0.75); }
-  .legend-dot.s { background: rgba(201,168,76,0.75); }
-  .legend-dot.m { background: rgba(61,140,140,0.85); }
-
-  .key-finding {
-    padding: 14px 18px;
-    background: rgba(176,64,64,0.08);
-    border: 1px solid rgba(176,64,64,0.2);
-    border-left: 3px solid var(--red);
-  }
-  .key-finding p { font-size: 0.82em; margin: 0; color: var(--text-dim); }
-  .key-finding strong { color: var(--text); }
-
-  /* Table inline */
-  .mini-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.78em;
-    margin-bottom: 12px;
-  }
-  .mini-table th {
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    padding: 7px 10px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-  .mini-table td {
-    padding: 7px 10px;
-    border-bottom: 1px solid rgba(38,48,64,0.5);
-    color: var(--text-dim);
-  }
-  .mini-table td:first-child { font-weight: 600; color: var(--text); }
-  .mini-table tr:last-child td { color: var(--text); font-weight: 600; border-top: 1px solid var(--border); border-bottom: none; }
-  .mini-table .num { text-align: right; font-family: var(--mono); }
-  .mini-table .pct { text-align: right; font-family: var(--mono); color: var(--gold); }
-
-  /* =================== SLIDE 6: BAHIA =================== */
-  #slide-6 { background: var(--bg); }
-
-  .mun-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 18px;
-  }
-  .mun-card {
-    padding: 16px 18px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-top: 3px solid;
-  }
-  .mun-card.lem { border-top-color: #c9a84c; }
-  .mun-card.cam { border-top-color: var(--teal); }
-  .mun-card.sfc { border-top-color: var(--text-muted); }
-  .mun-card .mun-name {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-  .mun-card .mun-val {
-    font-family: var(--serif);
-    font-size: 1.4em;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .mun-card.lem .mun-val { color: var(--gold); }
-  .mun-card.cam .mun-val { color: var(--teal-light); }
-  .mun-card.sfc .mun-val { color: var(--text-muted); }
-  .mun-card .mun-product {
-    font-size: 0.78em;
-    color: var(--text-dim);
-    margin-bottom: 6px;
-  }
-  .mun-card .mun-bar {
-    height: 4px;
-    background: var(--border);
-    border-radius: 2px;
-    overflow: hidden;
-    margin-bottom: 4px;
-  }
-  .mun-card .mun-fill {
-    height: 100%;
-    border-radius: 2px;
-  }
-  .mun-card.lem .mun-fill { background: var(--gold); }
-  .mun-card.cam .mun-fill { background: var(--teal); }
-  .mun-card.sfc .mun-fill { background: var(--text-muted); }
-  .mun-card .mun-pct {
-    font-family: var(--mono);
-    font-size: 8px;
-    color: var(--text-muted);
-  }
-
-  /* BAHIA PAUTA TABLE */
-  .bahia-mini-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.78em;
-    margin-bottom: 14px;
-  }
-  .bahia-mini-table th {
-    font-family: var(--mono);
-    font-size: 8px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 7px 10px;
-    text-align: left;
-    color: var(--text-muted);
-    border-bottom: 1px solid var(--border);
-  }
-  .bahia-mini-table td {
-    padding: 7px 10px;
-    border-bottom: 1px solid rgba(38,48,64,0.5);
-    color: var(--text-dim);
-  }
-  .bahia-mini-table td:first-child { font-weight: 600; color: var(--text); }
-  .bahia-mini-table .num { text-align: right; font-family: var(--mono); }
-  .bahia-mini-table .pct { text-align: right; font-family: var(--mono); color: var(--gold); }
-  .bahia-mini-table .bar-cell { padding: 4px 10px; }
-  .bahia-mini-table .inline-bar {
-    height: 4px;
-    background: rgba(201,168,76,0.2);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .bahia-mini-table .inline-fill { height: 100%; background: var(--gold); border-radius: 2px; }
-
-  /* =================== SLIDE 7: CONCLUSÃO =================== */
-  #slide-7 { background: var(--bg); }
-
-  .concl-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-bottom: 16px;
-  }
-  .concl-block {
-    padding: 18px 20px;
-    border: 1px solid var(--border);
-    background: var(--card);
-  }
-  .concl-block .c-label {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  .concl-block p { font-size: 0.8em; margin: 0; line-height: 1.6; }
-  .concl-block.diagnosis { border-top: 2px solid var(--red); }
-  .concl-block.diagnosis .c-label { color: var(--red); }
-  .concl-block.paradox { border-top: 2px solid var(--gold); }
-  .concl-block.paradox .c-label { color: var(--gold); }
-  .concl-block.chang-arg { border-top: 2px solid var(--teal); }
-  .concl-block.chang-arg .c-label { color: var(--teal-light); }
-  .concl-block.horizon { border-top: 2px solid #8a7ab0; }
-  .concl-block.horizon .c-label { color: #b09ad8; }
-
-  .policy-row {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-  .policy-pill {
-    flex: 1;
-    padding: 10px 12px;
-    background: rgba(61,140,140,0.07);
-    border: 1px solid rgba(61,140,140,0.2);
-    font-size: 0.75em;
-    color: var(--text-dim);
-    text-align: center;
-    line-height: 1.4;
-  }
-  .policy-pill .p-num {
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--teal);
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .final-quote {
-    padding: 18px 24px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--gold);
-    text-align: center;
-  }
-  .final-quote p {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 0.95em;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
-  .final-quote .attr {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-  }
-
-  /* =================== NAVIGATION =================== */
-  #nav {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    z-index: 1000;
-    background: rgba(14,19,24,0.9);
-    border: 1px solid var(--border);
-    padding: 10px 20px;
-    backdrop-filter: blur(8px);
-  }
-  .nav-btn {
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--text-dim);
-    padding: 6px 18px;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .nav-btn:hover { border-color: var(--gold); color: var(--gold); }
-  .nav-btn:disabled { opacity: 0.3; cursor: default; }
-  .nav-dots {
-    display: flex;
-    gap: 6px;
-    align-items: center;
-  }
-  .nav-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--border);
-    cursor: pointer;
-    transition: all 0.2s;
-    border: 1px solid transparent;
-  }
-  .nav-dot.active {
-    background: var(--gold);
-    border-color: var(--gold);
-  }
-  .nav-dot:hover { border-color: var(--gold-dim); }
-  .slide-counter {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-  }
-
-  /* KEYBOARD HINT */
-  #keyboard-hint {
-    position: fixed;
-    top: 20px;
-    right: 24px;
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-    z-index: 100;
-    opacity: 0.6;
-  }
+@keyframes float{0%,100%{transform:translate(-50%,-52%)}50%{transform:translate(-50%,-48%)}}
+@keyframes spin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(.8em)}to{opacity:1;transform:translateY(0)}}
+.active .anim{animation:slideUp .55s ease forwards}
 </style>
 </head>
 <body>
 
-<div id="presentation">
-
-  <!-- ========== SLIDE 0: CAPA ========== -->
-  <div class="slide active" id="slide-0">
-    <div class="noise-overlay"></div>
-    <div class="capa-inner">
-      <div class="capa-left">
-        <div class="capa-eyebrow">Trabalho de Conclusão de Curso · UNIFACS · 2026</div>
-        <div class="capa-h1">
-          Comércio Brasil–China e<br>
-          <em>Dependência Estrutural</em><br>
-          no Século XXI
-        </div>
-        <div class="capa-sub">
-          Reprimarização da pauta exportadora baiana sob a perspectiva furtadiana — uma leitura do período 2001–2025
-        </div>
-        <div class="capa-meta">
-          <div class="capa-meta-row">
-            <span class="capa-meta-label">Autor</span>
-            <span class="capa-meta-value">Caio Oliveira dos Santos Soares</span>
-          </div>
-          <div class="capa-meta-row">
-            <span class="capa-meta-label">Orientador</span>
-            <span class="capa-meta-value">Prof. Dr. Laumar Neves de Souza</span>
-          </div>
-          <div class="capa-meta-row">
-            <span class="capa-meta-label">Curso</span>
-            <span class="capa-meta-value">Ciências Econômicas — UNIFACS / Ânima Educação</span>
-          </div>
-          <div class="capa-meta-row">
-            <span class="capa-meta-label">Dados</span>
-            <span class="capa-meta-value">Comex Stat / MDIC · SEI-BA · 2001–2025</span>
-          </div>
-        </div>
-      </div>
-      <div class="capa-right">
-        <div class="capa-grid"></div>
-        <div class="capa-ring2"></div>
-        <div class="capa-ring"></div>
-        <div class="capa-orb"></div>
-        <div class="capa-stat s1">EXPORTAÇÕES BR→CN ↑ 5.100%</div>
-        <div class="capa-stat s2">MANUFATURADOS: 17,7% → 0,2%</div>
-        <div class="capa-stat s3">BAHIA: US$ 48,6M → US$ 3,27B</div>
-      </div>
-    </div>
-    <div class="slide-num">01 / 08</div>
+<!-- TOPBAR -->
+<div id="topbar">
+  <div class="tb-left">
+    <div class="tb-tag" id="tb-tag">Capa</div>
+    <div class="tb-sub" id="tb-sub">Defesa de TCC · Caio Soares · 2026</div>
   </div>
-
-  <!-- ========== SLIDE 1: APRESENTAÇÃO ========== -->
-  <div class="slide" id="slide-1">
-    <div class="noise-overlay"></div>
-    <div class="slide-inner">
-      <div class="slide-header">
-        <span class="slide-tag">Apresentação</span>
-        <div class="slide-rule"></div>
-        <span class="slide-title-sm">Quem fala com a banca</span>
-      </div>
-
-      <h2>Um economista construído<br>na <em>interdisciplinaridade</em></h2>
-
-      <div class="bio-card">
-        <div class="bio-item">
-          <div class="bio-item-icon">🎓</div>
-          <h4>Bacharelado Interdisciplinar · UFBA</h4>
-          <p>Instituto Milton Santos — a mesma casa intelectual do geógrafo que compõe o referencial teórico deste trabalho. Foi aqui que a visão ampla de mundo se formou.</p>
-        </div>
-        <div class="bio-item">
-          <div class="bio-item-icon">📈</div>
-          <h4>Ciências Econômicas · UNIFACS</h4>
-          <p>A apaixonante descoberta de Celso Furtado e a urgência de construir uma teoria econômica a partir do Sul — não importada do Norte Global. O problema do subdesenvolvimento como problema real.</p>
-        </div>
-        <div class="bio-item accent">
-          <div class="bio-item-icon">🏢</div>
-          <h4>ADM Jr. UFBA · Empresa Júnior</h4>
-          <p>Gestão na prática, desde cedo. A passagem pela empresa júnior de administração construiu visão organizacional e capacidade de trabalhar com projetos reais.</p>
-        </div>
-        <div class="bio-item accent">
-          <div class="bio-item-icon">👔</div>
-          <h4>Hering · Gestão em Moda</h4>
-          <p>Trabalho com gestão em uma das maiores empresas de moda do Brasil — experiência concreta com cadeias produtivas, mercado e tomada de decisão em contexto corporativo.</p>
-        </div>
-      </div>
-
-      <div class="thesis-box">
-        <div class="label">Por que este tema?</div>
-        <p>A combinação de humanidades (BI-UFBA), teoria econômica estruturalista (UNIFACS/Furtado), gestão empresarial (ADM Jr.) e prática de mercado (Hering) não é um acidente curricular — é um ponto de vista. Ver a relação Brasil-China com dados, teoria e sensibilidade territorial ao mesmo tempo. É disso que este trabalho é feito.</p>
-      </div>
-
-    </div>
-    <div class="slide-num">02 / 08</div>
+  <div class="tb-right">
+    <button class="tb-btn" id="btn-prev">← Anterior</button>
+    <div class="tb-dots" id="tb-dots"></div>
+    <span class="tb-cnt" id="tb-cnt">1 / 12</span>
+    <button class="tb-btn" id="btn-next">Próximo →</button>
+    <button class="tb-btn" id="btn-fs" title="Tela Cheia (F)">⛶</button>
   </div>
-
-  <!-- ========== SLIDE 2: PROBLEMÁTICA ========== -->
-  <div class="slide" id="slide-2">
-    <div class="noise-overlay"></div>
-    <div class="slide-inner">
-      <div class="slide-header">
-        <span class="slide-tag">Problemática</span>
-        <div class="slide-rule"></div>
-        <span class="slide-title-sm">Contextualização do problema</span>
-      </div>
-
-      <h2>O paradoxo que a banca precisa ver</h2>
-
-      <div class="context-tags">
-        <span class="tag">China: maior parceiro do Brasil desde 2009</span>
-        <span class="tag teal">Relações Sul-Sul</span>
-        <span class="tag">Pós-Consenso de Washington</span>
-        <span class="tag gold">BRICS</span>
-        <span class="tag">2001–2025</span>
-      </div>
-
-      <div class="paradox-box">
-        <div class="paradox-side left">
-          <div class="label">Crescimento quantitativo</div>
-          <div class="paradox-num">+5.100%</div>
-          <p style="margin:0;font-size:0.8em;color:var(--text-dim);">Exportações brasileiras para a China: de US$ 1,9 bi (2001) para US$ 100,3 bi (2025). Bahia: +6.600%.</p>
-        </div>
-        <div class="paradox-mid">≠</div>
-        <div class="paradox-side right">
-          <div class="label">Regressão estrutural</div>
-          <div class="paradox-num" style="font-size:2em;">17,7% → 0,2%</div>
-          <p style="margin:0;font-size:0.8em;color:var(--text-dim);">Participação dos manufaturados na pauta. Em termos absolutos: menos do que em 2001.</p>
-        </div>
-      </div>
-
-      <div class="question-box">
-        <div class="label">Questão de pesquisa</div>
-        <p>Em que medida a inserção do Brasil e da Bahia nas relações comerciais com a China no século XXI <strong>reproduz o padrão de dependência estrutural</strong> identificado pela perspectiva furtadiana?</p>
-      </div>
-
-      <p style="margin-top:14px;font-size:0.82em;">O debate sobre cooperação Sul-Sul sugere uma alternativa à globalização hegemônica. Os dados contestam essa narrativa — mesmo nas relações Sul-Sul, a lógica centro-periferia persiste.</p>
-
-    </div>
-    <div class="slide-num">03 / 08</div>
-  </div>
-
-  <!-- ========== SLIDE 3: ARRANJO TEÓRICO ========== -->
-  <div class="slide" id="slide-3">
-    <div class="noise-overlay"></div>
-    <div class="slide-inner">
-      <div class="slide-header">
-        <span class="slide-tag">Arranjo Teórico</span>
-        <div class="slide-rule"></div>
-        <span class="slide-title-sm">Quatro pilares complementares</span>
-      </div>
-
-      <h2>O arcabouço que fundamenta a análise</h2>
-
-      <div class="theory-grid">
-        <div class="theory-card prebisch">
-          <div class="num">01 · CEPAL / 1949</div>
-          <h3>Raúl Prebisch</h3>
-          <p>Centro-periferia como categorias estruturais. Tese da deterioração secular dos termos de troca: países periféricos exportam primários, importam manufaturados e perdem sistematicamente valor na troca.</p>
-          <div class="quote">"A periferia fornece o que o centro processa, e fica com a menor parte do valor gerado na cadeia."</div>
-        </div>
-        <div class="theory-card furtado">
-          <div class="num">02 · Formação Econômica do Brasil</div>
-          <h3>Celso Furtado</h3>
-          <p>Subdesenvolvimento como condição estrutural — não etapa do desenvolvimento. Heterogeneidade estrutural e modernização sem desenvolvimento: crescimento sem transformação das estruturas produtivas.</p>
-          <div class="quote">"A escala muda, a estrutura não." — síntese do paradoxo documentado neste trabalho</div>
-        </div>
-        <div class="theory-card chang">
-          <div class="num">03 · Chutando a Escada / 2004</div>
-          <h3>Ha-Joon Chang</h3>
-          <p>Países hoje desenvolvidos usaram proteção tarifária, empresas estatais e política industrial ativa para industrializar-se — os mesmos instrumentos hoje proscritos às economias periféricas. A especialização primária não é inevitável.</p>
-          <div class="quote">A China é o exemplo contemporâneo. O Brasil, a ausência de estratégia.</div>
-        </div>
-        <div class="theory-card santos">
-          <div class="num">04 · Por uma Outra Globalização / 2000</div>
-          <h3>Milton Santos</h3>
-          <p>Globalização como perversidade vs. globalização como possibilidade. Os territórios periféricos são integrados à economia global por funções de extração e montagem — não de inovação e controle estratégico.</p>
-          <div class="quote">O Instituto Milton Santos (UFBA) é a casa onde minha formação começou.</div>
-        </div>
-      </div>
-
-      <div class="theory-arrow">
-        <span class="hl">Prebisch</span> → assimetria estrutural &nbsp;·&nbsp;
-        <span class="hl">Furtado</span> → condição periférica no caso baiano &nbsp;·&nbsp;
-        <span class="hl">Chang</span> → por que não era inevitável &nbsp;·&nbsp;
-        <span class="hl">Santos</span> → outro horizonte é possível
-      </div>
-
-    </div>
-    <div class="slide-num">04 / 08</div>
-  </div>
-
-  <!-- ========== SLIDE 4: METODOLOGIA ========== -->
-  <div class="slide" id="slide-4">
-    <div class="noise-overlay"></div>
-    <div class="slide-inner">
-      <div class="slide-header">
-        <span class="slide-tag">Metodologia</span>
-        <div class="slide-rule"></div>
-        <span class="slide-title-sm">Como os dados foram produzidos</span>
-      </div>
-
-      <h2>Abordagem histórico-estrutural<br>quali-quantitativa</h2>
-
-      <div class="method-row">
-        <div class="method-block gold">
-          <div class="label">Natureza</div>
-          <div class="value">Aplicada</div>
-          <p>Problema concreto: padrão de inserção do Brasil e da Bahia nas relações com a China</p>
-        </div>
-        <div class="method-block teal">
-          <div class="label">Abordagem</div>
-          <div class="value">Quali-Quantitativa</div>
-          <p>Revisão bibliográfica + análise documental + tratamento de dados secundários (Comex Stat)</p>
-        </div>
-        <div class="method-block blue">
-          <div class="label">Recorte temporal</div>
-          <div class="value">2001 – 2025</div>
-          <p>25 anos de dados — suficientes para revelar tendências estruturais de longa duração</p>
-        </div>
-      </div>
-
-      <div class="method-row">
-        <div class="method-block" style="border-bottom-color:#6a8fa0">
-          <div class="label">Fontes primárias</div>
-          <div class="value">Comex Stat (MDIC)</div>
-          <p>27.797 registros BR-China · 744 registros Bahia-China · dados municipais de LEM, Camaçari e São Francisco do Conde</p>
-        </div>
-        <div class="method-block" style="border-bottom-color:#8a7ab0">
-          <div class="label">Fonte complementar</div>
-          <div class="value">SEI-BA / Informativo Nº 12</div>
-          <p>Balança comercial baiana — dezembro 2025 (acumulado)</p>
-        </div>
-        <div class="method-block" style="border-bottom-color:#c86060">
-          <div class="label">Tratamento</div>
-          <div class="value">Python · pandas</div>
-          <p>Agregação, cálculo de participações relativas e variações anuais a partir dos arquivos Excel do Comex Stat</p>
-        </div>
-      </div>
-
-      <table class="quadro-table">
-        <thead>
-          <tr>
-            <th>Categoria</th>
-            <th>Critério de classificação</th>
-            <th>Exemplos de produtos (pauta Brasil-China)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="cat-primary">
-            <td>Primários</td>
-            <td>Commodities brutas ou com processamento mínimo</td>
-            <td>Soja · algodão · minério de ferro · petróleo bruto · carnes in natura</td>
-          </tr>
-          <tr class="cat-semi">
-            <td>Semimanufaturados</td>
-            <td>Algum grau de transformação, baixo conteúdo tecnológico</td>
-            <td>Pasta química de madeira · polímeros em formas primárias · ferroligas</td>
-          </tr>
-          <tr class="cat-manuf">
-            <td>Manufaturados</td>
-            <td>Transformação industrial significativa, maior conteúdo tecnológico</td>
-            <td>Veículos · aeronaves · máquinas · equipamentos · componentes industriais</td>
-          </tr>
-        </tbody>
-      </table>
-
-    </div>
-    <div class="slide-num">05 / 08</div>
-  </div>
-
-  <!-- ========== SLIDE 5: RESULTADOS BRASIL ========== -->
-  <div class="slide" id="slide-5">
-    <div class="noise-overlay"></div>
-    <div class="slide-inner two-col">
-      <div class="col">
-        <div class="slide-header">
-          <span class="slide-tag">Resultados</span>
-          <div class="slide-rule"></div>
-          <span class="slide-title-sm">Padrão exportador Brasil</span>
-        </div>
-        <h2>Brasil → China:<br>crescimento sem<br><em>transformação</em></h2>
-
-        <div class="chart-title">Composição por intensidade tecnológica — anos selecionados</div>
-        <div class="legend">
-          <div class="legend-item"><div class="legend-dot p"></div>Primários</div>
-          <div class="legend-item"><div class="legend-dot s"></div>Semimanufaturados</div>
-          <div class="legend-item"><div class="legend-dot m"></div>Manufaturados</div>
-        </div>
-
-        <div class="composition-bars" id="comp-bars">
-          <!-- will be generated by JS -->
-        </div>
-
-        <div class="key-finding">
-          <p><strong>O paradoxo central:</strong> enquanto o volume cresceu +5.100%, os manufaturados saíram de US$ 320 mi (2001) para US$ 240 mi (2025) em termos absolutos. O Brasil exporta <em>menos</em> manufaturados do que há 24 anos, num fluxo 52× maior.</p>
-        </div>
-      </div>
-
-      <div class="col-narrow">
-        <div style="margin-top:72px"></div>
-        <div class="chart-title" style="margin-bottom:8px">Pauta exportadora 2025 — 5 principais produtos</div>
-        <table class="mini-table">
-          <thead>
-            <tr>
-              <th>Produto</th>
-              <th class="num">US$ bi</th>
-              <th class="pct">%</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Soja</td><td class="num">34,6</td><td class="pct">34,5</td></tr>
-            <tr><td>Petróleo bruto</td><td class="num">20,1</td><td class="pct">20,0</td></tr>
-            <tr><td>Minério de ferro</td><td class="num">19,6</td><td class="pct">19,5</td></tr>
-            <tr><td>Carnes</td><td class="num">9,1</td><td class="pct">9,1</td></tr>
-            <tr><td>Celulose</td><td class="num">4,9</td><td class="pct">4,9</td></tr>
-            <tr><td>Subtotal</td><td class="num">88,3</td><td class="pct">88,0</td></tr>
-          </tbody>
-        </table>
-
-        <div style="margin-top:16px" class="chart-title">Superciclo das commodities (2003–2011)</div>
-        <p style="font-size:0.78em;margin-bottom:10px;">A queda mais acentuada dos manufaturados coincide com o superciclo. A demanda chinesa por primários tornava a especialização financeiramente atraente no curto prazo — sem política industrial, o Brasil derivou sem resistência.</p>
-        <p style="font-size:0.78em;">Mesmo após o arrefecimento do ciclo (2013+), os manufaturados <strong>não recuperaram participação</strong>: desindustrialização precoce (Oreiro & Feijó, 2010).</p>
-
-        <div style="margin-top:10px;padding:12px 14px;background:rgba(61,140,140,0.06);border:1px solid rgba(61,140,140,0.2);border-left:3px solid var(--teal)">
-          <p style="font-size:0.77em;margin:0;color:var(--text-dim);">A China fez o oposto: <strong>proteção tarifária + empresas estatais + política tecnológica ativa</strong> → maior potência manufatureira do mundo (Chang, 2004).</p>
-        </div>
-      </div>
-    </div>
-    <div class="slide-num">06 / 08</div>
-  </div>
-
-  <!-- ========== SLIDE 6: BAHIA ========== -->
-  <div class="slide" id="slide-6">
-    <div class="noise-overlay"></div>
-    <div class="slide-inner">
-      <div class="slide-header">
-        <span class="slide-tag">Caso Baiano</span>
-        <div class="slide-rule"></div>
-        <span class="slide-title-sm">Padrão subnacional de inserção periférica</span>
-      </div>
-
-      <h2>Bahia → China: pauta que <em>regrediu</em></h2>
-
-      <div class="mun-grid">
-        <div class="mun-card lem">
-          <div class="mun-name">Luís Eduardo Magalhães</div>
-          <div class="mun-val">US$ 1,22 bi</div>
-          <div class="mun-product">Soja (89,6%) · Algodão (10,4%)</div>
-          <div class="mun-bar"><div class="mun-fill" style="width:100%"></div></div>
-          <div class="mun-pct">100% commodities agrícolas · crescimento: 2001 = US$ 0,1 mi → 2025 = US$ 1,22 bi</div>
-        </div>
-        <div class="mun-card cam">
-          <div class="mun-name">Camaçari — Polo Petroquímico</div>
-          <div class="mun-val">US$ 250 mi</div>
-          <div class="mun-product">Pasta química de madeira (88,7%) · Polímeros (7,3%)</div>
-          <div class="mun-bar"><div class="mun-fill" style="width:74%"></div></div>
-          <div class="mun-pct">≈ 96% insumos industriais · 2009: US$ 306 mi → 2025: US$ 250 mi (em queda)</div>
-        </div>
-        <div class="mun-card sfc">
-          <div class="mun-name">São Francisco do Conde</div>
-          <div class="mun-val">US$ 1,5 mi</div>
-          <div class="mun-product">Derivados de petróleo (100%)</div>
-          <div class="mun-bar"><div class="mun-fill" style="width:8%"></div></div>
-          <div class="mun-pct">Inserção marginal e errática — analiticamente revela a seletividade territorial</div>
-        </div>
-      </div>
-
-      <table class="bahia-mini-table">
-        <thead>
-          <tr>
-            <th>Produto (pauta baiana para China, 2025)</th>
-            <th class="num">Valor (US$ bi)</th>
-            <th class="pct">Part. %</th>
-            <th style="width:120px">Participação visual</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Soja</td>
-            <td class="num">1,841</td>
-            <td class="pct">56,3</td>
-            <td class="bar-cell"><div class="inline-bar"><div class="inline-fill" style="width:100%"></div></div></td>
-          </tr>
-          <tr>
-            <td>Celulose (pasta química de madeira)</td>
-            <td class="num">0,810</td>
-            <td class="pct">24,8</td>
-            <td class="bar-cell"><div class="inline-bar"><div class="inline-fill" style="width:44%"></div></div></td>
-          </tr>
-          <tr>
-            <td>Algodão</td>
-            <td class="num">0,176</td>
-            <td class="pct">5,4</td>
-            <td class="bar-cell"><div class="inline-bar"><div class="inline-fill" style="width:9.6%"></div></div></td>
-          </tr>
-          <tr>
-            <td>Sulfetos de minérios de cobre</td>
-            <td class="num">0,176</td>
-            <td class="pct">5,4</td>
-            <td class="bar-cell"><div class="inline-bar"><div class="inline-fill" style="width:9.6%"></div></div></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="key-finding" style="margin-top:4px">
-        <p><strong>A regressão interna:</strong> em 2001, a pauta baiana era dominada pelos insumos do Polo de Camaçari (pasta química: 64,1%). Em 2025, a soja responde por 56,3%. A pauta baiana não apenas manteve seu perfil de baixo valor agregado — ela <strong>regrediu</strong>: trocou progressivamente insumos industriais por commodities agrícolas brutas.</p>
-      </div>
-
-    </div>
-    <div class="slide-num">07 / 08</div>
-  </div>
-
-  <!-- ========== SLIDE 7: CONCLUSÃO ========== -->
-  <div class="slide" id="slide-7">
-    <div class="noise-overlay"></div>
-    <div class="slide-inner">
-      <div class="slide-header">
-        <span class="slide-tag">Conclusão</span>
-        <div class="slide-rule"></div>
-        <span class="slide-title-sm">O diagnóstico não precisa ser o destino</span>
-      </div>
-
-      <h2>Resposta à questão de pesquisa</h2>
-
-      <div class="concl-grid">
-        <div class="concl-block diagnosis">
-          <div class="c-label">Diagnóstico</div>
-          <p>A inserção do Brasil e da Bahia na relação com a China <strong>reproduz — e em vários aspectos aprofunda</strong> — o padrão de dependência estrutural identificado pela tradição cepalina. A resposta à pergunta de pesquisa é inequívoca: sim.</p>
-        </div>
-        <div class="concl-block paradox">
-          <div class="c-label">O Paradoxo Furtadiano</div>
-          <p>Modernização sem desenvolvimento — a escala muda, a estrutura não. Crescimento de +5.100% no fluxo combinado à queda de 17,7% → 0,2% nos manufaturados. A Bahia substituiu insumos industriais por commodities agrícolas ao longo de 25 anos.</p>
-        </div>
-        <div class="concl-block chang-arg">
-          <div class="c-label">A Trajetória Não Era Inevitável</div>
-          <p>Chang (2004) demonstra que a especialização primária é resultado de <strong>ausência de política industrial</strong>, não de dotação natural. O Brasil de 2001 tinha manufaturados relevantes. A China usou os instrumentos que o Brasil deixou de usar.</p>
-        </div>
-        <div class="concl-block horizon">
-          <div class="c-label">Globalização como Possibilidade</div>
-          <p>Milton Santos: a configuração atual não é inexorável. A presença chinesa na Bahia (BYD-Camaçari) pode ser uma janela de oportunidade — desde que mediada por política industrial deliberada.</p>
-        </div>
-      </div>
-
-      <div class="chart-title" style="margin-bottom:8px">Quatro direções de política para a Bahia</div>
-      <div class="policy-row">
-        <div class="policy-pill"><span class="p-num">01</span>Exigência de conteúdo local nos contratos de investimento</div>
-        <div class="policy-pill"><span class="p-num">02</span>Formação técnica em energias renováveis e mobilidade elétrica</div>
-        <div class="policy-pill"><span class="p-num">03</span>Incentivos fiscais condicionados à performance tecnológica</div>
-        <div class="policy-pill"><span class="p-num">04</span>Receitas do agronegócio financiando diversificação produtiva</div>
-      </div>
-
-      <div class="final-quote">
-        <p>"Essa transformação não virá do mercado. Virá, se vier, da política."</p>
-        <div class="attr">Considerações finais do trabalho</div>
-      </div>
-
-    </div>
-    <div class="slide-num">08 / 08</div>
-  </div>
-
-</div><!-- end presentation -->
-
-<!-- NAVIGATION -->
-<div id="nav">
-  <button class="nav-btn" id="btn-prev">← Anterior</button>
-  <div class="nav-dots" id="nav-dots"></div>
-  <span class="slide-counter" id="slide-counter">1 / 8</span>
-  <button class="nav-btn" id="btn-next">Próximo →</button>
 </div>
 
-<div id="keyboard-hint">← → ou clique nos pontos</div>
+<div id="deck">
+
+<!-- ══════════════════════════════════════════
+     SLIDE 0 · CAPA
+══════════════════════════════════════════ -->
+<div class="slide active" id="sl0" data-tag="Capa" data-sub="Defesa de TCC · Caio Soares · 2026">
+  <div class="noise"></div>
+  <div class="capa-inner">
+    <div class="capa-l">
+      <div class="tb-tag" style="width:fit-content;margin-bottom:1.45em">UNIFACS · CIÊNCIAS ECONÔMICAS · 2026</div>
+      <h1>Comércio Brasil–China<br>e <em>Dependência Estrutural</em><br>no Século XXI</h1>
+      <p style="font-size:.95em;color:var(--text-d);margin-top:.85em;max-width:30em">Reprimarização da pauta exportadora baiana sob a perspectiva furtadiana — 2001–2025</p>
+      <div class="capa-meta">
+        <div class="meta-i"><span class="meta-l">Autor</span><span class="meta-v">Caio Oliveira dos Santos Soares</span></div>
+        <div class="meta-i"><span class="meta-l">Orientador</span><span class="meta-v">Prof. Dr. Laumar Neves de Souza</span></div>
+        <div class="meta-i"><span class="meta-l">Fonte de dados</span><span class="meta-v">Comex Stat / MDIC · SEI-BA</span></div>
+        <div class="meta-i"><span class="meta-l">Recorte temporal</span><span class="meta-v">2001 – 2025 (25 anos)</span></div>
+      </div>
+    </div>
+    <div class="capa-r">
+      <div class="capa-grid"></div>
+      <div class="capa-ring2"></div>
+      <div class="capa-ring"></div>
+      <div class="capa-orb"></div>
+      <div class="capa-badge cb1">EXP. BR→CN: +5.100%</div>
+      <div class="capa-badge cb2">MANUF: 17,7% → 0,2%</div>
+      <div class="capa-badge cb3">BAHIA: US$ 3,27B (2025)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 1 · APRESENTAÇÃO PESSOAL
+══════════════════════════════════════════ -->
+<div class="slide" id="sl1" data-tag="Apresentação" data-sub="Quem fala com a banca">
+  <div class="noise"></div>
+  <div class="si">
+    <div class="eyebrow">Slide 01 · Apresentação</div>
+    <h2>Um economista formado na <em>interdisciplinaridade</em></h2>
+    <div class="slide-rule"></div>
+    <div class="two anim" style="flex:1;min-height:0">
+      <div class="col">
+        <div class="card gold-t">
+          <div class="eyebrow" style="color:var(--text-m)">Formação — UFBA</div>
+          <h3>Bacharelado Interdisciplinar</h3>
+          <p>Instituto Milton Santos — a mesma casa intelectual do geógrafo que integra o referencial teórico deste trabalho. Formação ampla em humanidades, ciências sociais e pensamento territorial.</p>
+        </div>
+        <div class="card gold-t">
+          <div class="eyebrow" style="color:var(--text-m)">Graduação — UNIFACS</div>
+          <h3>Ciências Econômicas</h3>
+          <p>Descoberta de Celso Furtado e o compromisso de <strong>construir teoria econômica a partir do Sul</strong>, não importá-la do Norte Global. O problema do subdesenvolvimento como problema real e urgente.</p>
+        </div>
+        <div class="card teal-t">
+          <div class="eyebrow" style="color:var(--text-m)">Mercado — Hering</div>
+          <h3>Gestão em empresa de moda</h3>
+          <p>Atuação em uma das maiores indústrias nacionais. Compreensão direta de cadeias produtivas, dinâmica comercial e tomada de decisão em ambiente corporativo real.</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card teal-t">
+          <div class="eyebrow" style="color:var(--text-m)">Vocação — CACD</div>
+          <h3>Candidato à Carreira Diplomática</h3>
+          <p>O estudo para o <strong>Concurso de Admissão à Carreira Diplomática (CACD)</strong> aprofunda o interesse em <strong>comércio exterior, negociações internacionais e política comercial</strong>. A China não é escolha aleatória: é o maior parceiro comercial do Brasil e o símbolo vivo da transição do eixo Norte-Sul para o Sul-Sul — tema central tanto da diplomacia contemporânea quanto deste TCC.</p>
+        </div>
+        <div class="card gold-bg" style="flex:1">
+          <div class="eyebrow" style="color:var(--gold)">Por que este tema?</div>
+          <p style="font-size:.85em;margin-bottom:.55em">A combinação de humanidades (UFBA/Milton Santos), teoria estruturalista (Furtado/UNIFACS), experiência de mercado (Hering) e preparação para a diplomacia (CACD) não é acidente curricular.</p>
+          <p style="font-size:.85em;margin-bottom:.55em"><strong>É um ponto de vista único:</strong> ver a relação Brasil-China com dados, teoria, sensibilidade territorial e ambição de transformar a política externa brasileira.</p>
+          <p style="font-size:.85em;margin:0;font-style:italic;color:var(--gold-l)">É disso que este trabalho é feito.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 2 · FURTADO + POPPER (motivação)
+══════════════════════════════════════════ -->
+<div class="slide" id="sl2" data-tag="Motivação Intelectual" data-sub="A lente furtadiana e o método popperiano">
+  <div class="noise"></div>
+  <div class="si">
+    <div class="eyebrow">Slide 02 · A lente teórica e o método</div>
+    <h2>Testar Furtado na realidade: <em>ciência ou confirmação?</em></h2>
+    <div class="slide-rule"></div>
+    <div class="two" style="flex:1;min-height:0;gap:1.2em">
+      <!-- Popper lado -->
+      <div class="col">
+        <div class="popper-vs anim">
+          <div class="pv-side pv-left">
+            <div class="pv-lbl">Confirmacionismo (evitado)</div>
+            <div class="pv-head">Partir de Furtado e buscar evidências que confirmem</div>
+            <div class="pv-desc">Viés de confirmação: escolhemos os dados que provam o que já acreditamos. Não é ciência — é retórica.</div>
+          </div>
+          <div class="pv-mid"><span>≠</span></div>
+          <div class="pv-side pv-right">
+            <div class="pv-lbl">Método adotado (Popper)</div>
+            <div class="pv-head">Tentar falsificar Furtado confrontando com dados reais</div>
+            <div class="pv-desc">Karl Popper: <em>"Não devemos tentar confirmar nossas teorias — devemos tentar derrubá-las."</em> Só é científico o que pode ser refutado.</div>
+          </div>
+        </div>
+        <div class="card teal-bg anim" style="margin-top:.3em">
+          <div class="eyebrow" style="color:var(--teal-l)">O que fizemos</div>
+          <p style="font-size:.85em;margin-bottom:.37em">Celso Furtado construiu sua teoria nas décadas de 1950–70, analisando economias latino-americanas de seu tempo. A questão legítima é: <strong>essas teorias ainda descrevem a realidade do século XXI?</strong></p>
+          <p style="font-size:.85em;margin:0">Testamos o argumento furtadiano confrontando-o com <strong>25 anos de dados estatísticos (2001–2025)</strong> do Comex Stat. Se a realidade refutasse Furtado, a teoria cederia aos dados. Os dados confirmaram — mas o esforço foi de falsificação, não de confirmação.</p>
+        </div>
+      </div>
+      <!-- Furtado lado -->
+      <div class="col" style="overflow:hidden;min-height:0">
+        <div class="card gold-bg anim" style="text-align:center;padding:.9em 1.2em;flex-shrink:0">
+          <div class="eyebrow" style="color:var(--gold);text-align:center">Celso Furtado — Tese Central</div>
+          <p style="font-family:var(--serif);font-style:italic;font-size:1em;color:var(--text);line-height:1.5;margin-bottom:.4em">"O subdesenvolvimento não é uma etapa;<br>é uma estrutura."</p>
+          <div style="font-family:var(--mono);font-size:.6em;color:var(--text-m)">CELSO FURTADO · O MITO DO DESENVOLVIMENTO ECONÔMICO</div>
+        </div>
+        <div class="three" style="gap:.6em;flex-shrink:0">
+          <div class="card" style="padding:.6em .7em;text-align:center">
+            <div style="font-family:var(--mono);font-size:.6em;color:var(--text-m);margin-bottom:.3em">Conceito</div>
+            <div style="font-family:var(--serif);font-size:.95em;font-weight:700;color:var(--gold)">Desenvolvimento</div>
+            <div style="font-size:.75em;color:var(--text-d);margin-top:.22em">Transformação estrutural + internalização tecnológica</div>
+          </div>
+          <div class="card" style="padding:.6em .7em;text-align:center">
+            <div style="font-family:var(--mono);font-size:.6em;color:var(--text-m);margin-bottom:.3em">Conceito</div>
+            <div style="font-family:var(--serif);font-size:.95em;font-weight:700;color:var(--red-l)">Modernização</div>
+            <div style="font-size:.75em;color:var(--text-d);margin-top:.22em">Crescimento de escala sem mudança de estrutura</div>
+          </div>
+          <div class="card" style="padding:.6em .7em;text-align:center">
+            <div style="font-family:var(--mono);font-size:.6em;color:var(--text-m);margin-bottom:.3em">Conceito</div>
+            <div style="font-family:var(--serif);font-size:.95em;font-weight:700;color:var(--text-d)">Dependência</div>
+            <div style="font-size:.75em;color:var(--text-d);margin-top:.22em">Especialização periférica reproduzida</div>
+          </div>
+        </div>
+        <div class="card red-bg anim" style="padding:.65em .85em;flex-shrink:0;border:1px solid rgba(168,56,56,.3)">
+          <div class="eyebrow" style="color:var(--red-l);margin-bottom:.4em">O paradoxo brasileiro que Furtado antecipou</div>
+          <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:.5em;align-items:center;margin-bottom:.45em">
+            <div style="text-align:center;padding:.45em .6em;background:rgba(58,138,138,.1);border:1px solid rgba(58,138,138,.25);border-radius:2px">
+              <div style="font-family:var(--serif);font-size:1.25em;font-weight:700;color:var(--teal-l);line-height:1">+5.100%</div>
+              <div style="font-family:var(--mono);font-size:.55em;color:var(--text-m);margin-top:.2em">Volume exportado</div>
+            </div>
+            <div style="font-size:1.1em;color:var(--text-m);text-align:center;padding:0 .2em">≠</div>
+            <div style="text-align:center;padding:.45em .6em;background:rgba(168,56,56,.12);border:1px solid rgba(168,56,56,.25);border-radius:2px">
+              <div style="font-family:var(--serif);font-size:1.25em;font-weight:700;color:var(--red-l);line-height:1">−99%</div>
+              <div style="font-family:var(--mono);font-size:.55em;color:var(--text-m);margin-top:.2em">Manufaturados na pauta</div>
+            </div>
+          </div>
+          <p style="font-size:.76em;margin:0"><strong>Conclusão do teste:</strong> A escala mudou. A estrutura não. Furtado resiste ao teste popperiano.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 3 · PROBLEMÁTICA
+══════════════════════════════════════════ -->
+<div class="slide" id="sl3" data-tag="Problemática" data-sub="O paradoxo central e a questão de pesquisa">
+  <div class="noise"></div>
+  <div class="si si-compact">
+    <div class="eyebrow">Slide 03 · Problemática</div>
+    <h2>O paradoxo da <em>regressão estrutural</em></h2>
+    <div class="slide-rule"></div>
+    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:1em;flex:1;min-height:0">
+
+      <!-- LEFT: stats + big chart -->
+      <div style="display:flex;flex-direction:column;gap:.45em;min-height:0">
+        <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:.4em;flex-shrink:0">
+          <div class="stat" style="border-left:3px solid var(--teal);padding:.5em .8em">
+            <span class="slbl">Exportações BR→CN 2001</span>
+            <div class="sval" style="color:var(--teal-l);font-size:1.25em">US$ 1,9 bi</div>
+          </div>
+          <div style="color:var(--text-m);font-size:1.1em;text-align:center">→</div>
+          <div class="stat" style="border-left:3px solid var(--teal);padding:.5em .8em">
+            <span class="slbl">Exportações BR→CN 2025</span>
+            <div class="sval" style="color:var(--teal-l);font-size:1.25em">US$ 100,3 bi</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:.4em;flex-shrink:0">
+          <div class="stat" style="border-left:3px solid var(--gold);padding:.5em .8em">
+            <span class="slbl">Manufaturados 2001</span>
+            <div class="sval" style="color:var(--gold);font-size:1.4em">17,7%</div>
+          </div>
+          <div style="color:var(--red-l);font-size:1.1em;text-align:center">↓</div>
+          <div class="stat" style="border-left:3px solid var(--red);padding:.5em .8em">
+            <span class="slbl">Manufaturados 2025</span>
+            <div class="sval" style="color:var(--red-l);font-size:1.4em">0,2%</div>
+          </div>
+        </div>
+        <!-- BIG CHART -->
+        <div style="flex:1;min-height:0;background:var(--card);border:1px solid var(--border);padding:.5em .75em .3em;display:flex;flex-direction:column">
+          <div style="font-family:var(--mono);font-size:.58em;letter-spacing:.12em;text-transform:uppercase;color:var(--text-m);margin-bottom:.3em">Participação dos manufaturados na pauta BR→CN (%) — 2001–2025</div>
+          <svg viewBox="0 0 560 185" preserveAspectRatio="xMidYMid meet" style="width:100%;flex:1;display:block;min-height:80px">
+            <defs>
+              <linearGradient id="mg2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(58,138,138,.28)"/>
+                <stop offset="100%" stop-color="rgba(58,138,138,0)"/>
+              </linearGradient>
+              <style>
+                #ml2{stroke-dasharray:820;stroke-dashoffset:820}
+                #ml2.drawn{animation:dl2 2.2s cubic-bezier(.25,.1,.25,1) forwards}
+                #ma2{opacity:0}
+                #ma2.drawn{animation:da2 .8s ease 1s forwards}
+                .dpc{opacity:0;transition:opacity .35s ease}
+                .dpc.show{opacity:1}
+                @keyframes dl2{to{stroke-dashoffset:0}}
+                @keyframes da2{to{opacity:1}}
+              </style>
+            </defs>
+            <line x1="75" y1="30"  x2="520" y2="30"  stroke="#1a2633" stroke-width="1"/>
+            <line x1="75" y1="70"  x2="520" y2="70"  stroke="#1a2633" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="75" y1="110" x2="520" y2="110" stroke="#1a2633" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="75" y1="150" x2="520" y2="150" stroke="#243040" stroke-width="1.5"/>
+            <line x1="75" y1="30"  x2="75"  y2="150" stroke="#243040" stroke-width="1"/>
+            <text x="69" y="34"  font-family="DM Mono,monospace" font-size="10" fill="#5bbcbc" text-anchor="end" font-weight="600">18%</text>
+            <text x="69" y="74"  font-family="DM Mono,monospace" font-size="10" fill="#4a6070" text-anchor="end">12%</text>
+            <text x="69" y="114" font-family="DM Mono,monospace" font-size="10" fill="#4a6070" text-anchor="end">6%</text>
+            <text x="69" y="154" font-family="DM Mono,monospace" font-size="10" fill="#c85050" text-anchor="end" font-weight="600">0%</text>
+            <path id="ma2" d="M75,32 C100,45 125,68 149,80 C173,92 198,108 223,113 C248,118 272,136 297,140 C322,143 346,144 371,145 C396,146 420,147 445,147 C470,147 494,148 519,148 L519,150 L75,150 Z" fill="url(#mg2)"/>
+            <path id="ml2" d="M75,32 C100,45 125,68 149,80 C173,92 198,108 223,113 C248,118 272,136 297,140 C322,143 346,144 371,145 C396,146 420,147 445,147 C470,147 494,148 519,148" fill="none" stroke="#5bbcbc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <text class="dpc" id="ann2" x="190" y="62" font-family="DM Mono,monospace" font-size="8.5" fill="#7a6030">← superciclo 2003–11</text>
+            <circle class="dpc" id="dpa"  cx="75"  cy="32"  r="5.5" fill="#5bbcbc" stroke="#0c1118" stroke-width="2"/>
+            <text   class="dpc" id="dla"  x="90"  y="28"   font-family="DM Mono,monospace" font-size="10.5" fill="#5bbcbc" font-weight="700">17,7%</text>
+            <circle class="dpc" id="dpb"  cx="223" cy="113" r="4.5" fill="#5bbcbc" stroke="#0c1118" stroke-width="1.5"/>
+            <text   class="dpc" id="dlb"  x="223" y="103"  font-family="DM Mono,monospace" font-size="9.5" fill="#9a9080" text-anchor="middle">5,5%</text>
+            <circle class="dpc" id="dpc_" cx="297" cy="140" r="4"   fill="#5bbcbc" stroke="#0c1118" stroke-width="1.5"/>
+            <text   class="dpc" id="dlc"  x="297" y="130"  font-family="DM Mono,monospace" font-size="9.5" fill="#9a9080" text-anchor="middle">0,7%</text>
+            <circle class="dpc" id="dpd"  cx="519" cy="148" r="5.5" fill="#c85050" stroke="#0c1118" stroke-width="2"/>
+            <text   class="dpc" id="dld"  x="504" y="137"  font-family="DM Mono,monospace" font-size="10.5" fill="#c85050" font-weight="700" text-anchor="end">0,2%</text>
+            <text x="75"  y="168" font-family="DM Mono,monospace" font-size="10" fill="#556070" text-anchor="middle">2001</text>
+            <text x="149" y="168" font-family="DM Mono,monospace" font-size="10" fill="#556070" text-anchor="middle">2005</text>
+            <text x="223" y="168" font-family="DM Mono,monospace" font-size="10" fill="#556070" text-anchor="middle">2009</text>
+            <text x="297" y="168" font-family="DM Mono,monospace" font-size="10" fill="#556070" text-anchor="middle">2013</text>
+            <text x="371" y="168" font-family="DM Mono,monospace" font-size="10" fill="#556070" text-anchor="middle">2017</text>
+            <text x="445" y="168" font-family="DM Mono,monospace" font-size="10" fill="#556070" text-anchor="middle">2021</text>
+            <text x="519" y="168" font-family="DM Mono,monospace" font-size="10" fill="#c85050" text-anchor="middle" font-weight="600">2025</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- RIGHT: questão + contexto + stats + paradoxo -->
+      <div style="display:flex;flex-direction:column;gap:.6em;min-height:0">
+        <div class="card gold-bg" style="padding:.85em 1em;flex-shrink:0">
+          <div class="eyebrow" style="color:var(--gold)">Questão de Pesquisa</div>
+          <p style="font-family:var(--serif);font-style:italic;font-size:.88em;color:var(--text);line-height:1.6;margin:0">Em que medida a inserção do Brasil e da Bahia nas relações comerciais com a China reproduz o padrão de <strong>dependência estrutural</strong> identificado pela perspectiva furtadiana?</p>
+        </div>
+        <div class="card" style="flex:1;padding:.8em 1em;display:flex;flex-direction:column">
+          <div class="eyebrow" style="color:var(--text-m)">Contexto: por que a China?</div>
+          <p style="font-size:.82em;margin-bottom:.45em">A China tornou-se o <strong>maior parceiro comercial do Brasil em 2009</strong> — superando os EUA. É a materialização da transição do eixo Norte-Sul para o <strong>Sul-Sul</strong> na geopolítica global.</p>
+          <p style="font-size:.82em;margin:0">A narrativa Sul-Sul prometia alternativa à globalização hegemônica. Os dados contestam: <strong>mesmo nas relações Sul-Sul, a lógica centro-periferia persiste.</strong></p>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5em;margin-top:auto;padding-top:.7em">
+            <div class="card red-bg" style="text-align:center;padding:.6em .3em">
+              <div class="sval" style="font-size:1.2em;color:var(--red-l)">88%</div>
+              <div style="font-family:var(--mono);font-size:.55em;color:var(--text-m)">5 commodities</div>
+            </div>
+            <div class="card gold-bg" style="text-align:center;padding:.6em .3em">
+              <div class="sval" style="font-size:1.2em;color:var(--gold)">6.600%</div>
+              <div style="font-family:var(--mono);font-size:.55em;color:var(--text-m)">Bahia→CN</div>
+            </div>
+            <div class="card teal-bg" style="text-align:center;padding:.6em .3em">
+              <div class="sval" style="font-size:1.2em;color:var(--teal-l)">52×</div>
+              <div style="font-family:var(--mono);font-size:.55em;color:var(--text-m)">volume total</div>
+            </div>
+          </div>
+        </div>
+        <div class="card red-l" style="padding:.75em .95em;flex-shrink:0">
+          <p style="font-size:.82em;margin:0"><strong>O paradoxo em uma frase:</strong> o Brasil exporta hoje <em>menos manufaturados para a China</em> do que em 2001 — quando o fluxo era 52× menor.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="sl4" data-tag="A Trama Teórica" data-sub="Quatro autores que se entrelaçam para construir o argumento">
+  <div class="noise"></div>
+  <div class="si" style="padding:1.4em 3em 1.2em">
+    <div class="eyebrow">Slide 04 · Referencial teórico</div>
+    <h2>A <em>trama</em> teórica — quatro vozes, um argumento</h2>
+    <div class="slide-rule"></div>
+
+    <!-- TRAMA: 4 cards + SVG connectors overlay -->
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:.8em">
+
+      <!-- Top row: 4 author cards -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.9em;flex:1;min-height:0">
+
+        <div class="tf-card prebisch" style="border-top:3px solid #6a9fc0;background:var(--card);border:1px solid var(--border);border-top:3px solid #6a9fc0;padding:.9em 1em;display:flex;flex-direction:column">
+          <div style="font-family:var(--mono);font-size:.6em;color:#6a9fc0;letter-spacing:.1em;margin-bottom:.5em">01 · CEPAL · 1949</div>
+          <h3 style="font-family:var(--serif);font-size:1.1em;color:#8ab5d0;margin-bottom:.5em">Raúl Prebisch</h3>
+          <p style="font-size:.82em;color:var(--text-d);line-height:1.6;flex:1"><strong style="color:var(--text)">Centro-Periferia:</strong> a periferia exporta o que não transforma. Deterioração secular dos termos de troca — o Brasil precisa exportar mais soja a cada ano para importar a mesma máquina.</p>
+          <div style="margin-top:.7em;padding:.5em .7em;background:rgba(106,159,192,.08);border-left:2px solid #6a9fc0;font-size:.74em;color:#6a9fc0;font-style:italic">Fornece o <strong>diagnóstico da assimetria</strong> estrutural internacional</div>
+        </div>
+
+        <div class="tf-card furtado" style="background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.25);border-top:3px solid var(--gold);padding:.9em 1em;display:flex;flex-direction:column">
+          <div style="font-family:var(--mono);font-size:.6em;color:var(--gold-d);letter-spacing:.1em;margin-bottom:.5em">02 · FEB · 1959–70</div>
+          <h3 style="font-family:var(--serif);font-size:1.1em;color:var(--gold);margin-bottom:.5em">Celso Furtado</h3>
+          <p style="font-size:.82em;color:var(--text-d);line-height:1.6;flex:1"><strong style="color:var(--text)">Heterogeneidade estrutural:</strong> o subdesenvolvimento não é etapa — é estrutura. Modernização ≠ desenvolvimento. A escala muda; a dependência permanece.</p>
+          <div style="margin-top:.7em;padding:.5em .7em;background:rgba(201,168,76,.07);border-left:2px solid var(--gold);font-size:.74em;color:var(--gold);font-style:italic">Aplica Prebisch ao <strong>caso brasileiro e baiano</strong></div>
+        </div>
+
+        <div class="tf-card chang" style="background:rgba(58,138,138,.04);border:1px solid rgba(58,138,138,.22);border-top:3px solid var(--teal);padding:.9em 1em;display:flex;flex-direction:column">
+          <div style="font-family:var(--mono);font-size:.6em;color:var(--teal);letter-spacing:.1em;margin-bottom:.5em">03 · Chutando a Escada · 2004</div>
+          <h3 style="font-family:var(--serif);font-size:1.1em;color:var(--teal-l);margin-bottom:.5em">Ha-Joon Chang</h3>
+          <p style="font-size:.82em;color:var(--text-d);line-height:1.6;flex:1"><strong style="color:var(--text)">Política industrial:</strong> a especialização primária não é destino natural — é ausência de Estado. Países desenvolvidos usaram os instrumentos que hoje proíbem à periferia. A China fez o que o Brasil abandonou.</p>
+          <div style="margin-top:.7em;padding:.5em .7em;background:rgba(58,138,138,.08);border-left:2px solid var(--teal);font-size:.74em;color:var(--teal-l);font-style:italic">Quebra a <strong>naturalização da dependência</strong></div>
+        </div>
+
+        <div class="tf-card santos" style="background:rgba(112,96,168,.04);border:1px solid rgba(112,96,168,.22);border-top:3px solid var(--purple-l);padding:.9em 1em;display:flex;flex-direction:column">
+          <div style="font-family:var(--mono);font-size:.6em;color:var(--purple);letter-spacing:.1em;margin-bottom:.5em">04 · Por uma Outra Globalização · 2000</div>
+          <h3 style="font-family:var(--serif);font-size:1.1em;color:var(--purple-l);margin-bottom:.5em">Milton Santos</h3>
+          <p style="font-size:.82em;color:var(--text-d);line-height:1.6;flex:1"><strong style="color:var(--text)">Globalização como possibilidade:</strong> territórios periféricos são integrados para extração, não inovação. Mas esta configuração não é inexorável — outra globalização é possível.</p>
+          <div style="margin-top:.7em;padding:.5em .7em;background:rgba(112,96,168,.08);border-left:2px solid var(--purple-l);font-size:.74em;color:var(--purple-l);font-style:italic">Oferece o <strong>horizonte normativo</strong> — e é a casa da minha formação</div>
+        </div>
+      </div>
+
+      <!-- Bottom: SVG trama — clean bezier web -->
+      <div style="background:var(--card);border:1px solid var(--border);padding:.9em 1.4em .5em;flex-shrink:0">
+        <div style="font-family:var(--mono);font-size:.6em;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-d);text-align:center;margin-bottom:.6em">A Trama · Quatro Fios, Um Argumento</div>
+        <svg viewBox="0 0 800 70" preserveAspectRatio="xMidYMid meet" style="width:100%;height:3.8em;display:block;overflow:visible">
+          <!-- P=100  F=300  C=500  S=700  — mid=200, 400, 600 -->
+          <!-- Arc threads between each adjacent pair — top arc -->
+          <path d="M100,35 C150,10 250,10 300,35" fill="none" stroke="#6a9fc0" stroke-width="2" opacity=".7"/>
+          <path d="M300,35 C350,10 450,10 500,35" fill="none" stroke="#c9a84c" stroke-width="2" opacity=".7"/>
+          <path d="M500,35 C550,10 650,10 700,35" fill="none" stroke="#3a8a8a" stroke-width="2" opacity=".7"/>
+          <!-- Arc threads — bottom arc -->
+          <path d="M100,35 C150,60 250,60 300,35" fill="none" stroke="#c9a84c" stroke-width="2" opacity=".6"/>
+          <path d="M300,35 C350,60 450,60 500,35" fill="none" stroke="#3a8a8a" stroke-width="2" opacity=".6"/>
+          <path d="M500,35 C550,60 650,60 700,35" fill="none" stroke="#9880cc" stroke-width="2" opacity=".6"/>
+          <!-- Long crossing threads -->
+          <path d="M100,35 C250,12 550,12 700,35" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="6,5" opacity=".3"/>
+          <path d="M100,35 C250,58 550,58 700,35" fill="none" stroke="#9880cc" stroke-width="1" stroke-dasharray="4,6" opacity=".25"/>
+          <!-- Nodes — drawn LAST so on top -->
+          <circle cx="100" cy="35" r="9" fill="#6a9fc0" stroke="#0c1118" stroke-width="2"/>
+          <circle cx="300" cy="35" r="9" fill="#c9a84c" stroke="#0c1118" stroke-width="2"/>
+          <circle cx="500" cy="35" r="9" fill="#3a8a8a" stroke="#0c1118" stroke-width="2"/>
+          <circle cx="700" cy="35" r="9" fill="#9880cc" stroke="#0c1118" stroke-width="2"/>
+          <!-- Crossover dots -->
+          <circle cx="200" cy="18" r="3.5" fill="#6a9fc0" stroke="#0c1118" stroke-width="1" opacity=".8"/>
+          <circle cx="200" cy="52" r="3.5" fill="#c9a84c" stroke="#0c1118" stroke-width="1" opacity=".8"/>
+          <circle cx="400" cy="18" r="3.5" fill="#c9a84c" stroke="#0c1118" stroke-width="1" opacity=".8"/>
+          <circle cx="400" cy="52" r="3.5" fill="#3a8a8a" stroke="#0c1118" stroke-width="1" opacity=".8"/>
+          <circle cx="600" cy="18" r="3.5" fill="#3a8a8a" stroke="#0c1118" stroke-width="1" opacity=".8"/>
+          <circle cx="600" cy="52" r="3.5" fill="#9880cc" stroke="#0c1118" stroke-width="1" opacity=".8"/>
+        </svg>
+        <!-- Labels below SVG as HTML — no overflow issues -->
+        <div style="display:flex;justify-content:space-around;margin-top:.35em">
+          <span style="font-family:var(--mono);font-size:.62em;color:#6a9fc0;font-weight:500">Prebisch</span>
+          <span style="font-family:var(--mono);font-size:.62em;color:#c9a84c;font-weight:500">Celso Furtado</span>
+          <span style="font-family:var(--mono);font-size:.62em;color:#3a8a8a;font-weight:500">Ha-Joon Chang</span>
+          <span style="font-family:var(--mono);font-size:.62em;color:#9880cc;font-weight:500">Milton Santos</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 5 · METODOLOGIA
+══════════════════════════════════════════ -->
+<div class="slide" id="sl5" data-tag="Metodologia" data-sub="Abordagem histórico-estrutural e produção dos dados">
+  <div class="noise"></div>
+  <div class="si">
+    <div class="eyebrow">Slide 05 · Metodologia</div>
+    <h2>Abordagem <em>histórico-estrutural</em> quali-quantitativa</h2>
+    <div class="slide-rule"></div>
+    <div class="two anim" style="flex:1;min-height:0">
+      <div class="col">
+        <div class="four" style="gap:.55em;margin-bottom:.72em">
+          <div class="stat" style="border-top:2px solid var(--gold)"><span class="slbl">Natureza</span><div class="sval" style="font-size:1.05em;color:var(--gold)">Aplicada</div></div>
+          <div class="stat" style="border-top:2px solid var(--teal)"><span class="slbl">Objetivo</span><div class="sval" style="font-size:1.05em;color:var(--teal-l)">Exploratório</div></div>
+          <div class="stat" style="border-top:2px solid var(--gold)"><span class="slbl">Recorte</span><div class="sval" style="font-size:1.05em;color:var(--gold)">2001–25</div></div>
+          <div class="stat" style="border-top:2px solid var(--teal)"><span class="slbl">Tratamento</span><div class="sval" style="font-size:1.05em;color:var(--teal-l)">Python</div></div>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>Fonte</th><th>Conteúdo</th><th class="num">Registros</th></tr></thead>
+          <tbody>
+            <tr><td>Comex Stat / MDIC</td><td>Exportações BR→CN por produto, UF, município</td><td class="num">27.797</td></tr>
+            <tr><td>Comex Stat / MDIC</td><td>Exportações Bahia→CN desagregadas por NCM</td><td class="num">744</td></tr>
+            <tr><td>SEI-BA · Informativo 12</td><td>Balança comercial baiana — dez/2025 acumulado</td><td class="num">—</td></tr>
+            <tr><td>Municípios (3)</td><td>LEM, Camaçari, São Francisco do Conde — SH4</td><td class="num">—</td></tr>
+          </tbody>
+        </table>
+        <div class="card teal-l" style="padding:10px 14px;border-left:3px solid var(--teal)">
+          <p style="font-size:.8em;margin:0"><strong>Opção epistemológica:</strong> o método histórico-estrutural não é apenas técnica — é a escolha de articular estrutura e história sem cair na abstração dos modelos puramente econométricos nem na simples descrição. Dialoga diretamente com Furtado e Prebisch.</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="eyebrow" style="color:var(--text-m);margin-bottom:.45em">Quadro 1 — Classificação dos produtos por intensidade tecnológica</div>
+        <table class="tbl" style="margin-bottom:.72em">
+          <thead><tr><th>Categoria</th><th>Critério</th><th>Exemplos (pauta BR→CN)</th></tr></thead>
+          <tbody>
+            <tr style="border-left:3px solid var(--red)">
+              <td style="color:var(--red-l)">Primários</td>
+              <td>Commodities brutas ou processamento mínimo</td>
+              <td>Soja · algodão · min. ferro · petróleo bruto · carnes</td>
+            </tr>
+            <tr style="border-left:3px solid var(--gold)">
+              <td style="color:var(--gold)">Semiman.</td>
+              <td>Algum grau de transformação, baixo conteúdo tec.</td>
+              <td>Pasta química · polímeros · ferroligas · açúcar ref.</td>
+            </tr>
+            <tr style="border-left:3px solid var(--teal)">
+              <td style="color:var(--teal-l)">Manufaturados</td>
+              <td>Transformação significativa + conteúdo tecnológico</td>
+              <td>Veículos · aeronaves · máquinas · equipamentos</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="card gold-bg" style="padding:10px 14px">
+          <div class="eyebrow" style="color:var(--gold)">Nota metodológica</div>
+          <p style="font-size:.8em;margin:0">A classificação adota critério <strong>conservador</strong>: em casos limítrofes, o produto é categorizado na classe de menor valor agregado. Isso significa que os resultados tendem a subestimar a desindustrialização — o que só <strong>reforça</strong>, não enfraquece, as conclusões da análise.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 6 · RESULTADOS — BRASIL
+══════════════════════════════════════════ -->
+<div class="slide" id="sl6" data-tag="Resultados — Brasil" data-sub="Crescimento quantitativo com regressão estrutural">
+  <div class="noise"></div>
+  <div class="si">
+    <div class="eyebrow">Slide 06 · Resultados · Escala nacional</div>
+    <h2>Brasil → China: crescimento sem <em>transformação</em></h2>
+    <div class="slide-rule"></div>
+    <div class="two anim" style="flex:1;min-height:0">
+      <div class="col">
+        <div class="legend">
+          <div class="leg"><div class="leg-d" style="background:rgba(168,56,56,.8)"></div>Primários</div>
+          <div class="leg"><div class="leg-d" style="background:rgba(201,168,76,.75)"></div>Semimanuf.</div>
+          <div class="leg"><div class="leg-d" style="background:rgba(58,138,138,.85)"></div>Manufaturados</div>
+        </div>
+        <div class="eyebrow" style="font-size:.6em;color:var(--text-m)">Tabela 3 — Composição por intensidade tecnológica (anos selecionados)</div>
+        <div id="br-chart-rows"></div>
+        <div class="card red-l" style="margin-top:.55em;padding:10px 14px">
+          <p style="font-size:.8em;margin:0"><strong>Fato crítico:</strong> o fluxo cresceu 52×, mas manufaturados caíram de US$ 320 mi (2001) para US$ 240 mi (2025) em termos absolutos. O Brasil exporta hoje <em>menos manufaturados</em> do que há 24 anos.</p>
+        </div>
+      </div>
+      <div class="col" style="overflow:hidden;display:flex;flex-direction:column">
+        <div class="eyebrow" style="font-size:.6em;color:var(--text-m)">Tabela 2 — Top 5 produtos na pauta BR→CN (2025)</div>
+        <table class="tbl" style="margin-bottom:.72em">
+          <thead><tr><th>Produto</th><th class="num">US$ bi</th><th class="pct">%</th><th>Participação</th></tr></thead>
+          <tbody>
+            <tr><td>Soja</td><td class="num">34,6</td><td class="pct">34,5</td><td class="bar-td"><div class="ibar"><div class="ifill" style="width:0%" data-w="100%"></div></div></td></tr>
+            <tr><td>Petróleo bruto</td><td class="num">20,1</td><td class="pct">20,0</td><td class="bar-td"><div class="ibar"><div class="ifill" style="width:0%" data-w="58%"></div></div></td></tr>
+            <tr><td>Minério de ferro</td><td class="num">19,6</td><td class="pct">19,5</td><td class="bar-td"><div class="ibar"><div class="ifill" style="width:0%" data-w="56%"></div></div></td></tr>
+            <tr><td>Carnes</td><td class="num">9,1</td><td class="pct">9,1</td><td class="bar-td"><div class="ibar"><div class="ifill" style="width:0%" data-w="26%"></div></div></td></tr>
+            <tr><td>Celulose</td><td class="num">4,9</td><td class="pct">4,9</td><td class="bar-td"><div class="ibar"><div class="ifill" style="width:0%" data-w="14%"></div></div></td></tr>
+          </tbody>
+        </table>
+        <div class="two" style="gap:.55em;margin-bottom:.55em">
+          <div class="card red-bg" style="text-align:center;padding:10px">
+            <div class="sval" style="color:var(--red-l);font-size:1.4em">2003–11</div>
+            <div style="font-family:var(--mono);font-size:.58em;color:var(--text-m);margin-top:.15em">Superciclo das commodities</div>
+            <p style="font-size:.75em;margin-top:.37em;margin-bottom:0">Demanda chinesa por primários torna a especialização financeiramente atraente. Sem política industrial, o Brasil deriva sem resistência.</p>
+          </div>
+          <div class="card red-bg" style="text-align:center;padding:10px">
+            <div class="sval" style="color:var(--red-l);font-size:1.4em">2013+</div>
+            <div style="font-family:var(--mono);font-size:.58em;color:var(--text-m);margin-top:.15em">Desindustrialização precoce</div>
+            <p style="font-size:.75em;margin-top:.37em;margin-bottom:0">Mesmo após o superciclo, manufaturados não recuperam participação (Oreiro & Feijó, 2010). A China fez o oposto: política industrial ativa.</p>
+          </div>
+        </div>
+        <div class="card gold-bg" style="padding:.72em 1em;flex-shrink:0;margin-top:auto">
+          <p style="font-size:.82em;margin:0"><strong>Diagnóstico furtadiano confirmado:</strong> modernização sem desenvolvimento. A escala mudou. A estrutura — não.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 7 · TIMELINE INDUSTRIALIZAÇÃO BAHIA
+══════════════════════════════════════════ -->
+<div class="slide" id="sl7" data-tag="Trajetória — Bahia" data-sub="Industrialização e reprimarização: Pessoti e Spinola">
+  <div class="noise"></div>
+  <div class="si">
+    <div class="eyebrow">Slide 07 · Industrialização baiana</div>
+    <h2>Bahia: da industrialização à <em>reprimarização</em></h2>
+    <div class="slide-rule"></div>
+    <div class="timeline anim" style="overflow:visible;flex:1;min-height:0;align-items:flex-start">
+      <div class="tm">
+        <div class="tm-dot"></div>
+        <div class="tm-yr">Séc. XIX</div>
+        <div class="tm-box">
+          <div class="tm-tit">Agroexportação</div>
+          <div class="tm-dsc">Açúcar no Recôncavo, cacau no sul, fumo. Grande propriedade, trabalho escravo, mercado externo. Nenhuma indústria moderna.</div>
+          <div class="tm-ref">Spinola (2001); Furtado (2007)</div>
+        </div>
+      </div>
+      <div class="tm">
+        <div class="tm-dot"></div>
+        <div class="tm-yr">1953</div>
+        <div class="tm-box">
+          <div class="tm-tit">RLAM — Petrobras</div>
+          <div class="tm-dsc">Refinaria Landulpho Alves em S. Francisco do Conde. Início dos investimentos estatais. Inflexão desenvolvimentista.</div>
+          <div class="tm-ref">Pessoti (2008); Spinola (2001)</div>
+        </div>
+      </div>
+      <div class="tm">
+        <div class="tm-dot"></div>
+        <div class="tm-yr">1960s</div>
+        <div class="tm-box">
+          <div class="tm-tit">CIA + SUDENE</div>
+          <div class="tm-dsc">Centro Industrial de Aratu. SUDENE criada em 1959. Crescimento médio de 7% a.a. (Pessoti, 2008). Industrialização como projeto estatal.</div>
+          <div class="tm-ref">Pessoti (2008); Cano (2007)</div>
+        </div>
+      </div>
+      <div class="tm">
+        <div class="tm-dot"></div>
+        <div class="tm-yr">1978</div>
+        <div class="tm-box">
+          <div class="tm-tit">COPEC — Camaçari</div>
+          <div class="tm-dsc">2º maior polo petroquímico da América Latina. Apogeu industrial baiano. Mas: tecnologia importada, emprego capital-intensivo, decisões fora do estado.</div>
+          <div class="tm-ref">Pessoti (2008); Spinola (2001)</div>
+        </div>
+      </div>
+      <div class="tm">
+        <div class="tm-dot red"></div>
+        <div class="tm-yr">1990s</div>
+        <div class="tm-box red">
+          <div class="tm-tit">Abertura · Consenso de Washington</div>
+          <div class="tm-dsc">Retração do Estado, abertura comercial. Indústria de transformação cai de ~28% para menos de 20% do PIB estadual.</div>
+          <div class="tm-ref">Portal da Indústria (2025)</div>
+        </div>
+      </div>
+      <div class="tm">
+        <div class="tm-dot teal"></div>
+        <div class="tm-yr">2000s–25</div>
+        <div class="tm-box teal">
+          <div class="tm-tit">China + Superciclo</div>
+          <div class="tm-dsc">Soja do MATOPIBA explode. Pauta baiana migra de insumos industriais para commodities agrícolas. Dependência estrutural reproduzida.</div>
+          <div class="tm-ref">MDIC/Comex Stat (2026); SEI (2026)</div>
+        </div>
+      </div>
+    </div>
+    <div class="card gold-bg anim" style="margin-top:.6em;padding:.7em 1em;flex-shrink:0">
+      <p style="font-size:.82em;margin:0"><strong>Diagnóstico histórico (Furtado aplicado à Bahia):</strong> a industrialização baiana concentrou-se em bens intermediários sem transferência tecnológica endógena, com decisões de investimento externas ao estado — exatamente o perfil que Furtado identificou como heterogeneidade estrutural que não se supera pelo crescimento convencional. O século XXI apenas reconfigurou quem detém a demanda externa: antes Europa/EUA, agora China. A lógica permanece.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 8 · RESULTADOS — BAHIA
+══════════════════════════════════════════ -->
+<div class="slide" id="sl8" data-tag="Resultados — Bahia" data-sub="Pauta subnacional e municípios">
+  <div class="noise"></div>
+  <div class="si">
+    <div class="eyebrow">Slide 08 · Resultados · Escala estadual e municipal</div>
+    <h2>Bahia → China: a pauta que <em>regrediu</em></h2>
+    <div class="slide-rule"></div>
+    <div class="mun-grid anim">
+      <div class="mun lem">
+        <div class="mun-nm">Luís Eduardo Magalhães</div>
+        <div class="mun-val">US$ 1,22 bi</div>
+        <div class="mun-prod">Soja (89,6%) · Algodão (10,4%)</div>
+        <div class="mun-bar"><div class="mun-fill" style="width:100%"></div></div>
+        <div class="mun-note">100% commodities agrícolas<br>2001: US$ 0,1 mi → 2025: US$ 1,22 bi (+12.200%)<br>MATOPIBA — fronteira agrícola do oeste baiano</div>
+      </div>
+      <div class="mun cam">
+        <div class="mun-nm">Camaçari — Polo Petroquímico</div>
+        <div class="mun-val">US$ 250 mi</div>
+        <div class="mun-prod">Pasta química de madeira (88,7%) · Polímeros (7,3%)</div>
+        <div class="mun-bar"><div class="mun-fill" style="width:74%"></div></div>
+        <div class="mun-note">~96% insumos industriais de baixo valor<br>2009: US$ 306 mi → 2025: US$ 250 mi (queda de 18%)<br>Pauta inalterada desde 2001 — nenhuma sofisticação</div>
+      </div>
+      <div class="mun sfc">
+        <div class="mun-nm">São Francisco do Conde</div>
+        <div class="mun-val">US$ 1,5 mi</div>
+        <div class="mun-prod">Derivados de petróleo (100%)</div>
+        <div class="mun-bar"><div class="mun-fill" style="width:8%"></div></div>
+        <div class="mun-note">Inserção marginal e errática<br>Revela: seletividade territorial extrema<br>Dois municípios = quase toda a pauta</div>
+      </div>
+    </div>
+    <div class="two anim" style="gap:1.15em">
+      <div>
+        <div class="eyebrow" style="font-size:.6em;color:var(--text-m)">Tabela 4 — Pauta exportadora baiana para China (2025)</div>
+        <table class="tbl">
+          <thead><tr><th>Produto</th><th class="num">US$ bi</th><th class="pct">%</th><th>Participação visual</th></tr></thead>
+          <tbody>
+            <tr><td>Soja</td><td class="num">1,841</td><td class="pct">56,3</td><td class="bar-td"><div class="ibar"><div class="ifill" style="width:0%" data-w="100%"></div></div></td></tr>
+            <tr><td>Celulose (pasta química)</td><td class="num">0,810</td><td class="pct">24,8</td><td class="bar-td"><div class="ibar"><div class="ifill" style="width:0%" data-w="44%"></div></div></td></tr>
+            <tr><td>Algodão</td><td class="num">0,176</td><td class="pct">5,4</td><td class="bar-td"><div class="ibar"><div class="ifill" style="width:0%" data-w="10%"></div></div></td></tr>
+            <tr><td>Sulfetos de cobre</td><td class="num">0,176</td><td class="pct">5,4</td><td class="bar-td"><div class="ibar"><div class="ifill" style="width:0%" data-w="10%"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card red-bg" style="padding:.85em 1.15em;display:flex;flex-direction:column;justify-content:center">
+        <div class="eyebrow" style="color:var(--red-l)">Regressão interna na própria pauta baiana</div>
+        <p style="font-size:.82em;margin-bottom:.55em">Em 2001, a pauta baiana era dominada pelos insumos do Polo de Camaçari: pasta química respondia por <strong>64,1% do total</strong>.</p>
+        <p style="font-size:.82em;margin:0">Em 2025, a soja responde por <strong>56,3%</strong>. A Bahia não apenas manteve o perfil de baixo valor agregado — ela <em>regrediu</em>: trocou progressivamente insumos industriais por commodities agrícolas brutas.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 9 · ARGUMENTO DAS ESCALAS
+══════════════════════════════════════════ -->
+<div class="slide" id="sl9" data-tag="Argumento das Escalas" data-sub="Brasil · Bahia · Municípios — o mesmo padrão em todas as escalas">
+  <div class="noise"></div>
+  <div class="si">
+    <div class="eyebrow">Slide 09 · Defesa argumentativa</div>
+    <h2>O padrão se repete em <em>todas as escalas</em></h2>
+    <div class="slide-rule"></div>
+    <div class="scale-flow anim">
+      <div class="scale-block br">
+        <div class="eyebrow" style="color:#8ab5d0">Escala Nacional</div>
+        <h3>Brasil → China</h3>
+        <p>Manufaturados: <strong>17,7% → 0,2%</strong> em 24 anos. Top 5 commodities explicam 88% da pauta.</p>
+        <p>O volume cresceu 52×. A estrutura regrediu.</p>
+        <div class="s-finding">Diagnóstico: modernização sem desenvolvimento (Furtado) · Ausência de política industrial (Chang)</div>
+      </div>
+      <div class="scale-arrow-h">↓</div>
+      <div class="scale-block ba">
+        <div class="eyebrow" style="color:var(--gold)">Escala Estadual</div>
+        <h3>Bahia → China</h3>
+        <p>Soja: <strong>18% → 56,3%</strong>. Camaçari em declínio: US$ 306 mi (2009) → US$ 250 mi (2025).</p>
+        <p>A pauta baiana regrediu <em>dentro da própria regressão</em>: de insumos industriais para commodities agrícolas.</p>
+        <div class="s-finding">Diagnóstico: heterogeneidade estrutural (Furtado) · Industrialização incompleta (Pessoti; Spinola)</div>
+      </div>
+      <div class="scale-arrow-h">↓</div>
+      <div class="scale-block mn">
+        <div class="eyebrow" style="color:var(--teal-l)">Escala Municipal</div>
+        <h3>LEM · Camaçari · SFC</h3>
+        <p><strong>LEM:</strong> 100% commodities agrícolas (US$ 1,22 bi). <strong>Camaçari:</strong> 96% insumos sem sofisticação. <strong>SFC:</strong> marginal e errático.</p>
+        <p>Dois municípios concentram quase toda a pauta — em perfis complementares de inserção subordinada.</p>
+        <div class="s-finding">Diagnóstico: seletividade territorial da globalização hegemônica (Milton Santos)</div>
+      </div>
+    </div>
+    <div class="card gold-bg anim" style="margin-top:.7em;padding:1.1em 1.5em;flex-shrink:0">
+      <div class="eyebrow" style="color:var(--gold);font-size:.72em;margin-bottom:.5em">Por que analisar nas três escalas?</div>
+      <p style="font-size:.92em;margin:0;line-height:1.7">O recorte escalar não é apenas metodológico — <strong>é argumentativo</strong>. O mesmo padrão de dependência estrutural que aparece nos dados nacionais se confirma, aprofunda e territorializa à medida que descemos a escala. Mudar a escala não muda a lógica: ela revela como a dependência opera no território concreto, nos municípios reais, nas pessoas reais. Isso <strong>reforça — não enfraquece —</strong> o argumento furtadiano.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 10 · RESPOSTA À PERGUNTA DE PESQUISA
+══════════════════════════════════════════ -->
+<div class="slide" id="sl10" data-tag="Resposta à Pergunta" data-sub="Fechamento científico — hipótese confirmada">
+  <div class="noise"></div>
+  <div class="si">
+    <div class="eyebrow">Slide 10 · Fechamento científico</div>
+    <h2>Resposta à <em>questão de pesquisa</em></h2>
+    <div class="slide-rule"></div>
+    <div class="card gold-bg anim" style="padding:.85em 1.3em;margin-bottom:.7em;flex-shrink:0">
+      <div class="eyebrow" style="color:var(--gold)">Questão de Pesquisa</div>
+      <p style="font-family:var(--serif);font-style:italic;font-size:.88em;color:var(--text);margin:0;line-height:1.6">Em que medida a inserção do Brasil e da Bahia nas relações comerciais com a China no século XXI reproduz o padrão de <strong>dependência estrutural</strong> identificado pela perspectiva furtadiana?</p>
+    </div>
+    <div class="check-list anim" style="flex:1;gap:.4em">
+      <div class="chk" style="padding:.75em 1.1em"><div class="chk-icon" style="width:1.4em;height:1.4em;font-size:.85em">✓</div><div class="chk-txt"><span class="chk-lbl" style="font-size:.7em">Especialização produtiva em commodities</span><span class="chk-desc" style="font-size:.85em">88% da pauta BR→CN explicada por apenas 5 produtos primários em 2025. Soja (56,3%) domina a Bahia.</span></div></div>
+      <div class="chk" style="padding:.75em 1.1em"><div class="chk-icon" style="width:1.4em;height:1.4em;font-size:.85em">✓</div><div class="chk-txt"><span class="chk-lbl" style="font-size:.7em">Reprimarização da pauta exportadora</span><span class="chk-desc" style="font-size:.85em">Manufaturados: 17,7% (2001) → 0,2% (2025). Queda absoluta mesmo com fluxo 52× maior.</span></div></div>
+      <div class="chk" style="padding:.75em 1.1em"><div class="chk-icon" style="width:1.4em;height:1.4em;font-size:.85em">✓</div><div class="chk-txt"><span class="chk-lbl" style="font-size:.7em">Baixa internalização tecnológica</span><span class="chk-desc" style="font-size:.85em">Camaçari não avançou na cadeia de valor em 24 anos. Pauta inalterada, volume em queda desde 2009.</span></div></div>
+      <div class="chk" style="padding:.75em 1.1em"><div class="chk-icon" style="width:1.4em;height:1.4em;font-size:.85em">✓</div><div class="chk-txt"><span class="chk-lbl" style="font-size:.7em">Dependência de demanda externa</span><span class="chk-desc" style="font-size:.85em">A composição da pauta é determinada pela demanda chinesa por insumos — não por projeto regional deliberado.</span></div></div>
+      <div class="chk" style="padding:.75em 1.1em"><div class="chk-icon" style="width:1.4em;height:1.4em;font-size:.85em">✓</div><div class="chk-txt"><span class="chk-lbl" style="font-size:.7em">Globalização hegemônica — lógica centro-periferia</span><span class="chk-desc" style="font-size:.85em">A relação Sul-Sul reproduz a assimetria histórica: periferia fornece o que o centro processa (Prebisch; Milton Santos).</span></div></div>
+    </div>
+    <div class="card red-bg anim" style="text-align:center;padding:.9em 1.4em;margin-top:.6em;flex-shrink:0">
+      <p style="font-family:var(--serif);font-size:.95em;color:var(--text);margin:0;line-height:1.6"><strong>Hipótese confirmada — e o teste foi popperiano:</strong> tentamos falsificar Furtado com 25 anos de dados reais. Furtado resistiu. <em style="color:var(--red-l)">O crescimento quantitativo não superou a dependência estrutural — aprofundou-a.</em></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 11 · CONCLUSÃO
+══════════════════════════════════════════ -->
+<div class="slide" id="sl11" data-tag="Conclusão" data-sub="O diagnóstico não é o destino — globalização como possibilidade">
+  <div class="noise"></div>
+  <div class="si" style="font-size:.88em">
+    <div class="eyebrow">Slide 11 · Considerações Finais</div>
+    <h2>O diagnóstico não é o <em>destino</em></h2>
+    <div class="slide-rule"></div>
+    <!-- 3-col layout: Políticas | Oportunidade + Milton | Limitações + Citação -->
+    <div style="display:grid;grid-template-columns:1fr 1.1fr .9fr;gap:.9em;flex:1;min-height:0">
+
+      <!-- COL 1: 4 políticas -->
+      <div style="display:flex;flex-direction:column;gap:.6em">
+        <div class="eyebrow" style="color:var(--teal-l)">Quatro direções de política</div>
+        <div class="card" style="flex:1;border-top:2px solid var(--teal);padding:.75em .9em">
+          <div class="eyebrow" style="color:var(--teal-l);font-size:.6em;margin-bottom:.3em">01</div>
+          <div style="font-size:.85em;color:var(--text);font-weight:600;margin-bottom:.25em">Conteúdo local</div>
+          <p style="font-size:.78em;margin:0">Exigir componentes nacionais nos contratos de investimento (ex: BYD-Camaçari).</p>
+        </div>
+        <div class="card" style="flex:1;border-top:2px solid var(--teal);padding:.75em .9em">
+          <div class="eyebrow" style="color:var(--teal-l);font-size:.6em;margin-bottom:.3em">02</div>
+          <div style="font-size:.85em;color:var(--text);font-weight:600;margin-bottom:.25em">Formação técnica</div>
+          <p style="font-size:.78em;margin:0">Educação em energias renováveis e mobilidade elétrica — aproveitar a janela da BYD.</p>
+        </div>
+        <div class="card" style="flex:1;border-top:2px solid var(--gold);padding:.75em .9em">
+          <div class="eyebrow" style="color:var(--gold);font-size:.6em;margin-bottom:.3em">03</div>
+          <div style="font-size:.85em;color:var(--text);font-weight:600;margin-bottom:.25em">Incentivos condicionados</div>
+          <p style="font-size:.78em;margin:0">Incentivos fiscais atrelados à performance tecnológica, não apenas à presença física.</p>
+        </div>
+        <div class="card" style="flex:1;border-top:2px solid var(--gold);padding:.75em .9em">
+          <div class="eyebrow" style="color:var(--gold);font-size:.6em;margin-bottom:.3em">04</div>
+          <div style="font-size:.85em;color:var(--text);font-weight:600;margin-bottom:.25em">Financiamento produtivo</div>
+          <p style="font-size:.78em;margin:0">Receitas do agronegócio financiando diversificação industrial — romper o ciclo primário.</p>
+        </div>
+      </div>
+
+      <!-- COL 2: Janela + Milton Santos -->
+      <div style="display:flex;flex-direction:column;gap:.6em">
+        <div class="card teal-bg" style="flex:1;padding:.85em 1em">
+          <div class="eyebrow" style="color:var(--teal-l)">A janela de oportunidade</div>
+          <p style="font-size:.8em;margin-bottom:.5em">A presença da BYD em Camaçari não é apenas ameaça à autonomia produtiva — é uma <strong>janela de oportunidade</strong> para inserção qualitativamente distinta: não como fornecedora de insumos, mas como território capaz de capturar e difundir os ganhos da integração.</p>
+          <p style="font-size:.8em;margin:0">Isso exige <strong>Estado ativo</strong> (Chang) e <strong>projeto deliberado</strong> (Furtado).</p>
+        </div>
+        <div class="card" style="flex:1;padding:.85em 1em;border-left:3px solid var(--purple-l)">
+          <div class="eyebrow" style="color:var(--purple-l)">Milton Santos — globalização como possibilidade</div>
+          <p style="font-size:.8em;margin:0">A globalização hegemônica não é a única possível. A mesma base técnica que hoje serve ao capital transnacional poderia ser reorientada para as necessidades humanas dos territórios. Isso não é utopia — <strong>é escolha política</strong>.</p>
+        </div>
+      </div>
+
+      <!-- COL 3: Limitações + Pesquisa futura + Citação -->
+      <div style="display:flex;flex-direction:column;gap:.6em">
+        <div class="card red-bg" style="padding:.8em .95em">
+          <div class="eyebrow" style="color:var(--red-l)">Limitações</div>
+          <p style="font-size:.76em;margin-bottom:.3em">· Análise restrita a exportações</p>
+          <p style="font-size:.76em;margin-bottom:.3em">· Dados 2025 preliminares</p>
+          <p style="font-size:.76em;margin:0">· Sem modelos econométricos para isolar variáveis</p>
+        </div>
+        <div class="card gold-bg" style="padding:.8em .95em">
+          <div class="eyebrow" style="color:var(--gold)">Pesquisa futura</div>
+          <p style="font-size:.76em;margin-bottom:.3em">· Importações baianas da China</p>
+          <p style="font-size:.76em;margin-bottom:.3em">· IED chinês e encadeamentos regionais</p>
+          <p style="font-size:.76em;margin:0">· Econometria para testes de desindustrialização</p>
+        </div>
+        <div class="fquote" style="flex:1;display:flex;flex-direction:column;justify-content:center">
+          <q>"Essa transformação não virá do mercado.<br>Virá, se vier, da política."</q>
+          <div class="attr" style="margin-top:.5em">Caio Soares · Considerações Finais · 2026</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div><!-- /deck -->
 
 <script>
-  const slides = document.querySelectorAll('.slide');
-  const totalSlides = slides.length;
-  let current = 0;
+// ── SLIDES DATA ──
+const slides = document.querySelectorAll('.slide');
+const N = slides.length;
+let cur = 0;
 
-  // Build nav dots
-  const dotsContainer = document.getElementById('nav-dots');
-  slides.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
-    dot.addEventListener('click', () => goTo(i));
-    dotsContainer.appendChild(dot);
-  });
+// Dots
+const dotsEl = document.getElementById('tb-dots');
+slides.forEach((_,i) => {
+  const d = document.createElement('div');
+  d.className = 'tb-dot' + (i===0?' active':'');
+  d.title = slides[i].dataset.tag;
+  d.addEventListener('click', e => { e.stopPropagation(); goTo(i); });
+  dotsEl.appendChild(d);
+});
 
-  function goTo(n) {
-    slides[current].classList.remove('active');
-    dotsContainer.children[current].classList.remove('active');
-    current = Math.max(0, Math.min(n, totalSlides - 1));
-    slides[current].classList.add('active');
-    dotsContainer.children[current].classList.add('active');
-    document.getElementById('slide-counter').textContent = (current + 1) + ' / ' + totalSlides;
-    document.getElementById('btn-prev').disabled = current === 0;
-    document.getElementById('btn-next').disabled = current === totalSlides - 1;
+function goTo(n) {
+  if (n<0||n>=N) return;
+  slides[cur].classList.remove('active');
+  dotsEl.children[cur].classList.remove('active');
+  cur = n;
+  slides[cur].classList.add('active');
+  dotsEl.children[cur].classList.add('active');
+  document.getElementById('tb-tag').textContent = slides[cur].dataset.tag;
+  document.getElementById('tb-sub').textContent = slides[cur].dataset.sub;
+  document.getElementById('tb-cnt').textContent = (cur+1)+' / '+N;
+  document.getElementById('btn-prev').disabled = cur===0;
+  document.getElementById('btn-next').disabled = cur===N-1;
+  // trigger animations for current slide
+  animateSlide(cur);
+}
+
+document.getElementById('btn-prev').addEventListener('click', e => { e.stopPropagation(); goTo(cur-1); });
+document.getElementById('btn-next').addEventListener('click', e => { e.stopPropagation(); goTo(cur+1); });
+document.getElementById('btn-prev').disabled = true;
+
+// Click on slide = advance
+document.getElementById('deck').addEventListener('click', () => goTo(cur+1));
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if(['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); goTo(cur+1); }
+  if(['ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); goTo(cur-1); }
+  if(e.key==='f'||e.key==='F') {
+    if(!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
   }
+});
 
-  document.getElementById('btn-prev').addEventListener('click', () => goTo(current - 1));
-  document.getElementById('btn-next').addEventListener('click', () => goTo(current + 1));
-  document.getElementById('btn-prev').disabled = true;
+document.getElementById('btn-fs').addEventListener('click', e => {
+  e.stopPropagation();
+  if(!document.fullscreenElement) document.documentElement.requestFullscreen();
+  else document.exitFullscreen();
+});
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1);
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1);
-  });
+// ── BUILD BR CHART ──
+const brData = [
+  {yr:'2001',tot:'1,9 bi', p:62,s:20,m:18},
+  {yr:'2005',tot:'6,8 bi', p:69,s:26,m:5.5},
+  {yr:'2009',tot:'21 bi',  p:79,s:18,m:2.6},
+  {yr:'2013',tot:'46 bi',  p:88,s:11,m:1.5},
+  {yr:'2018',tot:'64 bi',  p:88,s:12,m:0.7},
+  {yr:'2022',tot:'90 bi',  p:90,s:10,m:0.4},
+  {yr:'2025',tot:'100 bi', p:89,s:11,m:0.2},
+];
+const brContainer = document.getElementById('br-chart-rows');
+brData.forEach(d => {
+  const row = document.createElement('div');
+  row.className = 'brow';
+  row.innerHTML = `
+    <div class="bylbl">${d.yr}</div>
+    <div class="bvis">
+      <div class="bseg bp" data-w="${d.p}" data-tip="Primários: ${d.p}%" style="width:0%"></div>
+      <div class="bseg bs" data-w="${d.s}" data-tip="Semimanuf.: ${d.s}%" style="width:0%"></div>
+      <div class="bseg bm" data-w="${d.m}" data-tip="Manufat.: ${d.m}%" style="width:0%"></div>
+    </div>
+    <div class="btot">${d.tot}</div>`;
+  brContainer.appendChild(row);
+});
 
-  // Build composition bars (slide 5)
-  const compData = [
-    { year: '2001', total: '1,9 bi', p: 62.3, s: 20.1, m: 17.7 },
-    { year: '2005', total: '6,8 bi', p: 69.0, s: 25.5, m: 5.5 },
-    { year: '2009', total: '21,0 bi', p: 79.3, s: 18.1, m: 2.6 },
-    { year: '2013', total: '46,0 bi', p: 87.8, s: 10.7, m: 1.5 },
-    { year: '2018', total: '63,9 bi', p: 87.7, s: 11.6, m: 0.7 },
-    { year: '2022', total: '89,6 bi', p: 89.6, s: 10.0, m: 0.4 },
-    { year: '2025', total: '100,3 bi', p: 88.7, s: 11.1, m: 0.2 },
-  ];
+// ── MANUF LINE CHART (SVG) ──
+// ── ANIMATE SLIDE ──
+function animateSlide(idx) {
+  const sl = slides[idx];
+  setTimeout(() => {
+    sl.querySelectorAll('.ifill[data-w]').forEach(el => { el.style.width = el.dataset.w; });
+    sl.querySelectorAll('.bseg[data-w]').forEach(el => { el.style.width = el.dataset.w + '%'; });
+  }, 120);
 
-  const container = document.getElementById('comp-bars');
-  compData.forEach(d => {
-    const row = document.createElement('div');
-    row.className = 'comp-row';
-    row.innerHTML = `
-      <div class="comp-year">${d.year}</div>
-      <div class="comp-bar">
-        <div class="seg p" style="width:${d.p}%" data-label="Primários: ${d.p}%"></div>
-        <div class="seg s" style="width:${d.s}%" data-label="Semimanuf.: ${d.s}%"></div>
-        <div class="seg m" style="width:${d.m}%" data-label="Manuf.: ${d.m}%"></div>
-      </div>
-      <div class="comp-total">${d.total}</div>
-    `;
-    container.appendChild(row);
-  });
+  // SVG chart animation on slide 3
+  if (idx === 3) {
+    const line = document.getElementById('ml2');
+    const area = document.getElementById('ma2');
+    if (line && area) {
+      line.classList.remove('drawn');
+      area.classList.remove('drawn');
+      document.querySelectorAll('.dpc').forEach(el => el.classList.remove('show'));
+      setTimeout(() => {
+        line.classList.add('drawn');
+        setTimeout(() => { area.classList.add('drawn'); }, 900);
+        ['dpa','dpb','dpc_','dpd','dla','dlb','dlc','dld','ann2'].forEach((id,i) => {
+          const el = document.getElementById(id);
+          if (el) setTimeout(() => el.classList.add('show'), 1200 + i*130);
+        });
+      }, 80);
+    }
+  }
+}
+
+// init first slide
+document.getElementById('btn-next').disabled = false;
+animateSlide(0);
+
+// Reinit on slide change
+document.addEventListener('keydown', () => setTimeout(() => animateSlide(cur), 50));
 </script>
-
 </body>
 </html>
