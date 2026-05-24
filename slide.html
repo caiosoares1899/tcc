@@ -321,35 +321,36 @@ p em{color:var(--gold-l);font-style:italic}
     <div class="eyebrow">Slide 01 · Apresentação</div>
     <h2>Um economista formado na <em>interdisciplinaridade</em></h2>
     <div class="slide-rule"></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.4em;flex:1;min-height:0">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2em;flex:1;min-height:0">
 
       <!-- LEFT: 4 cards -->
       <div style="display:flex;flex-direction:column;gap:.5em;min-height:0">
-        <div class="card gold-t" style="flex:1;padding:.6em .85em">
-          <div class="eyebrow" style="color:var(--text-m);font-size:.58em">Formação · UFBA</div>
-          <h3 style="font-size:.9em;margin-bottom:.2em">Bacharelado Interdisciplinar</h3>
-          <p style="font-size:.78em;margin:0">Instituto Milton Santos, a mesma casa intelectual do geógrafo que integra o referencial teórico deste trabalho. Formação em humanidades, ciências sociais e pensamento territorial.</p>
+        <div class="card gold-t" style="flex:1;padding:.65em .9em">
+          <div class="eyebrow" style="color:var(--text-m);font-size:.58em">01 · Humanidades · UFBA</div>
+          <h3 style="font-size:.92em;margin-bottom:.2em">Bacharelado Interdisciplinar</h3>
+          <p style="font-size:.78em;margin:0">Formação no <strong>IHAC Milton Santos</strong> (Instituto de Humanidades, Artes e Ciências), a mesma casa intelectual do geógrafo que integra o referencial teórico deste trabalho. Base em humanidades, ciências sociais e pensamento territorial.</p>
         </div>
-        <div class="card gold-t" style="flex:1;padding:.6em .85em">
-          <div class="eyebrow" style="color:var(--text-m);font-size:.58em">Graduação · UNIFACS</div>
-          <h3 style="font-size:.9em;margin-bottom:.2em">Ciências Econômicas</h3>
+        <div class="card gold-t" style="flex:1;padding:.65em .9em">
+          <div class="eyebrow" style="color:var(--text-m);font-size:.58em">02 · Economia · UNIFACS</div>
+          <h3 style="font-size:.92em;margin-bottom:.2em">Ciências Econômicas</h3>
           <p style="font-size:.78em;margin:0">Descoberta de Celso Furtado e o compromisso de <strong>construir teoria econômica a partir do Sul</strong>. O problema do subdesenvolvimento como problema real e urgente.</p>
         </div>
-        <div class="card teal-t" style="flex:1;padding:.6em .85em">
-          <div class="eyebrow" style="color:var(--text-m);font-size:.58em">Mercado · Hering</div>
-          <h3 style="font-size:.9em;margin-bottom:.2em">Gestão em empresa de moda</h3>
+        <div class="card teal-t" style="flex:1;padding:.65em .9em">
+          <div class="eyebrow" style="color:var(--text-m);font-size:.58em">03 · Gestão · Hering</div>
+          <h3 style="font-size:.92em;margin-bottom:.2em">Empresa de Moda</h3>
           <p style="font-size:.78em;margin:0">Atuação em uma das maiores indústrias nacionais. Compreensão direta de cadeias produtivas e tomada de decisão em ambiente corporativo real.</p>
         </div>
-        <div class="card teal-t" style="flex:1;padding:.6em .85em">
-          <div class="eyebrow" style="color:var(--text-m);font-size:.58em">Vocação · CACD</div>
-          <h3 style="font-size:.9em;margin-bottom:.2em">Candidato à Carreira Diplomática</h3>
+        <div class="card teal-t" style="flex:1;padding:.65em .9em">
+          <div class="eyebrow" style="color:var(--text-m);font-size:.58em">04 · Diplomacia · CACD</div>
+          <h3 style="font-size:.92em;margin-bottom:.2em">Carreira Diplomática</h3>
           <p style="font-size:.78em;margin:0">O CACD aprofunda o interesse em <strong>comércio exterior e política comercial</strong>. A China não é escolha aleatória: é o maior parceiro do Brasil e símbolo da transição para o eixo Sul-Sul.</p>
         </div>
       </div>
 
-      <!-- RIGHT: subtle quadrant circle + box -->
+      <!-- RIGHT: animated circle + box -->
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8em;min-height:0">
-        <svg viewBox="0 0 220 220" style="width:100%;max-width:22em;height:auto;display:block;flex-shrink:0" xmlns="http://www.w3.org/2000/svg">
+
+        <svg id="inter-svg" viewBox="0 0 220 220" style="width:100%;max-width:22em;height:auto;display:block;flex-shrink:0" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="gq1" cx="25%" cy="25%" r="70%">
               <stop offset="0%" stop-color="#c9a84c" stop-opacity=".22"/>
@@ -367,41 +368,56 @@ p em{color:var(--gold-l);font-style:italic}
               <stop offset="0%" stop-color="#9880cc" stop-opacity=".22"/>
               <stop offset="100%" stop-color="#9880cc" stop-opacity=".03"/>
             </radialGradient>
+            <style>
+              /* Quadrant fills fade in */
+              .qfill { opacity: 0; transition: opacity .6s ease; }
+              .qarc  { stroke-dasharray: 160; stroke-dashoffset: 160; transition: stroke-dashoffset .9s cubic-bezier(.4,0,.2,1); }
+              .qlbl  { opacity: 0; transition: opacity .4s ease; }
+              /* Spin animation on center ring */
+              @keyframes spinRing { from { transform: rotate(0deg); transform-origin: 110px 110px; } to { transform: rotate(360deg); transform-origin: 110px 110px; } }
+              .spin-ring { animation: spinRing 18s linear infinite; transform-origin: 110px 110px; }
+              /* Pulse on center dot */
+              @keyframes pulseDot { 0%,100% { r: 28; } 50% { r: 30; } }
+            </style>
           </defs>
 
-          <!-- Q fills — very subtle -->
-          <path d="M110,110 L110,10 A100,100 0 0,0 10,110 Z"   fill="url(#gq1)"/>
-          <path d="M110,110 L210,110 A100,100 0 0,0 110,10 Z"  fill="url(#gq2)"/>
-          <path d="M110,110 L110,210 A100,100 0 0,0 210,110 Z" fill="url(#gq3)"/>
-          <path d="M110,110 L10,110 A100,100 0 0,0 110,210 Z"  fill="url(#gq4)"/>
+          <!-- Quadrant fills -->
+          <path class="qfill" id="qf1" d="M110,110 L110,10 A100,100 0 0,0 10,110 Z"   fill="url(#gq1)"/>
+          <path class="qfill" id="qf2" d="M110,110 L210,110 A100,100 0 0,0 110,10 Z"  fill="url(#gq2)"/>
+          <path class="qfill" id="qf3" d="M110,110 L110,210 A100,100 0 0,0 210,110 Z" fill="url(#gq3)"/>
+          <path class="qfill" id="qf4" d="M110,110 L10,110 A100,100 0 0,0 110,210 Z"  fill="url(#gq4)"/>
 
           <!-- Outer ring -->
           <circle cx="110" cy="110" r="100" fill="none" stroke="#1e2d3d" stroke-width="1"/>
 
-          <!-- Thin colored arc per quadrant -->
-          <path d="M110,10  A100,100 0 0,0 10,110"  fill="none" stroke="#c9a84c" stroke-width="1.8" opacity=".4"/>
-          <path d="M210,110 A100,100 0 0,0 110,10"  fill="none" stroke="#3a8a8a" stroke-width="1.8" opacity=".4"/>
-          <path d="M110,210 A100,100 0 0,0 210,110" fill="none" stroke="#6a9fc0" stroke-width="1.8" opacity=".4"/>
-          <path d="M10,110  A100,100 0 0,0 110,210" fill="none" stroke="#9880cc" stroke-width="1.8" opacity=".4"/>
+          <!-- Spinning dashed ring -->
+          <circle class="spin-ring" cx="110" cy="110" r="100" fill="none"
+            stroke="#243040" stroke-width="1" stroke-dasharray="6,8"/>
+
+          <!-- Colored arcs per quadrant — animated -->
+          <path class="qarc" id="qa1" d="M110,10  A100,100 0 0,0 10,110"  fill="none" stroke="#c9a84c" stroke-width="2.5" opacity=".55" stroke-linecap="round"/>
+          <path class="qarc" id="qa2" d="M210,110 A100,100 0 0,0 110,10"  fill="none" stroke="#3a8a8a" stroke-width="2.5" opacity=".55" stroke-linecap="round"/>
+          <path class="qarc" id="qa3" d="M110,210 A100,100 0 0,0 210,110" fill="none" stroke="#6a9fc0" stroke-width="2.5" opacity=".55" stroke-linecap="round"/>
+          <path class="qarc" id="qa4" d="M10,110  A100,100 0 0,0 110,210" fill="none" stroke="#9880cc" stroke-width="2.5" opacity=".55" stroke-linecap="round"/>
 
           <!-- Dividers -->
           <line x1="110" y1="10"  x2="110" y2="210" stroke="#1e2d3d" stroke-width="1"/>
           <line x1="10"  y1="110" x2="210" y2="110" stroke="#1e2d3d" stroke-width="1"/>
 
-          <!-- Center -->
-          <circle cx="110" cy="110" r="28" fill="#0d1520" stroke="#c9a84c" stroke-width="1.2"/>
-          <text x="110" y="107" font-family="DM Mono,monospace" font-size="7.5" fill="#c9a84c" text-anchor="middle" font-weight="600">CAIO</text>
-          <text x="110" y="118" font-family="DM Mono,monospace" font-size="5.5" fill="#7a6030" text-anchor="middle">SOARES</text>
+          <!-- Center circle -->
+          <circle id="cdot" cx="110" cy="110" r="28" fill="#0d1520" stroke="#c9a84c" stroke-width="1.5"/>
+          <text x="110" y="107" font-family="DM Mono,monospace" font-size="7.5" fill="#c9a84c" text-anchor="middle" font-weight="600" letter-spacing=".5">CAIO</text>
+          <text x="110" y="119" font-family="DM Mono,monospace" font-size="5.5" fill="#7a6030" text-anchor="middle">SOARES</text>
 
-          <!-- Labels — colored but not bold, sitting inside each quadrant -->
-          <text x="57"  y="68"  font-family="DM Mono,monospace" font-size="9.5" fill="#c9a84c" text-anchor="middle" font-weight="600">Humanidades</text>
-          <text x="57"  y="80"  font-family="DM Mono,monospace" font-size="7.5" fill="#7a6030" text-anchor="middle">BI · UFBA</text>
-          <text x="163" y="68"  font-family="DM Mono,monospace" font-size="9.5" fill="#5bbcbc" text-anchor="middle" font-weight="600">Economia</text>
-          <text x="163" y="80"  font-family="DM Mono,monospace" font-size="7.5" fill="#3a7070" text-anchor="middle">UNIFACS</text>
-          <text x="163" y="152" font-family="DM Mono,monospace" font-size="9.5" fill="#8ab5d0" text-anchor="middle" font-weight="600">Diplomacia</text>
-          <text x="163" y="164" font-family="DM Mono,monospace" font-size="7.5" fill="#4a7090" text-anchor="middle">CACD</text>
-          <text x="57"  y="152" font-family="DM Mono,monospace" font-size="9.5" fill="#9880cc" text-anchor="middle" font-weight="600">Gestão</text>
-          <text x="57"  y="164" font-family="DM Mono,monospace" font-size="7.5" fill="#604880" text-anchor="middle">Hering</text>
+          <!-- Labels -->
+          <text class="qlbl" id="ql1" x="57"  y="68"  font-family="DM Mono,monospace" font-size="9.5" fill="#c9a84c" text-anchor="middle" font-weight="600">Humanidades</text>
+          <text class="qlbl" id="ql1b" x="57" y="80"  font-family="DM Mono,monospace" font-size="7.5" fill="#7a6030" text-anchor="middle">BI · UFBA</text>
+          <text class="qlbl" id="ql2" x="163" y="68"  font-family="DM Mono,monospace" font-size="9.5" fill="#5bbcbc" text-anchor="middle" font-weight="600">Economia</text>
+          <text class="qlbl" id="ql2b" x="163" y="80"  font-family="DM Mono,monospace" font-size="7.5" fill="#3a7070" text-anchor="middle">UNIFACS</text>
+          <text class="qlbl" id="ql3" x="163" y="152" font-family="DM Mono,monospace" font-size="9.5" fill="#8ab5d0" text-anchor="middle" font-weight="600">Diplomacia</text>
+          <text class="qlbl" id="ql3b" x="163" y="164" font-family="DM Mono,monospace" font-size="7.5" fill="#4a7090" text-anchor="middle">CACD</text>
+          <text class="qlbl" id="ql4" x="57"  y="152" font-family="DM Mono,monospace" font-size="9.5" fill="#9880cc" text-anchor="middle" font-weight="600">Gestão</text>
+          <text class="qlbl" id="ql4b" x="57"  y="164" font-family="DM Mono,monospace" font-size="7.5" fill="#604880" text-anchor="middle">Hering</text>
         </svg>
 
         <div class="card gold-bg" style="width:100%;max-width:22em;padding:.75em 1em">
@@ -409,8 +425,8 @@ p em{color:var(--gold-l);font-style:italic}
           <p style="font-size:.84em;margin-bottom:.35em">Quatro formações, um ponto de vista único: ver a relação Brasil-China com dados, teoria estruturalista, sensibilidade territorial e vocação diplomática.</p>
           <p style="font-size:.84em;margin:0;font-style:italic;color:var(--gold-l)">É disso que este trabalho é feito.</p>
         </div>
-      </div>
 
+      </div>
     </div>
   </div>
 </div>
@@ -1049,7 +1065,7 @@ p em{color:var(--gold-l);font-style:italic}
           <p style="font-family:var(--body);font-style:normal;font-size:.86em;color:var(--text-d);line-height:1.6;margin:0;padding:.5em .7em;background:rgba(112,96,168,.06);border-left:2px solid var(--purple-l)">"A globalização mata a noção de solidariedade, devolve o homem à condição primitiva do cada um por si."</p>
           <div style="font-family:var(--mono);font-size:.6em;color:var(--purple);margin-bottom:.3em">Por uma Outra Globalização · 2000</div>
           <p style="font-size:.8em;margin:0;flex:1">A mesma base técnica que hoje serve ao capital transnacional poderia ser reorientada para as necessidades humanas. A globalização hegemônica não é a única possível. Outra configuração existe como <strong>projeto político deliberado</strong>.</p>
-          <div style="padding:.45em .7em;background:rgba(112,96,168,.1);border-left:2px solid var(--purple-l);font-size:.76em;color:var(--purple-l);margin-top:auto">O Instituto Milton Santos (UFBA) é a casa onde minha formação começou.</div>
+          <div style="padding:.45em .7em;background:rgba(112,96,168,.1);border-left:2px solid var(--purple-l);font-size:.76em;color:var(--purple-l);margin-top:auto">O IHAC Milton Santos (UFBA) é a casa onde minha formação começou.</div>
         </div>
       </div>
 
@@ -1168,7 +1184,36 @@ function animateSlide(idx) {
     sl.querySelectorAll('.bseg[data-w]').forEach(el => { el.style.width = el.dataset.w + '%'; });
   }, 120);
 
-  // Animate ≠ sign on slide 2
+  // Circle animation on slide 1
+  if (idx === 1) {
+    // Reset
+    ['qf1','qf2','qf3','qf4'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.opacity = '0';
+    });
+    ['qa1','qa2','qa3','qa4'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.strokeDashoffset = '160';
+    });
+    document.querySelectorAll('.qlbl').forEach(el => el.style.opacity = '0');
+
+    setTimeout(() => {
+      // Fills fade in staggered
+      ['qf1','qf2','qf3','qf4'].forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (el) setTimeout(() => { el.style.opacity = '1'; }, i * 150);
+      });
+      // Arcs draw in staggered
+      ['qa1','qa2','qa3','qa4'].forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (el) setTimeout(() => { el.style.strokeDashoffset = '0'; }, 200 + i * 200);
+      });
+      // Labels fade in last
+      document.querySelectorAll('.qlbl').forEach((el, i) => {
+        setTimeout(() => { el.style.opacity = '1'; }, 900 + i * 80);
+      });
+    }, 100);
+  }
   if (idx === 2) {
     const neq = document.getElementById('neq-sign');
     if (neq) {
