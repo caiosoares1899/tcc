@@ -6,11 +6,6 @@
 <title>Defesa TCC — Caio Soares | 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════════════════════
-   RESPONSIVE SCALE SYSTEM
-   font-size base = 1.5vw (scales with screen width)
-   All spacing uses em/% so everything grows together
-   ═══════════════════════════════════════════════════════ */
 :root{
   --bg:#0c1118;--surface:#121a22;--card:#18232e;--card2:#1d2a37;
   --border:#243040;--border2:#2e3d50;
@@ -24,14 +19,15 @@
   --mono:'DM Mono',monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-
-/* ROOT FONT = 1.5vw so EVERYTHING scales with viewport */
 html{font-size:clamp(12px, 1.45vw, 22px)}
 body{
   width:100vw;height:100vh;overflow:hidden;
   background:var(--bg);color:var(--text);
   font-family:var(--body);line-height:1.6;
 }
+
+/* ── FONTE ABNT ── */
+.fonte-abnt{font-family:var(--mono);font-size:.6em;color:var(--text-m);margin-top:.38em;line-height:1.5;letter-spacing:.02em;display:block}
 
 /* ── TOPBAR ── */
 #topbar{
@@ -61,8 +57,6 @@ body{
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   opacity:.018}
 
-/* ── SLIDE INNER ── */
-/* All slides use 100% of available space */
 .si{
   position:relative;z-index:1;
   width:100%;height:100%;
@@ -71,13 +65,11 @@ body{
 }
 .slide-rule{height:1px;background:linear-gradient(90deg,var(--gold-d),transparent);margin-bottom:.8em;margin-top:.15em}
 
-/* ── GRID LAYOUTS — always fill space ── */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:1.2em;flex:1;min-height:0}
 .three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.9em}
 .four{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.7em}
 .col{display:flex;flex-direction:column;gap:.6em;min-height:0}
 
-/* ── TYPOGRAPHY — all em so they scale ── */
 .eyebrow{font-family:var(--mono);font-size:.62em;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4em}
 h1{font-family:var(--serif);font-size:2.2em;font-weight:700;line-height:1.18;color:var(--text);letter-spacing:-.01em}
 h1 em{color:var(--gold);font-style:italic}
@@ -88,7 +80,6 @@ p{color:var(--text-d);font-size:.84em;line-height:1.65;margin-bottom:.4em}
 p strong{color:var(--text);font-weight:600}
 p em{color:var(--gold-l);font-style:italic}
 
-/* ── CARD SYSTEM ── */
 .card{background:var(--card);border:1px solid var(--border);padding:.75em 1em}
 .card.gold-t{border-top:2px solid var(--gold)}
 .card.teal-t{border-top:2px solid var(--teal)}
@@ -103,14 +94,12 @@ p em{color:var(--gold-l);font-style:italic}
 .card h3{margin-bottom:.2em}
 .card p{margin:0}
 
-/* ── STATS ── */
 .stat-row{display:flex;gap:.6em;margin-bottom:.7em}
 .stat{flex:1;background:var(--card);border:1px solid var(--border);padding:.7em .8em;text-align:center}
 .sval{font-family:var(--serif);font-size:1.8em;font-weight:700;line-height:1;margin-bottom:.1em}
 .slbl{font-family:var(--mono);font-size:.58em;letter-spacing:.12em;text-transform:uppercase;color:var(--text-m);margin-bottom:.2em;display:block}
 .ssub{font-size:.72em;color:var(--text-d);line-height:1.4}
 
-/* ── TABLE ── */
 .tbl{width:100%;border-collapse:collapse;font-size:.78em;margin-bottom:.7em}
 .tbl th{font-family:var(--mono);font-size:.75em;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,.08);padding:.5em .7em;text-align:left;border:1px solid var(--border)}
 .tbl td{padding:.45em .7em;border:1px solid var(--border);color:var(--text-d);vertical-align:middle}
@@ -122,7 +111,6 @@ p em{color:var(--gold-l);font-style:italic}
 .ibar{height:.35em;background:rgba(201,168,76,.15);border-radius:.2em;overflow:hidden}
 .ifill{height:100%;border-radius:.2em;background:var(--gold);transition:width 1.2s cubic-bezier(.4,0,.2,1)}
 
-/* ── STACKED BAR CHART ── */
 .legend{display:flex;gap:.9em;margin-bottom:.5em}
 .leg{display:flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.65em;color:var(--text-d)}
 .leg-d{width:.7em;height:.7em;border-radius:.1em;flex-shrink:0}
@@ -136,7 +124,6 @@ p em{color:var(--gold-l);font-style:italic}
 .bm{background:rgba(58,138,138,.85)}
 .btot{font-family:var(--mono);font-size:.65em;color:var(--text-m);width:3.5em;text-align:right;flex-shrink:0}
 
-/* ── TIMELINE ── */
 .timeline{display:flex;position:relative;padding-top:1.8em;margin-top:.6em}
 .timeline::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold-d),var(--teal),var(--gold-d))}
 .tm{flex:1;position:relative;padding:0 .4em}
@@ -149,7 +136,6 @@ p em{color:var(--gold-l);font-style:italic}
 .tm-dsc{font-size:.75em;color:var(--text-d);line-height:1.5}
 .tm-ref{font-family:var(--mono);font-size:.65em;color:var(--text-m);margin-top:.35em;font-style:italic}
 
-/* ── THEORY FLOW ── */
 .theory-flow{display:flex;align-items:stretch;gap:0;margin-bottom:.9em;flex:1;min-height:0}
 .tf-card{flex:1;padding:.75em .9em;background:var(--card);border:1px solid var(--border);display:flex;flex-direction:column}
 .tf-card.prebisch{border-top:3px solid #6a9fc0}
@@ -164,7 +150,6 @@ p em{color:var(--gold-l);font-style:italic}
 .tf-card.prebisch h3{color:#8ab5d0}.tf-card.furtado h3{color:var(--gold)}
 .tf-card.chang h3{color:var(--teal-l)}.tf-card.santos h3{color:var(--purple-l)}
 
-/* ── MUN CARDS ── */
 .mun-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8em;margin-bottom:.8em}
 .mun{background:var(--card);border:1px solid var(--border);padding:.85em 1em}
 .mun.lem{border-top:3px solid var(--gold)}.mun.cam{border-top:3px solid var(--teal)}.mun.sfc{border-top:3px solid var(--text-m)}
@@ -177,7 +162,6 @@ p em{color:var(--gold-l);font-style:italic}
 .mun.lem .mun-fill{background:var(--gold)}.mun.cam .mun-fill{background:var(--teal)}.mun.sfc .mun-fill{background:var(--text-m)}
 .mun-note{font-family:var(--mono);font-size:.62em;color:var(--text-m);line-height:1.5}
 
-/* ── POPPER BOX ── */
 .popper-vs{display:grid;grid-template-columns:1fr auto 1fr;gap:0;border:1px solid var(--border);overflow:hidden;margin-bottom:.6em;max-height:42%}
 .pv-side{padding:.65em .85em;display:flex;flex-direction:column;gap:.35em;overflow:hidden}
 .pv-left{background:rgba(106,159,192,.06)}.pv-right{background:rgba(58,138,138,.08)}
@@ -188,7 +172,6 @@ p em{color:var(--gold-l);font-style:italic}
 .pv-head{font-family:var(--serif);font-size:.88em;font-weight:700;line-height:1.2;color:var(--text)}
 .pv-desc{font-size:.75em;color:var(--text-d);line-height:1.5;overflow:hidden}
 
-/* ── SCALE FLOW (escala argumento) ── */
 .scale-flow{display:flex;align-items:flex-start;gap:0;flex:1;min-height:0}
 .scale-block{flex:1;padding:.85em 1em;background:var(--card);border:1px solid var(--border);display:flex;flex-direction:column}
 .scale-block.br{border-top:2px solid #6a9fc0}.scale-block.ba{border-top:2px solid var(--gold)}.scale-block.mn{border-top:2px solid var(--teal)}
@@ -198,7 +181,6 @@ p em{color:var(--gold-l);font-style:italic}
 .scale-block .s-finding{margin-top:.5em;padding-top:.4em;border-top:1px solid var(--border);font-family:var(--mono);font-size:.72em;color:var(--text-d);line-height:1.55}
 .scale-block.br h3{color:#8ab5d0}.scale-block.ba h3{color:var(--gold)}.scale-block.mn h3{color:var(--teal-l)}
 
-/* ── ANSWER / CHECKLIST ── */
 .ans-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65em;margin-bottom:.8em}
 .ans{padding:.8em 1em;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--teal)}
 .ans .a-lbl{font-family:var(--mono);font-size:.62em;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-l);margin-bottom:.3em}
@@ -210,16 +192,13 @@ p em{color:var(--gold-l);font-style:italic}
 .chk-lbl{font-family:var(--mono);font-size:.64em;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-l)}
 .chk-desc{font-size:.78em;color:var(--text-d)}
 
-/* ── FINAL QUOTE ── */
 .fquote{padding:1em 1.4em;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--gold);margin-top:.7em}
 .fquote q{font-family:var(--serif);font-style:italic;font-size:.95em;color:var(--text);line-height:1.6;display:block;margin-bottom:.35em}
 .fquote .attr{font-family:var(--mono);font-size:.6em;color:var(--text-m);letter-spacing:.1em}
 
-/* ── SVG CHART ── */
 .chart-wrap{background:var(--card);border:1px solid var(--border);padding:.65em .9em .5em;position:relative;flex:1;display:flex;flex-direction:column}
 .chart-wrap svg{display:block;width:100%;flex:1}
 
-/* ── CAPA ── */
 #sl0 .capa-inner{display:flex;height:100%;position:relative;width:100%}
 #sl0 .capa-l{width:54%;padding:0 2.5em;display:flex;flex-direction:column;justify-content:center;z-index:2}
 #sl0 .capa-r{flex:1;position:relative;overflow:hidden}
@@ -235,7 +214,6 @@ p em{color:var(--gold-l);font-style:italic}
 .meta-l{font-family:var(--mono);font-size:.6em;color:var(--text-m);text-transform:uppercase;letter-spacing:.1em}
 .meta-v{font-size:.82em;color:var(--text-d)}
 
-/* ── COMPACT SLIDES (less content = scale down to fit) ── */
 .si-compact{font-size:.82em}
 .si-compact h2{font-size:1.3em;margin-bottom:.4em}
 .si-compact .sval{font-size:1.45em}
@@ -266,7 +244,6 @@ p em{color:var(--gold-l);font-style:italic}
 </head>
 <body>
 
-<!-- TOPBAR -->
 <div id="topbar">
   <div class="tb-left">
     <div class="tb-tag" id="tb-tag">Capa</div>
@@ -283,9 +260,7 @@ p em{color:var(--gold-l);font-style:italic}
 
 <div id="deck">
 
-<!-- ══════════════════════════════════════════
-     SLIDE 0 · CAPA
-══════════════════════════════════════════ -->
+<!-- ══ SLIDE 0 · CAPA ══ -->
 <div class="slide active" id="sl0" data-tag="Capa" data-sub="Defesa de TCC · Caio Soares · 2026">
   <div class="noise"></div>
   <div class="capa-inner">
@@ -312,9 +287,7 @@ p em{color:var(--gold-l);font-style:italic}
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 1 · APRESENTAÇÃO PESSOAL
-══════════════════════════════════════════ -->
+<!-- ══ SLIDE 1 · APRESENTAÇÃO ══ -->
 <div class="slide" id="sl1" data-tag="Apresentação" data-sub="Quem fala com a banca">
   <div class="noise"></div>
   <div class="si" style="font-size:.9em">
@@ -322,8 +295,6 @@ p em{color:var(--gold-l);font-style:italic}
     <h2>Um economista formado na <em>interdisciplinaridade</em></h2>
     <div class="slide-rule"></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2em;flex:1;min-height:0">
-
-      <!-- LEFT: 4 cards -->
       <div style="display:flex;flex-direction:column;gap:.5em;min-height:0">
         <div class="card gold-t" style="flex:1;padding:.65em .9em">
           <div class="eyebrow" style="color:var(--text-m);font-size:.58em">01 · Humanidades · UFBA</div>
@@ -346,91 +317,50 @@ p em{color:var(--gold-l);font-style:italic}
           <p style="font-size:.78em;margin:0">O CACD aprofunda o interesse em <strong>comércio exterior e política comercial</strong>. A China não é escolha aleatória: é o maior parceiro do Brasil e símbolo da transição para o eixo Sul-Sul.</p>
         </div>
       </div>
-
-      <!-- RIGHT: animated circle + box -->
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8em;min-height:0">
-
         <svg id="inter-svg" viewBox="0 0 220 220" style="width:100%;max-width:22em;height:auto;display:block;flex-shrink:0" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <radialGradient id="gq1" cx="25%" cy="25%" r="70%">
-              <stop offset="0%" stop-color="#c9a84c" stop-opacity=".22"/>
-              <stop offset="100%" stop-color="#c9a84c" stop-opacity=".03"/>
-            </radialGradient>
-            <radialGradient id="gq2" cx="75%" cy="25%" r="70%">
-              <stop offset="0%" stop-color="#3a8a8a" stop-opacity=".22"/>
-              <stop offset="100%" stop-color="#3a8a8a" stop-opacity=".03"/>
-            </radialGradient>
-            <radialGradient id="gq3" cx="75%" cy="75%" r="70%">
-              <stop offset="0%" stop-color="#6a9fc0" stop-opacity=".22"/>
-              <stop offset="100%" stop-color="#6a9fc0" stop-opacity=".03"/>
-            </radialGradient>
-            <radialGradient id="gq4" cx="25%" cy="75%" r="70%">
-              <stop offset="0%" stop-color="#9880cc" stop-opacity=".22"/>
-              <stop offset="100%" stop-color="#9880cc" stop-opacity=".03"/>
-            </radialGradient>
-            <style>
-              /* Quadrant fills fade in */
-              .qfill { opacity: 0; transition: opacity .6s ease; }
-              .qarc  { stroke-dasharray: 160; stroke-dashoffset: 160; transition: stroke-dashoffset .9s cubic-bezier(.4,0,.2,1); }
-              .qlbl  { opacity: 0; transition: opacity .4s ease; }
-              /* Spin animation on center ring */
-              @keyframes spinRing { from { transform: rotate(0deg); transform-origin: 110px 110px; } to { transform: rotate(360deg); transform-origin: 110px 110px; } }
-              .spin-ring { animation: spinRing 18s linear infinite; transform-origin: 110px 110px; }
-              /* Pulse on center dot */
-              @keyframes pulseDot { 0%,100% { r: 28; } 50% { r: 30; } }
-            </style>
+            <radialGradient id="gq1" cx="25%" cy="25%" r="70%"><stop offset="0%" stop-color="#c9a84c" stop-opacity=".22"/><stop offset="100%" stop-color="#c9a84c" stop-opacity=".03"/></radialGradient>
+            <radialGradient id="gq2" cx="75%" cy="25%" r="70%"><stop offset="0%" stop-color="#3a8a8a" stop-opacity=".22"/><stop offset="100%" stop-color="#3a8a8a" stop-opacity=".03"/></radialGradient>
+            <radialGradient id="gq3" cx="75%" cy="75%" r="70%"><stop offset="0%" stop-color="#6a9fc0" stop-opacity=".22"/><stop offset="100%" stop-color="#6a9fc0" stop-opacity=".03"/></radialGradient>
+            <radialGradient id="gq4" cx="25%" cy="75%" r="70%"><stop offset="0%" stop-color="#9880cc" stop-opacity=".22"/><stop offset="100%" stop-color="#9880cc" stop-opacity=".03"/></radialGradient>
+            <style>.qfill{opacity:0;transition:opacity .6s ease}.qarc{stroke-dasharray:160;stroke-dashoffset:160;transition:stroke-dashoffset .9s cubic-bezier(.4,0,.2,1)}.qlbl{opacity:0;transition:opacity .4s ease}@keyframes spinRing{from{transform:rotate(0deg);transform-origin:110px 110px}to{transform:rotate(360deg);transform-origin:110px 110px}}.spin-ring{animation:spinRing 18s linear infinite;transform-origin:110px 110px}</style>
           </defs>
-
-          <!-- Quadrant fills -->
-          <path class="qfill" id="qf1" d="M110,110 L110,10 A100,100 0 0,0 10,110 Z"   fill="url(#gq1)"/>
-          <path class="qfill" id="qf2" d="M110,110 L210,110 A100,100 0 0,0 110,10 Z"  fill="url(#gq2)"/>
+          <path class="qfill" id="qf1" d="M110,110 L110,10 A100,100 0 0,0 10,110 Z" fill="url(#gq1)"/>
+          <path class="qfill" id="qf2" d="M110,110 L210,110 A100,100 0 0,0 110,10 Z" fill="url(#gq2)"/>
           <path class="qfill" id="qf3" d="M110,110 L110,210 A100,100 0 0,0 210,110 Z" fill="url(#gq3)"/>
-          <path class="qfill" id="qf4" d="M110,110 L10,110 A100,100 0 0,0 110,210 Z"  fill="url(#gq4)"/>
-
-          <!-- Outer ring -->
+          <path class="qfill" id="qf4" d="M110,110 L10,110 A100,100 0 0,0 110,210 Z" fill="url(#gq4)"/>
           <circle cx="110" cy="110" r="100" fill="none" stroke="#1e2d3d" stroke-width="1"/>
-
-          <!-- Spinning dashed ring -->
-          <circle class="spin-ring" cx="110" cy="110" r="100" fill="none"
-            stroke="#243040" stroke-width="1" stroke-dasharray="6,8"/>
-
-          <!-- Colored arcs per quadrant — animated -->
-          <path class="qarc" id="qa1" d="M110,10  A100,100 0 0,0 10,110"  fill="none" stroke="#c9a84c" stroke-width="2.5" opacity=".55" stroke-linecap="round"/>
-          <path class="qarc" id="qa2" d="M210,110 A100,100 0 0,0 110,10"  fill="none" stroke="#3a8a8a" stroke-width="2.5" opacity=".55" stroke-linecap="round"/>
+          <circle class="spin-ring" cx="110" cy="110" r="100" fill="none" stroke="#243040" stroke-width="1" stroke-dasharray="6,8"/>
+          <path class="qarc" id="qa1" d="M110,10 A100,100 0 0,0 10,110" fill="none" stroke="#c9a84c" stroke-width="2.5" opacity=".55" stroke-linecap="round"/>
+          <path class="qarc" id="qa2" d="M210,110 A100,100 0 0,0 110,10" fill="none" stroke="#3a8a8a" stroke-width="2.5" opacity=".55" stroke-linecap="round"/>
           <path class="qarc" id="qa3" d="M110,210 A100,100 0 0,0 210,110" fill="none" stroke="#6a9fc0" stroke-width="2.5" opacity=".55" stroke-linecap="round"/>
-          <path class="qarc" id="qa4" d="M10,110  A100,100 0 0,0 110,210" fill="none" stroke="#9880cc" stroke-width="2.5" opacity=".55" stroke-linecap="round"/>
-
-          <!-- Dividers -->
-          <line x1="110" y1="10"  x2="110" y2="210" stroke="#1e2d3d" stroke-width="1"/>
-          <line x1="10"  y1="110" x2="210" y2="110" stroke="#1e2d3d" stroke-width="1"/>
-
-          <!-- Center circle -->
+          <path class="qarc" id="qa4" d="M10,110 A100,100 0 0,0 110,210" fill="none" stroke="#9880cc" stroke-width="2.5" opacity=".55" stroke-linecap="round"/>
+          <line x1="110" y1="10" x2="110" y2="210" stroke="#1e2d3d" stroke-width="1"/>
+          <line x1="10" y1="110" x2="210" y2="110" stroke="#1e2d3d" stroke-width="1"/>
           <circle id="cdot" cx="110" cy="110" r="28" fill="#0d1520" stroke="#c9a84c" stroke-width="1.5"/>
           <text x="110" y="107" font-family="DM Mono,monospace" font-size="7.5" fill="#c9a84c" text-anchor="middle" font-weight="600" letter-spacing=".5">CAIO</text>
           <text x="110" y="119" font-family="DM Mono,monospace" font-size="5.5" fill="#7a6030" text-anchor="middle">SOARES</text>
-
-          <!-- Labels -->
-          <text class="qlbl" id="ql1" x="63"  y="70"  font-family="DM Mono,monospace" font-size="9.5" fill="#c9a84c" text-anchor="middle" font-weight="600">Humanidades</text>
-          <text class="qlbl" id="ql1b" x="63" y="82"  font-family="DM Mono,monospace" font-size="7.5" fill="#7a6030" text-anchor="middle">BI · UFBA</text>
-          <text class="qlbl" id="ql2" x="163" y="68"  font-family="DM Mono,monospace" font-size="9.5" fill="#5bbcbc" text-anchor="middle" font-weight="600">Economia</text>
-          <text class="qlbl" id="ql2b" x="163" y="80"  font-family="DM Mono,monospace" font-size="7.5" fill="#3a7070" text-anchor="middle">UNIFACS</text>
+          <text class="qlbl" id="ql1" x="63" y="70" font-family="DM Mono,monospace" font-size="9.5" fill="#c9a84c" text-anchor="middle" font-weight="600">Humanidades</text>
+          <text class="qlbl" id="ql1b" x="63" y="82" font-family="DM Mono,monospace" font-size="7.5" fill="#7a6030" text-anchor="middle">BI · UFBA</text>
+          <text class="qlbl" id="ql2" x="163" y="68" font-family="DM Mono,monospace" font-size="9.5" fill="#5bbcbc" text-anchor="middle" font-weight="600">Economia</text>
+          <text class="qlbl" id="ql2b" x="163" y="80" font-family="DM Mono,monospace" font-size="7.5" fill="#3a7070" text-anchor="middle">UNIFACS</text>
           <text class="qlbl" id="ql3" x="163" y="152" font-family="DM Mono,monospace" font-size="9.5" fill="#8ab5d0" text-anchor="middle" font-weight="600">Diplomacia</text>
           <text class="qlbl" id="ql3b" x="163" y="164" font-family="DM Mono,monospace" font-size="7.5" fill="#4a7090" text-anchor="middle">CACD</text>
-          <text class="qlbl" id="ql4" x="57"  y="152" font-family="DM Mono,monospace" font-size="9.5" fill="#9880cc" text-anchor="middle" font-weight="600">Gestão</text>
-          <text class="qlbl" id="ql4b" x="57"  y="164" font-family="DM Mono,monospace" font-size="7.5" fill="#604880" text-anchor="middle">Hering</text>
+          <text class="qlbl" id="ql4" x="57" y="152" font-family="DM Mono,monospace" font-size="9.5" fill="#9880cc" text-anchor="middle" font-weight="600">Gestão</text>
+          <text class="qlbl" id="ql4b" x="57" y="164" font-family="DM Mono,monospace" font-size="7.5" fill="#604880" text-anchor="middle">Hering</text>
         </svg>
-
         <div class="card gold-bg" style="width:100%;max-width:22em;padding:.75em 1em">
           <div class="eyebrow" style="color:var(--gold)">Por que este tema?</div>
           <p style="font-size:.84em;margin-bottom:.35em">Quatro formações, um ponto de vista único: ver a relação Brasil-China com dados, teoria estruturalista, sensibilidade territorial e vocação diplomática.</p>
           <p style="font-size:.84em;margin:0;font-style:italic;color:var(--gold-l)">É disso que este trabalho é feito.</p>
         </div>
-
       </div>
     </div>
   </div>
 </div>
 
+<!-- ══ SLIDE 2 · MOTIVAÇÃO ══ -->
 <div class="slide" id="sl2" data-tag="Motivação Intelectual" data-sub="A lente furtadiana e o método popperiano">
   <div class="noise"></div>
   <div class="si">
@@ -438,7 +368,6 @@ p em{color:var(--gold-l);font-style:italic}
     <h2>Testar Furtado na realidade: <em>ciência ou confirmação?</em></h2>
     <div class="slide-rule"></div>
     <div class="two" style="flex:1;min-height:0;gap:1.2em">
-      <!-- Popper lado -->
       <div class="col">
         <div class="popper-vs anim">
           <div class="pv-side pv-left">
@@ -461,7 +390,6 @@ p em{color:var(--gold-l);font-style:italic}
           <p style="font-size:.85em;margin:0">Testamos o argumento furtadiano confrontando-o com <strong>25 anos de dados estatísticos (2001–2025)</strong> do Comex Stat. Se a realidade refutasse Furtado, a teoria cederia aos dados. Os dados confirmaram, mas o esforço foi de falsificação, não de confirmação.</p>
         </div>
       </div>
-      <!-- Furtado lado -->
       <div class="col" style="overflow:hidden;min-height:0">
         <div class="card gold-bg anim" style="text-align:center;padding:.9em 1.2em;flex-shrink:0">
           <div class="eyebrow" style="color:var(--gold);text-align:center">Celso Furtado — Tese Central</div>
@@ -505,9 +433,7 @@ p em{color:var(--gold-l);font-style:italic}
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 3 · PROBLEMÁTICA
-══════════════════════════════════════════ -->
+<!-- ══ SLIDE 3 · PROBLEMÁTICA ══ -->
 <div class="slide" id="sl3" data-tag="Problemática" data-sub="O paradoxo central e a questão de pesquisa">
   <div class="noise"></div>
   <div class="si si-compact">
@@ -515,8 +441,6 @@ p em{color:var(--gold-l);font-style:italic}
     <h2>O paradoxo da <em>regressão estrutural</em></h2>
     <div class="slide-rule"></div>
     <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:1em;flex:1;min-height:0">
-
-      <!-- LEFT: stats + big chart -->
       <div style="display:flex;flex-direction:column;gap:.45em;min-height:0">
         <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:.4em;flex-shrink:0">
           <div class="stat" style="border-left:3px solid var(--teal);padding:.5em .8em">
@@ -560,27 +484,27 @@ p em{color:var(--gold-l);font-style:italic}
                 @keyframes da2{to{opacity:1}}
               </style>
             </defs>
-            <line x1="75" y1="30"  x2="520" y2="30"  stroke="#1a2633" stroke-width="1"/>
-            <line x1="75" y1="70"  x2="520" y2="70"  stroke="#1a2633" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="75" y1="30" x2="520" y2="30" stroke="#1a2633" stroke-width="1"/>
+            <line x1="75" y1="70" x2="520" y2="70" stroke="#1a2633" stroke-width="1" stroke-dasharray="4,4"/>
             <line x1="75" y1="110" x2="520" y2="110" stroke="#1a2633" stroke-width="1" stroke-dasharray="4,4"/>
             <line x1="75" y1="150" x2="520" y2="150" stroke="#243040" stroke-width="1.5"/>
-            <line x1="75" y1="30"  x2="75"  y2="150" stroke="#243040" stroke-width="1"/>
-            <text x="69" y="34"  font-family="DM Mono,monospace" font-size="10" fill="#5bbcbc" text-anchor="end" font-weight="600">18%</text>
-            <text x="69" y="74"  font-family="DM Mono,monospace" font-size="10" fill="#4a6070" text-anchor="end">12%</text>
+            <line x1="75" y1="30" x2="75" y2="150" stroke="#243040" stroke-width="1"/>
+            <text x="69" y="34" font-family="DM Mono,monospace" font-size="10" fill="#5bbcbc" text-anchor="end" font-weight="600">18%</text>
+            <text x="69" y="74" font-family="DM Mono,monospace" font-size="10" fill="#4a6070" text-anchor="end">12%</text>
             <text x="69" y="114" font-family="DM Mono,monospace" font-size="10" fill="#4a6070" text-anchor="end">6%</text>
             <text x="69" y="154" font-family="DM Mono,monospace" font-size="10" fill="#c85050" text-anchor="end" font-weight="600">0%</text>
             <path id="ma2" d="M75,32 C100,45 125,68 149,80 C173,92 198,108 223,113 C248,118 272,136 297,140 C322,143 346,144 371,145 C396,146 420,147 445,147 C470,147 494,148 519,148 L519,150 L75,150 Z" fill="url(#mg2)"/>
             <path id="ml2" d="M75,32 C100,45 125,68 149,80 C173,92 198,108 223,113 C248,118 272,136 297,140 C322,143 346,144 371,145 C396,146 420,147 445,147 C470,147 494,148 519,148" fill="none" stroke="#5bbcbc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
             <text class="dpc" id="ann2" x="190" y="62" font-family="DM Mono,monospace" font-size="8.5" fill="#7a6030">← superciclo 2003–11</text>
-            <circle class="dpc" id="dpa"  cx="75"  cy="32"  r="5.5" fill="#5bbcbc" stroke="#0c1118" stroke-width="2"/>
-            <text   class="dpc" id="dla"  x="90"  y="28"   font-family="DM Mono,monospace" font-size="10.5" fill="#5bbcbc" font-weight="700">17,7%</text>
-            <circle class="dpc" id="dpb"  cx="223" cy="113" r="4.5" fill="#5bbcbc" stroke="#0c1118" stroke-width="1.5"/>
-            <text   class="dpc" id="dlb"  x="223" y="103"  font-family="DM Mono,monospace" font-size="9.5" fill="#9a9080" text-anchor="middle">5,5%</text>
-            <circle class="dpc" id="dpc_" cx="297" cy="140" r="4"   fill="#5bbcbc" stroke="#0c1118" stroke-width="1.5"/>
-            <text   class="dpc" id="dlc"  x="297" y="130"  font-family="DM Mono,monospace" font-size="9.5" fill="#9a9080" text-anchor="middle">0,7%</text>
-            <circle class="dpc" id="dpd"  cx="519" cy="148" r="5.5" fill="#c85050" stroke="#0c1118" stroke-width="2"/>
-            <text   class="dpc" id="dld"  x="504" y="137"  font-family="DM Mono,monospace" font-size="10.5" fill="#c85050" font-weight="700" text-anchor="end">0,2%</text>
-            <text x="75"  y="168" font-family="DM Mono,monospace" font-size="10" fill="#556070" text-anchor="middle">2001</text>
+            <circle class="dpc" id="dpa" cx="75" cy="32" r="5.5" fill="#5bbcbc" stroke="#0c1118" stroke-width="2"/>
+            <text class="dpc" id="dla" x="90" y="28" font-family="DM Mono,monospace" font-size="10.5" fill="#5bbcbc" font-weight="700">17,7%</text>
+            <circle class="dpc" id="dpb" cx="223" cy="113" r="4.5" fill="#5bbcbc" stroke="#0c1118" stroke-width="1.5"/>
+            <text class="dpc" id="dlb" x="223" y="103" font-family="DM Mono,monospace" font-size="9.5" fill="#9a9080" text-anchor="middle">5,5%</text>
+            <circle class="dpc" id="dpc_" cx="297" cy="140" r="4" fill="#5bbcbc" stroke="#0c1118" stroke-width="1.5"/>
+            <text class="dpc" id="dlc" x="297" y="130" font-family="DM Mono,monospace" font-size="9.5" fill="#9a9080" text-anchor="middle">0,7%</text>
+            <circle class="dpc" id="dpd" cx="519" cy="148" r="5.5" fill="#c85050" stroke="#0c1118" stroke-width="2"/>
+            <text class="dpc" id="dld" x="504" y="137" font-family="DM Mono,monospace" font-size="10.5" fill="#c85050" font-weight="700" text-anchor="end">0,2%</text>
+            <text x="75" y="168" font-family="DM Mono,monospace" font-size="10" fill="#556070" text-anchor="middle">2001</text>
             <text x="149" y="168" font-family="DM Mono,monospace" font-size="10" fill="#556070" text-anchor="middle">2005</text>
             <text x="223" y="168" font-family="DM Mono,monospace" font-size="10" fill="#556070" text-anchor="middle">2009</text>
             <text x="297" y="168" font-family="DM Mono,monospace" font-size="10" fill="#556070" text-anchor="middle">2013</text>
@@ -588,10 +512,10 @@ p em{color:var(--gold-l);font-style:italic}
             <text x="445" y="168" font-family="DM Mono,monospace" font-size="10" fill="#556070" text-anchor="middle">2021</text>
             <text x="519" y="168" font-family="DM Mono,monospace" font-size="10" fill="#c85050" text-anchor="middle" font-weight="600">2025</text>
           </svg>
+          <!-- FONTE ABNT: Gráfico 1 -->
+          <span class="fonte-abnt">Fonte: Elaborado pelo autor com base em Comex Stat/MDIC, 2026.</span>
         </div>
       </div>
-
-      <!-- RIGHT: questão + contexto + stats + paradoxo -->
       <div style="display:flex;flex-direction:column;gap:.6em;min-height:0">
         <div class="card gold-bg" style="padding:.85em 1em;flex-shrink:0">
           <div class="eyebrow" style="color:var(--gold)">Questão de Pesquisa</div>
@@ -615,50 +539,44 @@ p em{color:var(--gold-l);font-style:italic}
               <div style="font-family:var(--mono);font-size:.62em;color:var(--text-m)">aumento do volume</div>
             </div>
           </div>
+          <!-- FONTE ABNT: mini-stats -->
+          <span class="fonte-abnt" style="margin-top:.5em">Fonte: Elaborado pelo autor com base em Comex Stat/MDIC, 2026.</span>
         </div>
         <div class="card red-l" style="padding:.75em .95em;flex-shrink:0">
           <p style="font-size:.9em;margin:0"><strong>O paradoxo em uma frase:</strong> o Brasil exporta hoje <em>menos manufaturados para a China</em> do que em 2001, num fluxo que era 52 vezes menor.</p>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
+<!-- ══ SLIDE 4 · TRAMA TEÓRICA ══ -->
 <div class="slide" id="sl4" data-tag="A Trama Teórica" data-sub="Quatro autores que se entrelaçam para construir o argumento">
   <div class="noise"></div>
   <div class="si" style="padding:1.4em 3em 1.2em">
     <div class="eyebrow">Slide 04 · Referencial teórico</div>
     <h2>A <em>trama</em> teórica: quatro vozes, um argumento</h2>
     <div class="slide-rule"></div>
-
-    <!-- TRAMA: 4 cards + SVG connectors overlay -->
     <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:.8em">
-
-      <!-- Top row: 4 author cards -->
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.9em;flex:1;min-height:0">
-
         <div class="tf-card prebisch" style="border-top:3px solid #6a9fc0;background:var(--card);border:1px solid var(--border);border-top:3px solid #6a9fc0;padding:.9em 1em;display:flex;flex-direction:column">
           <div style="font-family:var(--mono);font-size:.6em;color:#6a9fc0;letter-spacing:.1em;margin-bottom:.5em">01 · CEPAL · 1949</div>
           <h3 style="font-family:var(--serif);font-size:1.1em;color:#8ab5d0;margin-bottom:.5em">Raúl Prebisch</h3>
           <p style="font-size:.82em;color:var(--text-d);line-height:1.6;flex:1"><strong style="color:var(--text)">Centro-Periferia:</strong> a periferia exporta o que não transforma. Deterioração secular dos termos de troca: o Brasil precisa exportar mais soja a cada ano para importar a mesma máquina.</p>
           <div style="margin-top:.7em;padding:.5em .7em;background:rgba(106,159,192,.08);border-left:2px solid #6a9fc0;font-size:.74em;color:#6a9fc0;font-style:italic">Fornece o <strong>diagnóstico da assimetria</strong> estrutural internacional</div>
         </div>
-
         <div class="tf-card furtado" style="background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.25);border-top:3px solid var(--gold);padding:.9em 1em;display:flex;flex-direction:column">
           <div style="font-family:var(--mono);font-size:.6em;color:var(--gold-d);letter-spacing:.1em;margin-bottom:.5em">02 · FEB · 1959–70</div>
           <h3 style="font-family:var(--serif);font-size:1.1em;color:var(--gold);margin-bottom:.5em">Celso Furtado</h3>
           <p style="font-size:.82em;color:var(--text-d);line-height:1.6;flex:1"><strong style="color:var(--text)">Heterogeneidade estrutural:</strong> o subdesenvolvimento não é etapa; é estrutura. Modernização ≠ desenvolvimento. A escala muda; a dependência permanece.</p>
           <div style="margin-top:.7em;padding:.5em .7em;background:rgba(201,168,76,.07);border-left:2px solid var(--gold);font-size:.74em;color:var(--gold);font-style:italic">Aplica Prebisch ao <strong>caso brasileiro e baiano</strong></div>
         </div>
-
         <div class="tf-card chang" style="background:rgba(58,138,138,.04);border:1px solid rgba(58,138,138,.22);border-top:3px solid var(--teal);padding:.9em 1em;display:flex;flex-direction:column">
           <div style="font-family:var(--mono);font-size:.6em;color:var(--teal);letter-spacing:.1em;margin-bottom:.5em">03 · Chutando a Escada · 2004</div>
           <h3 style="font-family:var(--serif);font-size:1.1em;color:var(--teal-l);margin-bottom:.5em">Ha-Joon Chang</h3>
           <p style="font-size:.82em;color:var(--text-d);line-height:1.6;flex:1"><strong style="color:var(--text)">Política industrial:</strong> a especialização primária não é destino natural; é ausência de Estado. Países desenvolvidos usaram os instrumentos que hoje proíbem à periferia. A China fez o que o Brasil abandonou.</p>
           <div style="margin-top:.7em;padding:.5em .7em;background:rgba(58,138,138,.08);border-left:2px solid var(--teal);font-size:.74em;color:var(--teal-l);font-style:italic">Quebra a <strong>naturalização da dependência</strong></div>
         </div>
-
         <div class="tf-card santos" style="background:rgba(112,96,168,.04);border:1px solid rgba(112,96,168,.22);border-top:3px solid var(--purple-l);padding:.9em 1em;display:flex;flex-direction:column">
           <div style="font-family:var(--mono);font-size:.6em;color:var(--purple);letter-spacing:.1em;margin-bottom:.5em">04 · Por uma Outra Globalização · 2000</div>
           <h3 style="font-family:var(--serif);font-size:1.1em;color:var(--purple-l);margin-bottom:.5em">Milton Santos</h3>
@@ -666,29 +584,21 @@ p em{color:var(--gold-l);font-style:italic}
           <div style="margin-top:.7em;padding:.5em .7em;background:rgba(112,96,168,.08);border-left:2px solid var(--purple-l);font-size:.74em;color:var(--purple-l);font-style:italic">Oferece o <strong>horizonte normativo</strong>; é a casa da minha formação</div>
         </div>
       </div>
-
-      <!-- Bottom: SVG trama — clean bezier web -->
       <div style="background:var(--card);border:1px solid var(--border);padding:.9em 1.4em .5em;flex-shrink:0">
         <div style="font-family:var(--mono);font-size:.6em;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-d);text-align:center;margin-bottom:.6em">A Trama · Quatro Fios, Um Argumento</div>
         <svg viewBox="0 0 800 70" preserveAspectRatio="xMidYMid meet" style="width:100%;height:3.8em;display:block;overflow:visible">
-          <!-- P=100  F=300  C=500  S=700  — mid=200, 400, 600 -->
-          <!-- Arc threads between each adjacent pair — top arc -->
           <path d="M100,35 C150,10 250,10 300,35" fill="none" stroke="#6a9fc0" stroke-width="2" opacity=".7"/>
           <path d="M300,35 C350,10 450,10 500,35" fill="none" stroke="#c9a84c" stroke-width="2" opacity=".7"/>
           <path d="M500,35 C550,10 650,10 700,35" fill="none" stroke="#3a8a8a" stroke-width="2" opacity=".7"/>
-          <!-- Arc threads — bottom arc -->
           <path d="M100,35 C150,60 250,60 300,35" fill="none" stroke="#c9a84c" stroke-width="2" opacity=".6"/>
           <path d="M300,35 C350,60 450,60 500,35" fill="none" stroke="#3a8a8a" stroke-width="2" opacity=".6"/>
           <path d="M500,35 C550,60 650,60 700,35" fill="none" stroke="#9880cc" stroke-width="2" opacity=".6"/>
-          <!-- Long crossing threads -->
           <path d="M100,35 C250,12 550,12 700,35" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="6,5" opacity=".3"/>
           <path d="M100,35 C250,58 550,58 700,35" fill="none" stroke="#9880cc" stroke-width="1" stroke-dasharray="4,6" opacity=".25"/>
-          <!-- Nodes — drawn LAST so on top -->
           <circle cx="100" cy="35" r="9" fill="#6a9fc0" stroke="#0c1118" stroke-width="2"/>
           <circle cx="300" cy="35" r="9" fill="#c9a84c" stroke="#0c1118" stroke-width="2"/>
           <circle cx="500" cy="35" r="9" fill="#3a8a8a" stroke="#0c1118" stroke-width="2"/>
           <circle cx="700" cy="35" r="9" fill="#9880cc" stroke="#0c1118" stroke-width="2"/>
-          <!-- Crossover dots -->
           <circle cx="200" cy="18" r="3.5" fill="#6a9fc0" stroke="#0c1118" stroke-width="1" opacity=".8"/>
           <circle cx="200" cy="52" r="3.5" fill="#c9a84c" stroke="#0c1118" stroke-width="1" opacity=".8"/>
           <circle cx="400" cy="18" r="3.5" fill="#c9a84c" stroke="#0c1118" stroke-width="1" opacity=".8"/>
@@ -696,7 +606,6 @@ p em{color:var(--gold-l);font-style:italic}
           <circle cx="600" cy="18" r="3.5" fill="#3a8a8a" stroke="#0c1118" stroke-width="1" opacity=".8"/>
           <circle cx="600" cy="52" r="3.5" fill="#9880cc" stroke="#0c1118" stroke-width="1" opacity=".8"/>
         </svg>
-        <!-- Labels below SVG as HTML — no overflow issues -->
         <div style="display:flex;justify-content:space-around;margin-top:.35em">
           <span style="font-family:var(--mono);font-size:.62em;color:#6a9fc0;font-weight:500">Prebisch</span>
           <span style="font-family:var(--mono);font-size:.62em;color:#c9a84c;font-weight:500">Celso Furtado</span>
@@ -704,14 +613,11 @@ p em{color:var(--gold-l);font-style:italic}
           <span style="font-family:var(--mono);font-size:.62em;color:#9880cc;font-weight:500">Milton Santos</span>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 5 · METODOLOGIA
-══════════════════════════════════════════ -->
+<!-- ══ SLIDE 5 · METODOLOGIA ══ -->
 <div class="slide" id="sl5" data-tag="Metodologia" data-sub="Abordagem histórico-estrutural e produção dos dados">
   <div class="noise"></div>
   <div class="si">
@@ -719,14 +625,19 @@ p em{color:var(--gold-l);font-style:italic}
     <h2>Abordagem <em>histórico-estrutural</em> quali-quantitativa</h2>
     <div class="slide-rule"></div>
     <div class="two anim" style="flex:1;min-height:0">
-      <div class="col">
-        <div class="four" style="gap:.55em;margin-bottom:.72em">
+      <div class="col" style="justify-content:space-between">
+        <div class="four" style="gap:.55em;flex-shrink:0">
           <div class="stat" style="border-top:2px solid var(--gold)"><span class="slbl">Natureza</span><div class="sval" style="font-size:1.05em;color:var(--gold)">Aplicada</div></div>
           <div class="stat" style="border-top:2px solid var(--teal)"><span class="slbl">Objetivo</span><div class="sval" style="font-size:1.05em;color:var(--teal-l)">Exploratório</div></div>
           <div class="stat" style="border-top:2px solid var(--gold)"><span class="slbl">Recorte</span><div class="sval" style="font-size:1.05em;color:var(--gold)">2001–25</div></div>
-          <div class="stat" style="border-top:2px solid var(--teal)"><span class="slbl">Tratamento</span><div class="sval" style="font-size:1.05em;color:var(--teal-l)">Python</div></div>
+          <!-- ALTERAÇÃO: Python + aux. Claude (IA) -->
+          <div class="stat" style="border-top:2px solid var(--teal)">
+            <span class="slbl">Tratamento</span>
+            <div class="sval" style="font-size:.88em;color:var(--teal-l);line-height:1.2">Python</div>
+            <div style="font-family:var(--mono);font-size:.56em;color:var(--text-m);margin-top:.2em;line-height:1.3">+ aux. IA Claude<br>(Anthropic)</div>
+          </div>
         </div>
-        <table class="tbl" style="width:100%">
+        <table class="tbl" style="width:100%;flex-shrink:0">
           <thead><tr><th style="width:28%">Fonte</th><th>Conteúdo</th><th style="width:18%">Tipo</th></tr></thead>
           <tbody>
             <tr><td>Comex Stat / MDIC</td><td>Exportações BR→CN por produto, UF, município</td><td style="color:var(--teal-l);font-family:var(--mono);font-size:.78em">Base bruta<br><span style="color:var(--gold)">27.797 reg.</span></td></tr>
@@ -735,13 +646,13 @@ p em{color:var(--gold-l);font-style:italic}
             <tr><td>Municípios (3)</td><td>LEM, Camaçari, São Francisco do Conde (SH4)</td><td style="color:var(--text-d);font-family:var(--mono);font-size:.78em">Documental</td></tr>
           </tbody>
         </table>
-        <div class="card teal-l" style="padding:10px 14px;border-left:3px solid var(--teal)">
+        <div class="card teal-l" style="padding:10px 14px;border-left:3px solid var(--teal);flex-shrink:0">
           <p style="font-size:.8em;margin:0"><strong>Opção epistemológica:</strong> o método histórico-estrutural não é apenas técnica: é a escolha de articular estrutura e história, sem cair na abstração de modelos puramente econométricos nem na simples descrição. Dialoga diretamente com Furtado e Prebisch.</p>
         </div>
       </div>
       <div class="col">
         <div class="eyebrow" style="color:var(--text-m);margin-bottom:.45em">Quadro 1 — Classificação dos produtos por intensidade tecnológica</div>
-        <table class="tbl" style="margin-bottom:.72em">
+        <table class="tbl" style="margin-bottom:.4em">
           <thead><tr><th>Categoria</th><th>Critério</th><th>Exemplos (pauta BR→CN)</th></tr></thead>
           <tbody>
             <tr style="border-left:3px solid var(--red)">
@@ -761,6 +672,8 @@ p em{color:var(--gold-l);font-style:italic}
             </tr>
           </tbody>
         </table>
+        <!-- FONTE ABNT: Quadro 1 -->
+        <span class="fonte-abnt" style="margin-bottom:.5em">Fonte: Elaborado pelo autor.</span>
         <div class="card gold-bg" style="padding:10px 14px">
           <div class="eyebrow" style="color:var(--gold)">Nota metodológica</div>
           <p style="font-size:.8em;margin:0">A classificação adota critério <strong>conservador</strong>: em casos limítrofes, o produto é categorizado na classe de menor valor agregado. Isso significa que os resultados tendem a subestimar a desindustrialização, o que só <strong>reforça</strong> as conclusões da análise.</p>
@@ -770,9 +683,7 @@ p em{color:var(--gold-l);font-style:italic}
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 6 · RESULTADOS — BRASIL
-══════════════════════════════════════════ -->
+<!-- ══ SLIDE 6 · RESULTADOS — BRASIL ══ -->
 <div class="slide" id="sl6" data-tag="Resultados — Brasil" data-sub="Crescimento quantitativo com regressão estrutural">
   <div class="noise"></div>
   <div class="si">
@@ -788,13 +699,15 @@ p em{color:var(--gold-l);font-style:italic}
         </div>
         <div class="eyebrow" style="font-size:.6em;color:var(--text-m)">Tabela 3 — Composição por intensidade tecnológica (anos selecionados)</div>
         <div id="br-chart-rows"></div>
-        <div class="card red-l" style="margin-top:.55em;padding:10px 14px">
+        <!-- FONTE ABNT: Tabela 3 / stacked bar -->
+        <span class="fonte-abnt">Fonte: Elaborado pelo autor com base em Comex Stat/MDIC, 2026.</span>
+        <div class="card red-l" style="margin-top:.45em;padding:10px 14px">
           <p style="font-size:.8em;margin:0"><strong>Fato crítico:</strong> o fluxo cresceu 52×, mas manufaturados caíram de US$ 320 mi (2001) para US$ 240 mi (2025) em termos absolutos. O Brasil exporta hoje <em>menos manufaturados</em> do que há 24 anos.</p>
         </div>
       </div>
-      <div style="display:grid;grid-template-rows:auto auto 1fr auto;gap:.55em;min-height:0;overflow:hidden">
-        <div class="eyebrow" style="font-size:.6em;color:var(--text-m)">Tabela 2 — Top 5 produtos na pauta BR→CN (2025)</div>
-        <table class="tbl" style="margin:0">
+      <div style="display:flex;flex-direction:column;gap:.55em;min-height:0;overflow:hidden">
+        <div class="eyebrow" style="font-size:.6em;color:var(--text-m);flex-shrink:0">Tabela 2 — Top 5 produtos na pauta BR→CN (2025)</div>
+        <table class="tbl" style="margin:0;flex-shrink:0">
           <thead><tr><th>Produto</th><th class="num">US$ bi</th><th class="pct">%</th><th>Participação</th></tr></thead>
           <tbody>
             <tr><td>Soja</td><td class="num">34,6</td><td class="pct">34,5</td><td class="bar-td"><div class="ibar"><div class="ifill" style="width:0%" data-w="100%"></div></div></td></tr>
@@ -804,19 +717,21 @@ p em{color:var(--gold-l);font-style:italic}
             <tr><td>Celulose</td><td class="num">4,9</td><td class="pct">4,9</td><td class="bar-td"><div class="ibar"><div class="ifill" style="width:0%" data-w="14%"></div></div></td></tr>
           </tbody>
         </table>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.55em;min-height:0;overflow:hidden">
-          <div class="card red-bg" style="text-align:center;padding:.65em .7em;overflow:hidden">
-            <div class="sval" style="color:var(--red-l);font-size:1.3em">2003–11</div>
-            <div style="font-family:var(--mono);font-size:.58em;color:var(--text-m);margin-top:.15em">Superciclo das commodities</div>
-            <p style="font-size:.74em;margin-top:.35em;margin-bottom:0;line-height:1.5">Demanda chinesa por primários torna a especialização financeiramente atraente. Sem política industrial, o Brasil deriva sem resistência.</p>
+        <!-- FONTE ABNT: Tabela 2 -->
+        <span class="fonte-abnt" style="flex-shrink:0;margin-top:-.2em">Fonte: Elaborado pelo autor com base em Comex Stat/MDIC, 2026.</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.55em;flex:1;min-height:0;overflow:hidden">
+          <div class="card red-bg" style="text-align:center;padding:.5em .65em;overflow:hidden">
+            <div class="sval" style="color:var(--red-l);font-size:1.1em;margin-bottom:.1em">2003–11</div>
+            <div style="font-family:var(--mono);font-size:.56em;color:var(--text-m);margin-bottom:.3em">Superciclo das commodities</div>
+            <p style="font-size:.72em;margin:0;line-height:1.55;text-align:left">Demanda chinesa por primários torna a especialização financeiramente atraente. Sem política industrial, o Brasil deriva sem resistência.</p>
           </div>
-          <div class="card red-bg" style="text-align:center;padding:.65em .7em;overflow:hidden">
-            <div class="sval" style="color:var(--red-l);font-size:1.3em">2013+</div>
-            <div style="font-family:var(--mono);font-size:.58em;color:var(--text-m);margin-top:.15em">Desindustrialização precoce</div>
-            <p style="font-size:.74em;margin-top:.35em;margin-bottom:0;line-height:1.5">Mesmo após o superciclo, manufaturados não recuperam participação (Oreiro & Feijó, 2010). A China fez o oposto: política industrial ativa.</p>
+          <div class="card red-bg" style="text-align:center;padding:.5em .65em;overflow:hidden">
+            <div class="sval" style="color:var(--red-l);font-size:1.1em;margin-bottom:.1em">2013+</div>
+            <div style="font-family:var(--mono);font-size:.56em;color:var(--text-m);margin-bottom:.3em">Desindustrialização precoce</div>
+            <p style="font-size:.72em;margin:0;line-height:1.55;text-align:left">Mesmo após o superciclo, manufaturados não recuperam participação (Oreiro & Feijó, 2010). A China fez o oposto: política industrial ativa.</p>
           </div>
         </div>
-        <div class="card gold-bg" style="padding:.65em 1em">
+        <div class="card gold-bg" style="padding:.65em 1em;flex-shrink:0">
           <p style="font-size:.82em;margin:0"><strong>Diagnóstico furtadiano confirmado:</strong> modernização sem desenvolvimento. A escala mudou. A estrutura, não.</p>
         </div>
       </div>
@@ -824,9 +739,7 @@ p em{color:var(--gold-l);font-style:italic}
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 7 · TIMELINE INDUSTRIALIZAÇÃO BAHIA
-══════════════════════════════════════════ -->
+<!-- ══ SLIDE 7 · TRAJETÓRIA BAHIA ══ -->
 <div class="slide" id="sl7" data-tag="Trajetória — Bahia" data-sub="Industrialização e reprimarização: Pessoti e Spinola">
   <div class="noise"></div>
   <div class="si">
@@ -895,9 +808,7 @@ p em{color:var(--gold-l);font-style:italic}
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 8 · RESULTADOS — BAHIA
-══════════════════════════════════════════ -->
+<!-- ══ SLIDE 8 · RESULTADOS — BAHIA ══ -->
 <div class="slide" id="sl8" data-tag="Resultados — Bahia" data-sub="Pauta subnacional e municípios">
   <div class="noise"></div>
   <div class="si">
@@ -927,6 +838,9 @@ p em{color:var(--gold-l);font-style:italic}
         <div class="mun-note">Inserção marginal e errática<br>Revela: seletividade territorial extrema<br>Dois municípios = quase toda a pauta</div>
       </div>
     </div>
+    <!-- FONTE ABNT: cards municípios -->
+    <span class="fonte-abnt" style="margin-bottom:.6em">Fonte: Elaborado pelo autor com base em Comex Stat/MDIC e SEI-BA, 2026.</span>
+    <div style="height:1px;background:var(--border);margin-bottom:.6em;flex-shrink:0"></div>
     <div class="two anim" style="gap:1.15em">
       <div>
         <div class="eyebrow" style="font-size:.6em;color:var(--text-m)">Tabela 4 — Pauta exportadora baiana para China (2025)</div>
@@ -939,6 +853,8 @@ p em{color:var(--gold-l);font-style:italic}
             <tr><td>Sulfetos de cobre</td><td class="num">0,176</td><td class="pct">5,4</td><td class="bar-td"><div class="ibar"><div class="ifill" style="width:0%" data-w="10%"></div></div></td></tr>
           </tbody>
         </table>
+        <!-- FONTE ABNT: Tabela 4 -->
+        <span class="fonte-abnt">Fonte: Elaborado pelo autor com base em Comex Stat/MDIC, 2026.</span>
       </div>
       <div class="card red-bg" style="padding:.85em 1.15em;display:flex;flex-direction:column;justify-content:center">
         <div class="eyebrow" style="color:var(--red-l)">Regressão interna na própria pauta baiana</div>
@@ -949,9 +865,7 @@ p em{color:var(--gold-l);font-style:italic}
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 9 · ARGUMENTO DAS ESCALAS
-══════════════════════════════════════════ -->
+<!-- ══ SLIDE 9 · ARGUMENTO DAS ESCALAS ══ -->
 <div class="slide" id="sl9" data-tag="Argumento das Escalas" data-sub="Brasil · Bahia · Municípios — o mesmo padrão em todas as escalas">
   <div class="noise"></div>
   <div class="si">
@@ -990,9 +904,7 @@ p em{color:var(--gold-l);font-style:italic}
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 10 · RESPOSTA À PERGUNTA DE PESQUISA
-══════════════════════════════════════════ -->
+<!-- ══ SLIDE 10 · RESPOSTA À PERGUNTA ══ -->
 <div class="slide" id="sl10" data-tag="Resposta à Pergunta" data-sub="Fechamento científico — hipótese confirmada">
   <div class="noise"></div>
   <div class="si" style="font-size:.84em">
@@ -1016,19 +928,14 @@ p em{color:var(--gold-l);font-style:italic}
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 11 · CONCLUSÃO
-══════════════════════════════════════════ -->
+<!-- ══ SLIDE 11 · CONCLUSÃO ══ -->
 <div class="slide" id="sl11" data-tag="Conclusão" data-sub="O diagnóstico não é o destino — globalização como possibilidade">
   <div class="noise"></div>
   <div class="si" style="font-size:.88em">
     <div class="eyebrow">Slide 11 · Considerações Finais</div>
     <h2>O diagnóstico não é o <em>destino</em></h2>
     <div class="slide-rule"></div>
-    <!-- 3-col layout: Políticas | Oportunidade + Milton | Limitações + Citação -->
     <div style="display:grid;grid-template-columns:1fr 1.1fr .9fr;gap:.9em;flex:1;min-height:0">
-
-      <!-- COL 1: 4 políticas -->
       <div style="display:flex;flex-direction:column;gap:.6em">
         <div class="eyebrow" style="color:var(--teal-l)">Quatro direções de política</div>
         <div class="card" style="flex:1;border-top:2px solid var(--teal);padding:.75em .9em">
@@ -1052,8 +959,6 @@ p em{color:var(--gold-l);font-style:italic}
           <p style="font-size:.78em;margin:0">Receitas do agronegócio direcionadas para diversificação industrial, rompendo o ciclo primário.</p>
         </div>
       </div>
-
-      <!-- COL 2: Janela + Milton Santos -->
       <div style="display:flex;flex-direction:column;gap:.6em">
         <div class="card teal-bg" style="flex:1;padding:.85em 1em">
           <div class="eyebrow" style="color:var(--teal-l)">A janela de oportunidade</div>
@@ -1068,8 +973,6 @@ p em{color:var(--gold-l);font-style:italic}
           <div style="padding:.45em .7em;background:rgba(112,96,168,.1);border-left:2px solid var(--purple-l);font-size:.76em;color:var(--purple-l);margin-top:auto">O IHAC Milton Santos (UFBA) é a casa onde minha formação começou.</div>
         </div>
       </div>
-
-      <!-- COL 3: Limitações + Pesquisa futura + Citação -->
       <div style="display:flex;flex-direction:column;gap:.6em">
         <div class="card red-bg" style="padding:.8em .95em">
           <div class="eyebrow" style="color:var(--red-l)">Limitações</div>
@@ -1088,7 +991,6 @@ p em{color:var(--gold-l);font-style:italic}
           <div class="attr" style="margin-top:.5em">Caio Soares · Considerações Finais · 2026</div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -1096,12 +998,10 @@ p em{color:var(--gold-l);font-style:italic}
 </div><!-- /deck -->
 
 <script>
-// ── SLIDES DATA ──
 const slides = document.querySelectorAll('.slide');
 const N = slides.length;
 let cur = 0;
 
-// Dots
 const dotsEl = document.getElementById('tb-dots');
 slides.forEach((_,i) => {
   const d = document.createElement('div');
@@ -1123,18 +1023,14 @@ function goTo(n) {
   document.getElementById('tb-cnt').textContent = (cur+1)+' / '+N;
   document.getElementById('btn-prev').disabled = cur===0;
   document.getElementById('btn-next').disabled = cur===N-1;
-  // trigger animations for current slide
   animateSlide(cur);
 }
 
 document.getElementById('btn-prev').addEventListener('click', e => { e.stopPropagation(); goTo(cur-1); });
 document.getElementById('btn-next').addEventListener('click', e => { e.stopPropagation(); goTo(cur+1); });
 document.getElementById('btn-prev').disabled = true;
-
-// Click on slide = advance
 document.getElementById('deck').addEventListener('click', () => goTo(cur+1));
 
-// Keyboard
 document.addEventListener('keydown', e => {
   if(['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); goTo(cur+1); }
   if(['ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); goTo(cur-1); }
@@ -1143,14 +1039,12 @@ document.addEventListener('keydown', e => {
     else document.exitFullscreen();
   }
 });
-
 document.getElementById('btn-fs').addEventListener('click', e => {
   e.stopPropagation();
   if(!document.fullscreenElement) document.documentElement.requestFullscreen();
   else document.exitFullscreen();
 });
 
-// ── BUILD BR CHART ──
 const brData = [
   {yr:'2001',tot:'1,9 bi', p:62,s:20,m:18},
   {yr:'2005',tot:'6,8 bi', p:69,s:26,m:5.5},
@@ -1175,8 +1069,6 @@ brData.forEach(d => {
   brContainer.appendChild(row);
 });
 
-// ── MANUF LINE CHART (SVG) ──
-// ── ANIMATE SLIDE ──
 function animateSlide(idx) {
   const sl = slides[idx];
   setTimeout(() => {
@@ -1184,79 +1076,47 @@ function animateSlide(idx) {
     sl.querySelectorAll('.bseg[data-w]').forEach(el => { el.style.width = el.dataset.w + '%'; });
   }, 120);
 
-  // Circle animation on slide 1
   if (idx === 1) {
-    // Reset
-    ['qf1','qf2','qf3','qf4'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.style.opacity = '0';
-    });
-    ['qa1','qa2','qa3','qa4'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.style.strokeDashoffset = '160';
-    });
-    document.querySelectorAll('.qlbl').forEach(el => el.style.opacity = '0');
-
+    ['qf1','qf2','qf3','qf4'].forEach(id => { const el = document.getElementById(id); if(el) el.style.opacity='0'; });
+    ['qa1','qa2','qa3','qa4'].forEach(id => { const el = document.getElementById(id); if(el) el.style.strokeDashoffset='160'; });
+    document.querySelectorAll('.qlbl').forEach(el => el.style.opacity='0');
     setTimeout(() => {
-      // Fills fade in staggered
-      ['qf1','qf2','qf3','qf4'].forEach((id, i) => {
-        const el = document.getElementById(id);
-        if (el) setTimeout(() => { el.style.opacity = '1'; }, i * 150);
-      });
-      // Arcs draw in staggered
-      ['qa1','qa2','qa3','qa4'].forEach((id, i) => {
-        const el = document.getElementById(id);
-        if (el) setTimeout(() => { el.style.strokeDashoffset = '0'; }, 200 + i * 200);
-      });
-      // Labels fade in last
-      document.querySelectorAll('.qlbl').forEach((el, i) => {
-        setTimeout(() => { el.style.opacity = '1'; }, 900 + i * 80);
-      });
+      ['qf1','qf2','qf3','qf4'].forEach((id,i) => { const el=document.getElementById(id); if(el) setTimeout(()=>{el.style.opacity='1';},i*150); });
+      ['qa1','qa2','qa3','qa4'].forEach((id,i) => { const el=document.getElementById(id); if(el) setTimeout(()=>{el.style.strokeDashoffset='0';},200+i*200); });
+      document.querySelectorAll('.qlbl').forEach((el,i) => { setTimeout(()=>{el.style.opacity='1';},900+i*80); });
     }, 100);
   }
+
   if (idx === 2) {
     const neq = document.getElementById('neq-sign');
     if (neq) {
-      neq.textContent = '=';
-      neq.style.color = '#556070';
-      neq.style.transform = 'scale(1)';
+      neq.textContent='='; neq.style.color='#556070'; neq.style.transform='scale(1)';
       setTimeout(() => {
-        neq.style.transition = 'all .35s ease';
-        neq.style.transform = 'scale(1.3)';
-        neq.style.color = '#c85050';
-        setTimeout(() => {
-          neq.textContent = '≠';
-          neq.style.transform = 'scale(1)';
-        }, 350);
+        neq.style.transition='all .35s ease'; neq.style.transform='scale(1.3)'; neq.style.color='#c85050';
+        setTimeout(() => { neq.textContent='≠'; neq.style.transform='scale(1)'; }, 350);
       }, 800);
     }
   }
 
-  // SVG chart animation on slide 3
   if (idx === 3) {
     const line = document.getElementById('ml2');
     const area = document.getElementById('ma2');
     if (line && area) {
-      line.classList.remove('drawn');
-      area.classList.remove('drawn');
+      line.classList.remove('drawn'); area.classList.remove('drawn');
       document.querySelectorAll('.dpc').forEach(el => el.classList.remove('show'));
       setTimeout(() => {
         line.classList.add('drawn');
         setTimeout(() => { area.classList.add('drawn'); }, 900);
         ['dpa','dpb','dpc_','dpd','dla','dlb','dlc','dld','ann2'].forEach((id,i) => {
-          const el = document.getElementById(id);
-          if (el) setTimeout(() => el.classList.add('show'), 1200 + i*130);
+          const el=document.getElementById(id); if(el) setTimeout(()=>el.classList.add('show'),1200+i*130);
         });
       }, 80);
     }
   }
 }
 
-// init first slide
 document.getElementById('btn-next').disabled = false;
 animateSlide(0);
-
-// Reinit on slide change
 document.addEventListener('keydown', () => setTimeout(() => animateSlide(cur), 50));
 </script>
 </body>
