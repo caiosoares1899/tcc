@@ -657,18 +657,47 @@ p em{color:var(--gold-l);font-style:italic}
       <div style="background:var(--card);border:1px solid var(--border);padding:.9em 1.4em .5em;flex-shrink:0">
         <div style="font-family:var(--mono);font-size:.6em;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-d);text-align:center;margin-bottom:.6em">A Trama · Quatro Fios, Um Argumento</div>
         <svg viewBox="0 0 800 70" preserveAspectRatio="xMidYMid meet" style="width:100%;height:3.8em;display:block;overflow:visible">
-          <path d="M100,35 C150,10 250,10 300,35" fill="none" stroke="#6a9fc0" stroke-width="2" opacity=".7"/>
-          <path d="M300,35 C350,10 450,10 500,35" fill="none" stroke="#c9a84c" stroke-width="2" opacity=".7"/>
-          <path d="M500,35 C550,10 650,10 700,35" fill="none" stroke="#3a8a8a" stroke-width="2" opacity=".7"/>
-          <path d="M100,35 C150,60 250,60 300,35" fill="none" stroke="#c9a84c" stroke-width="2" opacity=".6"/>
-          <path d="M300,35 C350,60 450,60 500,35" fill="none" stroke="#3a8a8a" stroke-width="2" opacity=".6"/>
-          <path d="M500,35 C550,60 650,60 700,35" fill="none" stroke="#9880cc" stroke-width="2" opacity=".6"/>
-          <path d="M100,35 C250,12 550,12 700,35" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="6,5" opacity=".3"/>
-          <path d="M100,35 C250,58 550,58 700,35" fill="none" stroke="#9880cc" stroke-width="1" stroke-dasharray="4,6" opacity=".25"/>
-          <circle cx="100" cy="35" r="9" fill="#6a9fc0" stroke="#0c1118" stroke-width="2"/>
-          <circle cx="300" cy="35" r="9" fill="#c9a84c" stroke="#0c1118" stroke-width="2"/>
-          <circle cx="500" cy="35" r="9" fill="#3a8a8a" stroke="#0c1118" stroke-width="2"/>
-          <circle cx="700" cy="35" r="9" fill="#9880cc" stroke="#0c1118" stroke-width="2"/>
+          <defs>
+            <style>
+              .fio1{stroke-dasharray:320;animation:weave1 5s ease-in-out infinite}
+              .fio2{stroke-dasharray:320;animation:weave2 5.8s ease-in-out infinite}
+              .fio3{stroke-dasharray:320;animation:weave3 4.8s ease-in-out infinite}
+              .fio4{stroke-dasharray:320;animation:weave4 5.4s ease-in-out infinite}
+              .fio5{stroke-dasharray:320;animation:weave2 6.2s ease-in-out infinite}
+              .fio6{stroke-dasharray:320;animation:weave1 4.6s ease-in-out infinite}
+              .fio-long1{stroke-dasharray:700;animation:drawLong1 6s ease-in-out infinite}
+              .fio-long2{stroke-dasharray:700;animation:drawLong2 7s ease-in-out infinite}
+              .nd{animation:nodePulse 5s ease-in-out infinite}
+              .nd2{animation:nodePulse 5s 0.4s ease-in-out infinite}
+              .nd3{animation:nodePulse 5s 0.8s ease-in-out infinite}
+              .nd4{animation:nodePulse 5s 1.2s ease-in-out infinite}
+              /* 0%→35%: anima · 35%→65%: freeze na trama completa · 65%→100%: anima de volta */
+              @keyframes weave1{0%{stroke-dashoffset:320}35%{stroke-dashoffset:0}65%{stroke-dashoffset:0}100%{stroke-dashoffset:320}}
+              @keyframes weave2{0%{stroke-dashoffset:-320}35%{stroke-dashoffset:0}65%{stroke-dashoffset:0}100%{stroke-dashoffset:-320}}
+              @keyframes weave3{0%{stroke-dashoffset:-160}35%{stroke-dashoffset:0}65%{stroke-dashoffset:0}100%{stroke-dashoffset:-160}}
+              @keyframes weave4{0%{stroke-dashoffset:240}35%{stroke-dashoffset:0}65%{stroke-dashoffset:0}100%{stroke-dashoffset:240}}
+              @keyframes drawLong1{0%{stroke-dashoffset:700}35%{stroke-dashoffset:0}65%{stroke-dashoffset:0}100%{stroke-dashoffset:700}}
+              @keyframes drawLong2{0%{stroke-dashoffset:-700}35%{stroke-dashoffset:0}65%{stroke-dashoffset:0}100%{stroke-dashoffset:-700}}
+              @keyframes nodePulse{0%,100%{r:9}35%{r:7}65%{r:7}}
+            </style>
+          </defs>
+          <!-- fios superiores -->
+          <path class="fio1" d="M100,35 C150,10 250,10 300,35" fill="none" stroke="#6a9fc0" stroke-width="2" opacity=".7"/>
+          <path class="fio2" d="M300,35 C350,10 450,10 500,35" fill="none" stroke="#c9a84c" stroke-width="2" opacity=".7"/>
+          <path class="fio3" d="M500,35 C550,10 650,10 700,35" fill="none" stroke="#3a8a8a" stroke-width="2" opacity=".7"/>
+          <!-- fios inferiores -->
+          <path class="fio4" d="M100,35 C150,60 250,60 300,35" fill="none" stroke="#c9a84c" stroke-width="2" opacity=".6"/>
+          <path class="fio5" d="M300,35 C350,60 450,60 500,35" fill="none" stroke="#3a8a8a" stroke-width="2" opacity=".6"/>
+          <path class="fio6" d="M500,35 C550,60 650,60 700,35" fill="none" stroke="#9880cc" stroke-width="2" opacity=".6"/>
+          <!-- fios longos cruzados -->
+          <path class="fio-long1" d="M100,35 C250,12 550,12 700,35" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="6,5" opacity=".4"/>
+          <path class="fio-long2" d="M100,35 C250,58 550,58 700,35" fill="none" stroke="#9880cc" stroke-width="1" stroke-dasharray="4,6" opacity=".35"/>
+          <!-- nós -->
+          <circle class="nd"  cx="100" cy="35" r="9" fill="#6a9fc0" stroke="#0c1118" stroke-width="2"/>
+          <circle class="nd2" cx="300" cy="35" r="9" fill="#c9a84c" stroke="#0c1118" stroke-width="2"/>
+          <circle class="nd3" cx="500" cy="35" r="9" fill="#3a8a8a" stroke="#0c1118" stroke-width="2"/>
+          <circle class="nd4" cx="700" cy="35" r="9" fill="#9880cc" stroke="#0c1118" stroke-width="2"/>
+          <!-- pontos de cruzamento -->
           <circle cx="200" cy="18" r="3.5" fill="#6a9fc0" stroke="#0c1118" stroke-width="1" opacity=".8"/>
           <circle cx="200" cy="52" r="3.5" fill="#c9a84c" stroke="#0c1118" stroke-width="1" opacity=".8"/>
           <circle cx="400" cy="18" r="3.5" fill="#c9a84c" stroke="#0c1118" stroke-width="1" opacity=".8"/>
