@@ -4,22 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dinâmica Exportadora e Dependência Estrutural: as relações Bahia–China no século XXI sob a perspectiva furtadiana</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0c1118;--surface:#121a22;--card:#18232e;--card2:#1d2a37;
-  --border:#243040;--border2:#2e3d50;
-  --gold:#c9a84c;--gold-l:#dfc070;--gold-d:#7a6030;
-  --teal:#3a8a8a;--teal-l:#5bbcbc;
-  --red:#a83838;--red-l:#c85050;
-  --purple:#7060a8;--purple-l:#9880cc;
-  --text:#e6ddd0;--text-d:#9a9080;--text-m:#556070;
-  --serif:'Playfair Display',Georgia,serif;
-  --body:'Source Serif 4',Georgia,serif;
+  --bg:#070c12;--surface:#0d1520;--card:#111d2a;--card2:#162130;
+  --border:#1e3045;--border2:#273f55;
+  --gold:#e0b94a;--gold-l:#f5d35e;--gold-d:#9a7820;
+  --teal:#2a9d9d;--teal-l:#45d4d4;
+  --red:#c04040;--red-l:#e05858;
+  --purple:#8070c0;--purple-l:#b090e8;
+  --text:#f5f2ee;--text-d:#cfc8c0;--text-m:#8a98a6;
+  --serif:'Space Grotesk',system-ui,sans-serif;
+  --body:'Archivo',system-ui,sans-serif;
   --mono:'DM Mono',monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{font-size:clamp(12px, 1.45vw, 22px)}
+html{font-size:clamp(13px, 1.6vw, 24px)}
 body{
   width:100vw;height:100vh;overflow:hidden;
   background:var(--bg);color:var(--text);
@@ -71,14 +71,14 @@ body{
 .col{display:flex;flex-direction:column;gap:.6em;min-height:0}
 
 .eyebrow{font-family:var(--mono);font-size:.62em;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4em}
-h1{font-family:var(--serif);font-size:2.2em;font-weight:700;line-height:1.18;color:var(--text);letter-spacing:-.01em}
-h1 em{color:var(--gold);font-style:italic}
-h2{font-family:var(--serif);font-size:1.55em;font-weight:700;line-height:1.22;color:var(--text);margin-bottom:.5em;letter-spacing:-.01em}
+h1{font-family:var(--serif);font-size:1.9em;font-weight:700;line-height:1.18;color:var(--text);letter-spacing:-.022em}
+h1 em{color:var(--gold-l);font-style:normal}
+h2{font-family:var(--serif);font-size:1.8em;font-weight:700;line-height:1.18;color:var(--text);margin-bottom:.5em;letter-spacing:-.025em}
 h2 em{color:var(--teal-l);font-style:normal}
-h3{font-family:var(--serif);font-size:.98em;font-weight:600;color:var(--gold);margin-bottom:.3em}
-p{color:var(--text-d);font-size:.84em;line-height:1.65;margin-bottom:.4em}
+h3{font-family:var(--serif);font-size:1.1em;font-weight:600;color:var(--gold-l);margin-bottom:.3em}
+p{color:var(--text-d);font-size:.94em;line-height:1.6;margin-bottom:.4em}
 p strong{color:var(--text);font-weight:600}
-p em{color:var(--gold-l);font-style:italic}
+p em{color:var(--gold-l);font-style:normal;font-weight:600}
 
 .card{background:var(--card);border:1px solid var(--border);padding:.75em 1em}
 .card.gold-t{border-top:2px solid var(--gold)}
@@ -96,8 +96,8 @@ p em{color:var(--gold-l);font-style:italic}
 
 .stat-row{display:flex;gap:.6em;margin-bottom:.7em}
 .stat{flex:1;background:var(--card);border:1px solid var(--border);padding:.7em .8em;text-align:center}
-.sval{font-family:var(--serif);font-size:1.8em;font-weight:700;line-height:1;margin-bottom:.1em}
-.slbl{font-family:var(--mono);font-size:.58em;letter-spacing:.12em;text-transform:uppercase;color:var(--text-m);margin-bottom:.2em;display:block}
+.sval{font-family:var(--serif);font-size:2em;font-weight:700;line-height:1;margin-bottom:.1em}
+.slbl{font-family:var(--mono);font-size:.62em;letter-spacing:.12em;text-transform:uppercase;color:var(--text-m);margin-bottom:.2em;display:block}
 .ssub{font-size:.72em;color:var(--text-d);line-height:1.4}
 
 .tbl{width:100%;border-collapse:collapse;font-size:.78em;margin-bottom:.7em}
@@ -132,7 +132,7 @@ p em{color:var(--gold-l);font-style:italic}
 .tm-yr{font-family:var(--mono);font-size:.68em;color:var(--gold);text-align:center;margin-bottom:.6em;margin-top:.3em;font-weight:500;letter-spacing:.06em}
 .tm-box{background:var(--card);border:1px solid var(--border);border-top:2px solid var(--gold);padding:.6em .7em;overflow:hidden}
 .tm-box.teal{border-top-color:var(--teal)}.tm-box.red{border-top-color:var(--red)}
-.tm-tit{font-family:var(--serif);font-size:.88em;font-weight:700;color:var(--text);margin-bottom:.25em}
+.tm-tit{font-family:var(--serif);font-size:1.05em;font-weight:700;color:var(--text);margin-bottom:.25em}
 .tm-dsc{font-size:.75em;color:var(--text-d);line-height:1.5}
 .tm-ref{font-family:var(--mono);font-size:.65em;color:var(--text-m);margin-top:.35em;font-style:italic}
 
@@ -162,7 +162,7 @@ p em{color:var(--gold-l);font-style:italic}
 .mun.lem .mun-fill{background:var(--gold)}.mun.cam .mun-fill{background:var(--teal)}.mun.sfc .mun-fill{background:var(--text-m)}
 .mun-note{font-family:var(--mono);font-size:.62em;color:var(--text-m);line-height:1.5}
 
-.popper-vs{display:grid;grid-template-columns:1fr auto 1fr;gap:0;border:1px solid var(--border);overflow:hidden;margin-bottom:.6em;max-height:42%}
+.popper-vs{display:grid;grid-template-columns:1fr auto 1fr;gap:0;border:1px solid var(--border);overflow:hidden;margin-bottom:.6em}
 .pv-side{padding:.65em .85em;display:flex;flex-direction:column;gap:.35em;overflow:hidden}
 .pv-left{background:rgba(106,159,192,.06)}.pv-right{background:rgba(58,138,138,.08)}
 .pv-mid{display:flex;align-items:center;justify-content:center;background:var(--card2);padding:0 .7em;border-left:1px solid var(--border);border-right:1px solid var(--border)}
@@ -193,14 +193,14 @@ p em{color:var(--gold-l);font-style:italic}
 .chk-desc{font-size:.78em;color:var(--text-d)}
 
 .fquote{padding:1em 1.4em;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--gold);margin-top:.7em}
-.fquote q{font-family:var(--serif);font-style:italic;font-size:.95em;color:var(--text);line-height:1.6;display:block;margin-bottom:.35em}
+.fquote q{font-family:var(--serif);font-style:normal;font-weight:600;font-size:.98em;color:var(--text);line-height:1.5;display:block;margin-bottom:.35em}
 .fquote .attr{font-family:var(--mono);font-size:.6em;color:var(--text-m);letter-spacing:.1em}
 
 .chart-wrap{background:var(--card);border:1px solid var(--border);padding:.65em .9em .5em;position:relative;flex:1;display:flex;flex-direction:column}
 .chart-wrap svg{display:block;width:100%;flex:1}
 
 #sl0 .capa-inner,#sl-obrigado .capa-inner{display:flex;height:100%;position:relative;width:100%}
-#sl0 .capa-l,#sl-obrigado .capa-l{width:54%;padding:0 2.5em;display:flex;flex-direction:column;justify-content:center;z-index:2}
+#sl0 .capa-l,#sl-obrigado .capa-l{width:52%;padding:0 2.8em 0 3.2em;display:flex;flex-direction:column;justify-content:center;z-index:2}
 #sl0 .capa-r,#sl-obrigado .capa-r{flex:1;position:relative;overflow:hidden}
 .capa-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:2.5em 2.5em;opacity:.28}
 .capa-orb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:22vw;height:22vw;border-radius:50%;background:radial-gradient(circle at 38% 38%,rgba(58,138,138,.32),rgba(201,168,76,.1) 55%,transparent 100%);border:1px solid rgba(58,138,138,.22);animation:float 6s ease-in-out infinite}
@@ -236,6 +236,9 @@ p em{color:var(--gold-l);font-style:italic}
 .si-compact p{font-size:.8em;margin-bottom:.35em}
 .si-compact .eyebrow{margin-bottom:.3em}
 
+#sl6 .brow{margin-bottom:.25em}
+#sl6 .bvis{height:1.15em}
+#sl6 .legend{margin-bottom:.35em}
 @keyframes float{0%,100%{transform:translate(-50%,-52%)}50%{transform:translate(-50%,-48%)}}
 @keyframes spin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
 @keyframes slideUp{from{opacity:0;transform:translateY(.8em)}to{opacity:1;transform:translateY(0)}}
@@ -260,13 +263,15 @@ p em{color:var(--gold-l);font-style:italic}
 
 <div id="deck">
 
+<div style="position:fixed;bottom:6px;right:10px;z-index:9999;font-family:'DM Mono',monospace;font-size:9px;color:#5a6a7a;letter-spacing:.05em;pointer-events:none;opacity:.7">v3.6</div>
+
 <!-- ══ SLIDE 0 · CAPA ══ -->
 <div class="slide active" id="sl0" data-tag="Capa" data-sub="Defesa de TCC · Caio Soares · 2026">
   <div class="noise"></div>
   <div class="capa-inner">
     <div class="capa-l">
       <div class="tb-tag" style="width:fit-content;margin-bottom:1.45em">UNIFACS · CIÊNCIAS ECONÔMICAS · 2026</div>
-      <h1>Dinâmica Exportadora e <em>Dependência Estrutural</em>:<br>as relações Bahia–China no século XXI<br>sob a perspectiva furtadiana</h1>
+      <h1>Dinâmica Exportadora e <em>Dependência Estrutural</em>: as relações Bahia–China no século XXI sob a perspectiva furtadiana</h1>
       <p style="font-size:.95em;color:var(--text-d);margin-top:.85em;max-width:30em">Reprimarização da pauta exportadora baiana · Comex Stat/MDIC · 2001–2025</p>
       <div class="capa-meta">
         <div class="meta-i"><span class="meta-l">Autor</span><span class="meta-v">Caio Oliveira dos Santos Soares</span></div>
@@ -452,26 +457,26 @@ p em{color:var(--gold-l);font-style:italic}
         <div class="card gold-t" style="flex:1;padding:.65em .9em">
           <div class="eyebrow" style="color:var(--text-m);font-size:.58em">01 · Humanidades · UFBA</div>
           <h3 style="font-size:.92em;margin-bottom:.2em">Bacharelado Interdisciplinar</h3>
-          <p style="font-size:.78em;margin:0">Formação no <strong>IHAC Milton Santos</strong> (Instituto de Humanidades, Artes e Ciências), a mesma casa intelectual do geógrafo que integra o referencial teórico deste trabalho. Base em humanidades, ciências sociais e pensamento territorial.</p>
+          <p style="font-size:.8em;margin:0"><strong>IHAC Milton Santos</strong> (Instituto de Humanidades, Artes e Ciências). Aprendizado sobre humanidades e território.</p>
         </div>
         <div class="card gold-t" style="flex:1;padding:.65em .9em">
           <div class="eyebrow" style="color:var(--text-m);font-size:.58em">02 · Economia · UNIFACS</div>
           <h3 style="font-size:.92em;margin-bottom:.2em">Ciências Econômicas</h3>
-          <p style="font-size:.78em;margin:0">Descoberta de Celso Furtado e o compromisso de <strong>construir teoria econômica a partir do Sul</strong>. O problema do subdesenvolvimento como problema real e urgente.</p>
+          <p style="font-size:.8em;margin:0">Descoberta de <strong>Celso Furtado</strong> e de uma economia construída pela perspectiva Sul-Sul.</p>
         </div>
         <div class="card teal-t" style="flex:1;padding:.65em .9em">
           <div class="eyebrow" style="color:var(--text-m);font-size:.58em">03 · Gestão · Hering</div>
-          <h3 style="font-size:.92em;margin-bottom:.2em">Empresa de Moda</h3>
-          <p style="font-size:.78em;margin:0">Atuação em uma das maiores indústrias nacionais. Compreensão direta de cadeias produtivas e tomada de decisão em ambiente corporativo real.</p>
+          <h3 style="font-size:.92em;margin-bottom:.2em">Mercado de Trabalho</h3>
+          <p style="font-size:.8em;margin:0">Atuação em <strong>gestão</strong> em uma gigante brasileira.</p>
         </div>
         <div class="card teal-t" style="flex:1;padding:.65em .9em">
           <div class="eyebrow" style="color:var(--text-m);font-size:.58em">04 · Diplomacia · CACD</div>
           <h3 style="font-size:.92em;margin-bottom:.2em">Carreira Diplomática</h3>
-          <p style="font-size:.78em;margin:0">O CACD aprofunda o interesse em <strong>comércio exterior e política comercial</strong>. A China não é escolha aleatória: é o maior parceiro do Brasil e símbolo da transição para o eixo Sul-Sul.</p>
+          <p style="font-size:.8em;margin:0">Estudo para concurso. Aprendizado em <strong>RI, PI e Comércio Exterior</strong>.</p>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8em;min-height:0">
-        <svg id="inter-svg" viewBox="0 0 220 220" style="width:100%;max-width:22em;height:auto;display:block;flex-shrink:0" xmlns="http://www.w3.org/2000/svg">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8em;min-height:0;overflow:hidden">
+        <svg id="inter-svg" viewBox="0 0 220 220" style="width:min(100%,24em);max-height:65%;height:auto;display:block;flex-shrink:1" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="gq1" cx="25%" cy="25%" r="70%"><stop offset="0%" stop-color="#c9a84c" stop-opacity=".22"/><stop offset="100%" stop-color="#c9a84c" stop-opacity=".03"/></radialGradient>
             <radialGradient id="gq2" cx="75%" cy="25%" r="70%"><stop offset="0%" stop-color="#3a8a8a" stop-opacity=".22"/><stop offset="100%" stop-color="#3a8a8a" stop-opacity=".03"/></radialGradient>
@@ -503,7 +508,7 @@ p em{color:var(--gold-l);font-style:italic}
           <text class="qlbl" id="ql4" x="57" y="152" font-family="DM Mono,monospace" font-size="9.5" fill="#9880cc" text-anchor="middle" font-weight="600">Gestão</text>
           <text class="qlbl" id="ql4b" x="57" y="164" font-family="DM Mono,monospace" font-size="7.5" fill="#604880" text-anchor="middle">Hering</text>
         </svg>
-        <div class="card gold-bg" style="width:100%;max-width:22em;padding:.75em 1em">
+        <div class="card gold-bg" style="width:100%;padding:.75em 1em;box-sizing:border-box">
           <div class="eyebrow" style="color:var(--gold)">Por que este tema?</div>
           <p style="font-size:.84em;margin-bottom:.35em">Quatro formações, um ponto de vista único: ver a relação Brasil-China com dados, teoria estruturalista, sensibilidade territorial e vocação diplomática.</p>
           <p style="font-size:.84em;margin:0;font-style:italic;color:var(--gold-l)">É disso que este trabalho é feito.</p>
@@ -520,67 +525,60 @@ p em{color:var(--gold-l);font-style:italic}
     <div class="eyebrow">Slide 02 · A lente teórica e o método</div>
     <h2>Testar Furtado na realidade: <em>ciência ou confirmação?</em></h2>
     <div class="slide-rule"></div>
-    <div class="two" style="flex:1;min-height:0;gap:1.2em">
-      <div class="col">
-        <div class="popper-vs anim">
-          <div class="pv-side pv-left">
-            <div class="pv-lbl">O risco do pesquisador apaixonado</div>
-            <div class="pv-head">Partir de Furtado e só buscar o que confirme</div>
-            <div class="pv-desc">Quando gostamos de uma teoria, tendemos a filtrar os dados que a apoiam e ignorar os que a contradizem. Isso não é pesquisa; é propaganda acadêmica.</div>
-          </div>
-          <div class="pv-mid" style="flex-direction:column;gap:.3em">
-            <span id="neq-sign" style="font-family:var(--serif);font-size:1.8em;font-weight:700;display:inline-block">=</span>
-          </div>
-          <div class="pv-side pv-right">
-            <div class="pv-lbl">O que fizemos: confronto crítico com os dados</div>
-            <div class="pv-head">Colocar Furtado à prova com 25 anos de dados reais</div>
-            <div class="pv-desc">Tratamos a tese furtadiana como hipótese a ser testada, não como pressuposto. Perguntamos ativamente: <em>os dados refutam Furtado?</em> Só confirmamos porque a realidade resistiu ao teste — o esforço foi de refutação, não de confirmação.</div>
-          </div>
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:.85em">
+
+      <!-- LINHA SUPERIOR: popper vs — ocupa toda a largura -->
+      <div class="popper-vs anim" style="flex-shrink:0">
+        <div class="pv-side pv-left">
+          <div class="pv-lbl">O risco do pesquisador apaixonado</div>
+          <div class="pv-head">Partir de Furtado e só buscar o que confirme</div>
+          <div class="pv-desc">Filtrar dados que apoiam, ignorar os que contradizem. Não é pesquisa; é confirmação.</div>
         </div>
-        <div class="card teal-bg anim" style="margin-top:.3em">
-          <div class="eyebrow" style="color:var(--teal-l)">O que fizemos</div>
-          <p style="font-size:.85em;margin-bottom:.37em">Celso Furtado construiu sua teoria nas décadas de 1950–70, analisando economias latino-americanas de seu tempo. A questão legítima é: <strong>essas teorias ainda descrevem a realidade do século XXI?</strong></p>
-          <p style="font-size:.85em;margin:0">Testamos o argumento furtadiano confrontando-o com <strong>25 anos de dados estatísticos (2001–2025)</strong> do Comex Stat. Se a realidade refutasse Furtado, a teoria cederia aos dados. Os dados confirmaram — mas o esforço foi de teste rigoroso, não de confirmação prévia.</p>
+        <div class="pv-mid" style="flex-direction:column;gap:.3em">
+          <span id="neq-sign" style="font-family:var(--serif);font-size:1.8em;font-weight:700;display:inline-block">=</span>
+        </div>
+        <div class="pv-side pv-right">
+          <div class="pv-lbl">O confronto crítico com os dados</div>
+          <div class="pv-head">Colocar Furtado à prova com 25 anos de dados reais</div>
+          <div class="pv-desc">Furtado como hipótese a testar, não pressuposto. Só confirmamos porque a realidade resistiu ao teste.</div>
         </div>
       </div>
-      <div class="col" style="overflow:hidden;min-height:0">
-        <div class="card gold-bg anim" style="text-align:center;padding:.9em 1.2em;flex-shrink:0">
-          <div class="eyebrow" style="color:var(--gold);text-align:center">Celso Furtado — Tese Central</div>
-          <p style="font-family:var(--serif);font-style:italic;font-size:1em;color:var(--text);line-height:1.5;margin-bottom:.4em">"O subdesenvolvimento não é uma etapa;<br>é uma estrutura."</p>
+
+      <!-- LINHA INFERIOR: quote à esquerda + 3 conceitos à direita -->
+      <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:.85em;flex:1;min-height:0">
+
+        <!-- Quote Furtado -->
+        <div class="card gold-bg anim" style="display:flex;flex-direction:column;justify-content:center;padding:1.3em 1.6em;gap:.6em">
+          <div class="eyebrow" style="color:var(--gold)">Celso Furtado — Tese Central</div>
+          <p style="font-family:var(--serif);font-weight:700;font-size:1.3em;color:var(--text);line-height:1.35;margin:0">"O subdesenvolvimento não é uma etapa; é uma estrutura."</p>
           <div style="font-family:var(--mono);font-size:.6em;color:var(--text-m)">CELSO FURTADO · O MITO DO DESENVOLVIMENTO ECONÔMICO</div>
         </div>
-        <div class="three" style="gap:.6em;flex-shrink:0">
-          <div class="card" style="padding:.6em .7em;text-align:center;border-top:2px solid var(--gold)">
-            <div style="font-family:var(--mono);font-size:.6em;color:var(--text-m);margin-bottom:.3em">Conceito</div>
-            <div style="font-family:var(--serif);font-size:.95em;font-weight:700;color:var(--gold)">Desenvolvimento</div>
-            <div style="font-size:.75em;color:var(--text-d);margin-top:.22em">Transformação estrutural + internalização tecnológica</div>
-          </div>
-          <div class="card" style="padding:.6em .7em;text-align:center;border-top:2px solid var(--red-l)">
-            <div style="font-family:var(--mono);font-size:.6em;color:var(--text-m);margin-bottom:.3em">Conceito</div>
-            <div style="font-family:var(--serif);font-size:.95em;font-weight:700;color:var(--red-l)">Modernização</div>
-            <div style="font-size:.75em;color:var(--text-d);margin-top:.22em">Crescimento de escala sem mudança de estrutura</div>
-          </div>
-          <div class="card" style="padding:.6em .7em;text-align:center;border-top:2px solid #40c070">
-            <div style="font-family:var(--mono);font-size:.6em;color:var(--text-m);margin-bottom:.3em">Conceito</div>
-            <div style="font-family:var(--serif);font-size:.95em;font-weight:700;color:#40c070">Dependência</div>
-            <div style="font-size:.75em;color:var(--text-d);margin-top:.22em">Especialização periférica reproduzida</div>
-          </div>
-        </div>
-        <div class="card red-bg anim" style="padding:.65em .85em;flex-shrink:0;border:1px solid rgba(168,56,56,.3)">
-          <div class="eyebrow" style="color:var(--red-l);margin-bottom:.4em">O paradoxo brasileiro que Furtado antecipou</div>
-          <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:.5em;align-items:center;margin-bottom:.45em">
-            <div style="text-align:center;padding:.45em .6em;background:rgba(58,138,138,.1);border:1px solid rgba(58,138,138,.25);border-radius:2px">
-              <div style="font-family:var(--serif);font-size:1.25em;font-weight:700;color:var(--teal-l);line-height:1">+5.100%</div>
-              <div style="font-family:var(--mono);font-size:.55em;color:var(--text-m);margin-top:.2em">Volume exportado</div>
-            </div>
-            <div style="font-size:1.1em;color:var(--text-m);text-align:center;padding:0 .2em">≠</div>
-            <div style="text-align:center;padding:.45em .6em;background:rgba(168,56,56,.12);border:1px solid rgba(168,56,56,.25);border-radius:2px">
-              <div style="font-family:var(--serif);font-size:1.25em;font-weight:700;color:var(--red-l);line-height:1">−99%</div>
-              <div style="font-family:var(--mono);font-size:.55em;color:var(--text-m);margin-top:.2em">Manufaturados na pauta</div>
+
+        <!-- 3 conceitos empilhados -->
+        <div style="display:flex;flex-direction:column;gap:.5em;min-height:0">
+          <div class="card anim" style="flex:1;display:flex;align-items:center;gap:1em;padding:.8em 1.1em;border-left:3px solid var(--gold)">
+            <div style="font-family:var(--serif);font-size:1.5em;font-weight:800;color:var(--gold);min-width:1.8em;text-align:center;line-height:1">D</div>
+            <div>
+              <div style="font-family:var(--serif);font-size:.92em;font-weight:700;color:var(--gold);margin-bottom:.2em">Desenvolvimento</div>
+              <div style="font-size:.8em;color:var(--text-d)">Transformação estrutural + internalização tecnológica</div>
             </div>
           </div>
-          <p style="font-size:.76em;margin:0"><strong>Conclusão do teste:</strong> A escala mudou. A estrutura não. Furtado resiste ao confronto com os dados.</p>
+          <div class="card anim" style="flex:1;display:flex;align-items:center;gap:1em;padding:.8em 1.1em;border-left:3px solid var(--red-l)">
+            <div style="font-family:var(--serif);font-size:1.5em;font-weight:800;color:var(--red-l);min-width:1.8em;text-align:center;line-height:1">M</div>
+            <div>
+              <div style="font-family:var(--serif);font-size:.92em;font-weight:700;color:var(--red-l);margin-bottom:.2em">Modernização</div>
+              <div style="font-size:.8em;color:var(--text-d)">Crescimento de escala sem mudança de estrutura</div>
+            </div>
+          </div>
+          <div class="card anim" style="flex:1;display:flex;align-items:center;gap:1em;padding:.8em 1.1em;border-left:3px solid #40c070">
+            <div style="font-family:var(--serif);font-size:1.5em;font-weight:800;color:#40c070;min-width:1.8em;text-align:center;line-height:1">De</div>
+            <div>
+              <div style="font-family:var(--serif);font-size:.92em;font-weight:700;color:#40c070;margin-bottom:.2em">Dependência</div>
+              <div style="font-size:.8em;color:var(--text-d)">Especialização periférica estruturalmente reproduzida</div>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -593,7 +591,7 @@ p em{color:var(--gold-l);font-style:italic}
     <div class="eyebrow">Slide 03 · Problemática</div>
     <h2>O paradoxo da <em>regressão estrutural</em></h2>
     <div class="slide-rule"></div>
-    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:1em;flex:1;min-height:0">
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:1em;flex:1;min-height:0">
       <div style="display:flex;flex-direction:column;gap:.45em;min-height:0">
         <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:.4em;flex-shrink:0">
           <div class="stat" style="border-left:3px solid var(--teal);padding:.5em .8em">
@@ -675,28 +673,26 @@ p em{color:var(--gold-l);font-style:italic}
           <p style="font-size:.88em;color:var(--text);line-height:1.65;margin:0">Em que medida a inserção do Brasil e da Bahia nas relações comerciais com a China reproduz o padrão de <strong>dependência estrutural</strong> identificado pela perspectiva furtadiana?</p>
         </div>
         <div class="card" style="flex:1;padding:.8em 1em;display:flex;flex-direction:column">
-          <div class="eyebrow" style="color:var(--text-m)">Contexto: por que a China?</div>
-          <p style="font-size:.88em;margin-bottom:.5em">A China tornou-se o <strong>maior parceiro comercial do Brasil em 2009</strong>, superando os EUA. É a materialização da transição do eixo Norte-Sul para o <strong>Sul-Sul</strong> na geopolítica global.</p>
-          <p style="font-size:.88em;margin:0">A narrativa Sul-Sul prometia alternativa à globalização hegemônica. Os dados contestam: <strong>mesmo nas relações Sul-Sul, a lógica centro-periferia persiste.</strong></p>
+          <div class="eyebrow" style="color:var(--text-m)">O paradoxo</div>
+          <p style="font-size:.92em;margin-bottom:.5em">A China tornou-se o <strong>maior parceiro comercial do Brasil em 2009</strong>. Mas mesmo na relação Sul-Sul, a <strong>lógica centro-periferia persiste.</strong></p>
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5em;margin-top:auto;padding-top:.7em">
             <div class="card red-bg" style="text-align:center;padding:.6em .3em">
-              <div class="sval" style="font-size:1.7em;color:var(--red-l)">88%</div>
-              <div style="font-family:var(--mono);font-size:.62em;color:var(--text-m)">5 commodities dominam</div>
+              <div class="sval" style="font-size:1.9em;color:var(--red-l)">88%</div>
+              <div style="font-family:var(--mono);font-size:.62em;color:var(--text-m)">5 commodities</div>
             </div>
             <div class="card gold-bg" style="text-align:center;padding:.6em .3em">
-              <div class="sval" style="font-size:1.7em;color:var(--gold)">6.600%</div>
-              <div style="font-family:var(--mono);font-size:.62em;color:var(--text-m)">crescimento Bahia→CN</div>
+              <div class="sval" style="font-size:1.9em;color:var(--gold)">6.600%</div>
+              <div style="font-family:var(--mono);font-size:.62em;color:var(--text-m)">Bahia→CN</div>
             </div>
             <div class="card teal-bg" style="text-align:center;padding:.6em .3em">
-              <div class="sval" style="font-size:1.7em;color:var(--teal-l)">52×</div>
-              <div style="font-family:var(--mono);font-size:.62em;color:var(--text-m)">aumento do volume</div>
+              <div class="sval" style="font-size:1.9em;color:var(--teal-l)">52×</div>
+              <div style="font-family:var(--mono);font-size:.62em;color:var(--text-m)">volume total</div>
             </div>
           </div>
-          <!-- FONTE ABNT: mini-stats -->
-          <span class="fonte-abnt" style="margin-top:.5em">Fonte: Elaborado pelo autor com base em Comex Stat/MDIC, 2026.</span>
+          <span class="fonte-abnt" style="margin-top:.5em">Fonte: Comex Stat/MDIC, 2026.</span>
         </div>
         <div class="card red-l" style="padding:.75em .95em;flex-shrink:0">
-          <p style="font-size:.9em;margin:0"><strong>O paradoxo em uma frase:</strong> o Brasil exporta hoje <em>menos manufaturados para a China</em> do que em 2001, num fluxo que era 52 vezes menor.</p>
+          <p style="font-size:.95em;margin:0"><strong>O paradoxo em uma frase:</strong> o Brasil exporta hoje <em>menos manufaturados para a China</em> do que em 2001, num fluxo que era 52 vezes menor.</p>
         </div>
       </div>
     </div>
@@ -710,36 +706,51 @@ p em{color:var(--gold-l);font-style:italic}
     <div class="eyebrow">Slide 04 · Referencial teórico</div>
     <h2>A <em>trama</em> teórica: quatro vozes, um argumento</h2>
     <div class="slide-rule"></div>
-    <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:.8em">
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.9em;flex:1;min-height:0">
-        <div class="tf-card prebisch" style="border-top:3px solid #6a9fc0;background:var(--card);border:1px solid var(--border);border-top:3px solid #6a9fc0;padding:.9em 1em;display:flex;flex-direction:column">
-          <div style="font-family:var(--mono);font-size:.6em;color:#6a9fc0;letter-spacing:.1em;margin-bottom:.5em">01 · CEPAL · 1949</div>
-          <h3 style="font-family:var(--serif);font-size:1.1em;color:#8ab5d0;margin-bottom:.5em">Raúl Prebisch</h3>
-          <p style="font-size:.82em;color:var(--text-d);line-height:1.6;flex:1"><strong style="color:var(--text)">Centro-Periferia:</strong> a periferia exporta o que não transforma. Deterioração secular dos termos de troca: o Brasil precisa exportar mais soja a cada ano para importar a mesma máquina.</p>
-          <div style="margin-top:.7em;padding:.5em .7em;background:rgba(106,159,192,.08);border-left:2px solid #6a9fc0;font-size:.74em;color:#6a9fc0;font-style:italic">Fornece o <strong>diagnóstico da assimetria</strong> estrutural internacional</div>
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:1em">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.75em;flex:2.2;min-height:0">
+        <div class="tf-card prebisch" style="border-top:3px solid #6a9fc0;background:var(--card);border:1px solid var(--border);border-top:3px solid #6a9fc0;padding:.55em .85em;display:flex;flex-direction:column">
+          <div style="font-family:var(--mono);font-size:.56em;color:#6a9fc0;letter-spacing:.1em;margin-bottom:.4em">01 · CEPAL · 1949</div>
+          <h3 style="font-family:var(--serif);font-size:1em;color:#8ab5d0;margin-bottom:.4em">Raúl Prebisch</h3>
+          <p style="font-size:.82em;color:var(--text-d);line-height:1.5;flex:1">
+            · Relação centro-periferia<br>
+            · Deterioração dos termos de troca
+          </p>
+          <div style="margin-top:.5em;padding:.4em .6em;background:rgba(106,159,192,.08);border-left:2px solid #6a9fc0;font-size:.72em;color:#6a9fc0">Diagnóstico da assimetria estrutural</div>
         </div>
-        <div class="tf-card furtado" style="background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.25);border-top:3px solid var(--gold);padding:.9em 1em;display:flex;flex-direction:column">
-          <div style="font-family:var(--mono);font-size:.6em;color:var(--gold-d);letter-spacing:.1em;margin-bottom:.5em">02 · FEB · 1959–70</div>
-          <h3 style="font-family:var(--serif);font-size:1.1em;color:var(--gold);margin-bottom:.5em">Celso Furtado</h3>
-          <p style="font-size:.82em;color:var(--text-d);line-height:1.6;flex:1"><strong style="color:var(--text)">Heterogeneidade estrutural:</strong> o subdesenvolvimento não é etapa; é estrutura. Modernização ≠ desenvolvimento. A escala muda; a dependência permanece.</p>
-          <div style="margin-top:.7em;padding:.5em .7em;background:rgba(201,168,76,.07);border-left:2px solid var(--gold);font-size:.74em;color:var(--gold);font-style:italic">Aplica Prebisch ao <strong>caso brasileiro e baiano</strong></div>
+        <div class="tf-card furtado" style="background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.25);border-top:3px solid var(--gold);padding:.55em .85em;display:flex;flex-direction:column">
+          <div style="font-family:var(--mono);font-size:.56em;color:var(--gold-d);letter-spacing:.1em;margin-bottom:.4em">02 · 1959–70</div>
+          <h3 style="font-family:var(--serif);font-size:1em;color:var(--gold);margin-bottom:.4em">Celso Furtado</h3>
+          <p style="font-size:.82em;color:var(--text-d);line-height:1.5;flex:1">
+            · Subdesenvolvimento como estrutura<br>
+            · Modernização ≠ desenvolvimento<br>
+            · Teoria da dependência
+          </p>
+          <div style="margin-top:.5em;padding:.4em .6em;background:rgba(201,168,76,.07);border-left:2px solid var(--gold);font-size:.72em;color:var(--gold)">Aplica Prebisch ao caso BR e BA</div>
         </div>
-        <div class="tf-card chang" style="background:rgba(58,138,138,.04);border:1px solid rgba(58,138,138,.22);border-top:3px solid var(--teal);padding:.9em 1em;display:flex;flex-direction:column">
-          <div style="font-family:var(--mono);font-size:.6em;color:var(--teal);letter-spacing:.1em;margin-bottom:.5em">03 · Chutando a Escada · 2004</div>
-          <h3 style="font-family:var(--serif);font-size:1.1em;color:var(--teal-l);margin-bottom:.5em">Ha-Joon Chang</h3>
-          <p style="font-size:.82em;color:var(--text-d);line-height:1.6;flex:1"><strong style="color:var(--text)">Política industrial:</strong> a especialização primária não é destino natural; é ausência de Estado. Países desenvolvidos usaram os instrumentos que hoje proíbem à periferia. A China fez o que o Brasil abandonou.</p>
-          <div style="margin-top:.7em;padding:.5em .7em;background:rgba(58,138,138,.08);border-left:2px solid #1A4A6A;font-size:.74em;color:var(--teal-l);font-style:italic">Quebra a <strong>naturalização da dependência</strong></div>
+        <div class="tf-card chang" style="background:rgba(58,138,138,.04);border:1px solid rgba(58,138,138,.22);border-top:3px solid var(--teal);padding:.55em .85em;display:flex;flex-direction:column">
+          <div style="font-family:var(--mono);font-size:.56em;color:var(--teal);letter-spacing:.1em;margin-bottom:.4em">03 · Chutando a Escada · 2004</div>
+          <h3 style="font-family:var(--serif);font-size:1em;color:var(--teal-l);margin-bottom:.4em">Ha-Joon Chang</h3>
+          <p style="font-size:.82em;color:var(--text-d);line-height:1.5;flex:1">
+            · Especialização primária<br>
+            · Chutar a escada<br>
+            · Política pública como resposta
+          </p>
+          <div style="margin-top:.5em;padding:.4em .6em;background:rgba(58,138,138,.08);border-left:2px solid #1A4A6A;font-size:.72em;color:var(--teal-l)">Quebra a naturalização da dependência</div>
         </div>
-        <div class="tf-card santos" style="background:rgba(112,96,168,.04);border:1px solid rgba(112,96,168,.22);border-top:3px solid var(--purple-l);padding:.9em 1em;display:flex;flex-direction:column">
-          <div style="font-family:var(--mono);font-size:.6em;color:var(--purple);letter-spacing:.1em;margin-bottom:.5em">04 · Por uma Outra Globalização · 2000</div>
-          <h3 style="font-family:var(--serif);font-size:1.1em;color:var(--purple-l);margin-bottom:.5em">Milton Santos</h3>
-          <p style="font-size:.82em;color:var(--text-d);line-height:1.6;flex:1"><strong style="color:var(--text)">Globalização como possibilidade:</strong> territórios periféricos são integrados para extração, não inovação. Mas esta configuração não é inexorável: outra globalização é possível.</p>
-          <div style="margin-top:.7em;padding:.5em .7em;background:rgba(112,96,168,.08);border-left:2px solid var(--purple-l);font-size:.74em;color:var(--purple-l);font-style:italic">Oferece o <strong>horizonte normativo</strong>; é a casa da minha formação</div>
+        <div class="tf-card santos" style="background:rgba(112,96,168,.04);border:1px solid rgba(112,96,168,.22);border-top:3px solid var(--purple-l);padding:.55em .85em;display:flex;flex-direction:column">
+          <div style="font-family:var(--mono);font-size:.56em;color:var(--purple);letter-spacing:.1em;margin-bottom:.4em">04 · Por uma Outra Globalização · 2000</div>
+          <h3 style="font-family:var(--serif);font-size:1em;color:var(--purple-l);margin-bottom:.4em">Milton Santos</h3>
+          <p style="font-size:.82em;color:var(--text-d);line-height:1.5;flex:1">
+            · Globalização usando o território<br>
+            · Centro extraindo pela globalização<br>
+            · Processo político
+          </p>
+          <div style="margin-top:.5em;padding:.4em .6em;background:rgba(112,96,168,.08);border-left:2px solid var(--purple-l);font-size:.72em;color:var(--purple-l)">Horizonte normativo e territorial</div>
         </div>
       </div>
-      <div style="background:var(--card);border:1px solid var(--border);padding:.9em 1.4em .5em;flex-shrink:0">
+      <div style="background:var(--card);border:1px solid var(--border);padding:.4em 1.4em .25em;flex:1;min-height:0;display:flex;flex-direction:column;max-height:9em">
         <div style="font-family:var(--mono);font-size:.6em;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-d);text-align:center;margin-bottom:.6em">A Trama · Quatro Fios, Um Argumento</div>
-        <svg viewBox="0 0 800 70" preserveAspectRatio="xMidYMid meet" style="width:100%;height:3.8em;display:block;overflow:visible">
+        <svg viewBox="0 0 800 70" preserveAspectRatio="xMidYMid meet" style="width:100%;flex:1;min-height:3em;display:block;overflow:visible">
           <defs>
             <style>
               .fio1{stroke-dasharray:320;animation:weave1 5s ease-in-out infinite}
@@ -802,65 +813,115 @@ p em{color:var(--gold-l);font-style:italic}
 <!-- ══ SLIDE 5 · METODOLOGIA ══ -->
 <div class="slide" id="sl5" data-tag="Metodologia" data-sub="Abordagem histórico-estrutural e produção dos dados">
   <div class="noise"></div>
-  <div class="si">
+  <div class="si" style="padding:1.2em 3.2em 1em">
     <div class="eyebrow">Slide 05 · Metodologia</div>
-    <h2>Abordagem <em>histórico-estrutural</em> quali-quantitativa</h2>
+    <h2 style="margin-bottom:.3em">Como chegamos às <em>conclusões</em>?</h2>
     <div class="slide-rule"></div>
-    <div class="two anim" style="flex:1;min-height:0">
-      <div class="col" style="justify-content:space-between">
-        <div class="four" style="gap:.55em;flex-shrink:0">
-          <div class="stat" style="border-top:2px solid var(--gold)"><span class="slbl">Natureza</span><div class="sval" style="font-size:1.05em;color:var(--gold)">Aplicada</div></div>
-          <div class="stat" style="border-top:2px solid var(--teal)"><span class="slbl">Objetivo</span><div class="sval" style="font-size:1.05em;color:var(--teal-l)">Exploratório</div></div>
-          <div class="stat" style="border-top:2px solid var(--gold)"><span class="slbl">Recorte</span><div class="sval" style="font-size:1.05em;color:var(--gold)">2001–25</div></div>
-          <!-- ALTERAÇÃO: Python + aux. Claude (IA) -->
-          <div class="stat" style="border-top:2px solid var(--teal)">
-            <span class="slbl">Tratamento</span>
-            <div class="sval" style="font-size:.88em;color:var(--teal-l);line-height:1.2">Python</div>
-            <div style="font-family:var(--mono);font-size:.56em;color:var(--text-m);margin-top:.2em;line-height:1.3">+ aux. IA Claude<br>(Anthropic)</div>
+
+    <div style="flex:1;min-height:0;display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:0;align-items:stretch">
+
+      <!-- ═══ COLUNA 1: O MÉTODO ═══ -->
+      <div class="anim" style="display:flex;flex-direction:column;gap:.7em;padding-right:1.4em;justify-content:center;border-right:1px solid var(--border)">
+        <div style="font-family:var(--mono);font-size:.6em;letter-spacing:.18em;color:var(--gold);margin-bottom:.1em">01 · O MÉTODO</div>
+        <div style="font-family:var(--serif);font-size:1.3em;font-weight:700;color:var(--text);line-height:1.2">Histórico-<br>estrutural</div>
+        <p style="font-size:.82em;color:var(--text-d);line-height:1.55;margin:0">Articulação entre <strong>estrutura</strong> (o padrão) e <strong>história</strong> (a trajetória). Coerente com Furtado e Prebisch — não busca leis universais, busca <em>tendências concretas</em>.</p>
+
+        <!-- 4 atributos compactos -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.45em;margin-top:.2em">
+          <div style="background:var(--card);border-top:2px solid var(--gold);padding:.5em .65em">
+            <div style="font-family:var(--mono);font-size:.52em;color:var(--text-m);margin-bottom:.2em">NATUREZA</div>
+            <div style="font-family:var(--serif);font-size:.88em;font-weight:700;color:var(--gold)">Aplicada</div>
+          </div>
+          <div style="background:var(--card);border-top:2px solid var(--teal);padding:.5em .65em">
+            <div style="font-family:var(--mono);font-size:.52em;color:var(--text-m);margin-bottom:.2em">OBJETIVO</div>
+            <div style="font-family:var(--serif);font-size:.88em;font-weight:700;color:var(--teal-l)">Exploratório</div>
+          </div>
+          <div style="background:var(--card);border-top:2px solid var(--gold);padding:.5em .65em">
+            <div style="font-family:var(--mono);font-size:.52em;color:var(--text-m);margin-bottom:.2em">RECORTE</div>
+            <div style="font-family:var(--serif);font-size:.88em;font-weight:700;color:var(--gold)">2001–2025</div>
+          </div>
+          <div style="background:var(--card);border-top:2px solid var(--teal);padding:.5em .65em">
+            <div style="font-family:var(--mono);font-size:.52em;color:var(--text-m);margin-bottom:.2em">TRATAMENTO</div>
+            <div style="font-family:var(--serif);font-size:.88em;font-weight:700;color:var(--teal-l)">Python + IA</div>
           </div>
         </div>
-        <table class="tbl" style="width:100%;flex-shrink:0">
-          <thead><tr><th style="width:28%">Fonte</th><th>Conteúdo</th><th style="width:18%">Tipo</th></tr></thead>
-          <tbody>
-            <tr><td>Comex Stat / MDIC</td><td>Exportações BR→CN por produto, UF, município</td><td style="color:var(--teal-l);font-family:var(--mono);font-size:.78em">Base bruta<br><span style="color:var(--gold)">27.797 reg.</span></td></tr>
-            <tr><td>Comex Stat / MDIC</td><td>Exportações Bahia→CN desagregadas por NCM</td><td style="color:var(--teal-l);font-family:var(--mono);font-size:.78em">Base bruta<br><span style="color:var(--gold)">744 reg.</span></td></tr>
-            <tr><td>SEI-BA · Informativo 12</td><td>Balança comercial baiana, dez/2025 acumulado</td><td style="color:var(--text-d);font-family:var(--mono);font-size:.78em">Documental</td></tr>
-            <tr><td>Municípios (3)</td><td>LEM, Camaçari, São Francisco do Conde (SH4)</td><td style="color:var(--text-d);font-family:var(--mono);font-size:.78em">Documental</td></tr>
-          </tbody>
-        </table>
-        <div class="card teal-l" style="padding:10px 14px;border-left:3px solid var(--teal);flex-shrink:0">
-          <p style="font-size:.8em;margin:0"><strong>Opção epistemológica:</strong> o método histórico-estrutural não é apenas técnica: é a escolha de articular estrutura e história, sem cair na abstração de modelos puramente econométricos nem na simples descrição. Dialoga diretamente com Furtado e Prebisch.</p>
+      </div>
+
+      <!-- ═══ COLUNA 2: OS DADOS ═══ -->
+      <div class="anim" style="display:flex;flex-direction:column;gap:.6em;padding:0 1.4em;justify-content:center;border-right:1px solid var(--border)">
+        <div style="font-family:var(--mono);font-size:.6em;letter-spacing:.18em;color:var(--teal-l);margin-bottom:.1em">02 · OS DADOS</div>
+        <div style="font-family:var(--serif);font-size:1.3em;font-weight:700;color:var(--text);line-height:1.2">28.541<br><span style="font-size:.6em;color:var(--text-d);font-weight:400">registros brutos</span></div>
+
+        <!-- Fontes como cards horizontais -->
+        <div style="display:flex;flex-direction:column;gap:.4em">
+          <div style="display:flex;align-items:center;gap:.7em;background:var(--card);border-left:3px solid var(--teal);padding:.5em .75em">
+            <div style="font-family:var(--mono);font-size:1em;font-weight:700;color:var(--teal-l);min-width:3.5em;text-align:right">27.797</div>
+            <div>
+              <div style="font-size:.78em;font-weight:600;color:var(--text)">Comex Stat · BR→CN</div>
+              <div style="font-family:var(--mono);font-size:.6em;color:var(--text-m)">Produto · UF · Município</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:.7em;background:var(--card);border-left:3px solid var(--teal);padding:.5em .75em">
+            <div style="font-family:var(--mono);font-size:1em;font-weight:700;color:var(--teal-l);min-width:3.5em;text-align:right">744</div>
+            <div>
+              <div style="font-size:.78em;font-weight:600;color:var(--text)">Comex Stat · BA→CN</div>
+              <div style="font-family:var(--mono);font-size:.6em;color:var(--text-m)">Desagregado por NCM</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:.7em;background:var(--card);border-left:3px solid var(--gold);padding:.5em .75em">
+            <div style="font-family:var(--mono);font-size:.75em;font-weight:700;color:var(--gold);min-width:3.5em;text-align:right">SEI-BA</div>
+            <div>
+              <div style="font-size:.78em;font-weight:600;color:var(--text)">Informativo 12</div>
+              <div style="font-family:var(--mono);font-size:.6em;color:var(--text-m)">Balança comercial dez/2025</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:.7em;background:var(--card);border-left:3px solid var(--gold);padding:.5em .75em">
+            <div style="font-family:var(--mono);font-size:.75em;font-weight:700;color:var(--gold);min-width:3.5em;text-align:right">3 mun.</div>
+            <div>
+              <div style="font-size:.78em;font-weight:600;color:var(--text)">LEM · Camaçari · SFC</div>
+              <div style="font-family:var(--mono);font-size:.6em;color:var(--text-m)">Desagregado SH4</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col">
-        <div class="eyebrow" style="color:var(--text-m);margin-bottom:.45em">Quadro 1 — Classificação dos produtos por intensidade tecnológica</div>
-        <table class="tbl" style="margin-bottom:.4em">
-          <thead><tr><th>Categoria</th><th>Critério</th><th>Exemplos (pauta BR→CN)</th></tr></thead>
-          <tbody>
-            <tr style="border-left:3px solid var(--red)">
-              <td style="color:var(--red-l)">Primários</td>
-              <td>Commodities brutas ou processamento mínimo</td>
-              <td>Soja · algodão · min. ferro · petróleo bruto · carnes</td>
-            </tr>
-            <tr style="border-left:3px solid var(--gold)">
-              <td style="color:var(--gold)">Semiman.</td>
-              <td>Algum grau de transformação, baixo conteúdo tec.</td>
-              <td>Pasta química · polímeros · ferroligas · açúcar ref.</td>
-            </tr>
-            <tr style="border-left:3px solid var(--teal)">
-              <td style="color:var(--teal-l)">Manufaturados</td>
-              <td>Transformação significativa + conteúdo tecnológico</td>
-              <td>Veículos · aeronaves · máquinas · equipamentos</td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- FONTE ABNT: Quadro 1 -->
-        <span class="fonte-abnt" style="margin-bottom:.5em">Fonte: Elaborado pelo autor.</span>
-        <div class="card gold-bg" style="padding:10px 14px">
-          <div class="eyebrow" style="color:var(--gold)">Nota metodológica</div>
-          <p style="font-size:.8em;margin:0">A classificação adota critério <strong>conservador</strong>: em casos limítrofes, o produto é categorizado na classe de menor valor agregado. Isso significa que os resultados tendem a subestimar a desindustrialização, o que só <strong>reforça</strong> as conclusões da análise.</p>
+
+      <!-- ═══ COLUNA 3: A CLASSIFICAÇÃO ═══ -->
+      <div class="anim" style="display:flex;flex-direction:column;gap:.6em;padding-left:1.4em;justify-content:center">
+        <div style="font-family:var(--mono);font-size:.6em;letter-spacing:.18em;color:var(--purple-l);margin-bottom:.1em">03 · A CLASSIFICAÇÃO</div>
+        <div style="font-family:var(--serif);font-size:1.3em;font-weight:700;color:var(--text);line-height:1.2">Três graus de<br>valor agregado</div>
+
+        <!-- 3 categorias visuais -->
+        <div style="display:flex;flex-direction:column;gap:.5em">
+          <div style="display:flex;align-items:stretch;gap:.6em">
+            <div style="width:4px;background:var(--red-l);border-radius:2px;flex-shrink:0"></div>
+            <div style="flex:1;background:rgba(168,56,56,.08);padding:.55em .75em;border:1px solid rgba(168,56,56,.2)">
+              <div style="font-family:var(--serif);font-weight:700;color:var(--red-l);font-size:.9em;margin-bottom:.2em">Primários</div>
+              <div style="font-size:.75em;color:var(--text-d)">Soja · petróleo · minério · carnes</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:stretch;gap:.6em">
+            <div style="width:4px;background:var(--gold);border-radius:2px;flex-shrink:0"></div>
+            <div style="flex:1;background:rgba(201,168,76,.06);padding:.55em .75em;border:1px solid rgba(201,168,76,.2)">
+              <div style="font-family:var(--serif);font-weight:700;color:var(--gold);font-size:.9em;margin-bottom:.2em">Semimanufaturados</div>
+              <div style="font-size:.75em;color:var(--text-d)">Pasta química · polímeros · ferroligas</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:stretch;gap:.6em">
+            <div style="width:4px;background:var(--teal-l);border-radius:2px;flex-shrink:0"></div>
+            <div style="flex:1;background:rgba(58,138,138,.06);padding:.55em .75em;border:1px solid rgba(58,138,138,.2)">
+              <div style="font-family:var(--serif);font-weight:700;color:var(--teal-l);font-size:.9em;margin-bottom:.2em">Manufaturados</div>
+              <div style="font-size:.75em;color:var(--text-d)">Veículos · aeronaves · máquinas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- nota metodológica compacta -->
+        <div style="background:var(--card);border-left:3px solid var(--purple-l);padding:.5em .75em;margin-top:.1em">
+          <div style="font-family:var(--mono);font-size:.56em;color:var(--purple-l);margin-bottom:.2em">CRITÉRIO CONSERVADOR</div>
+          <div style="font-size:.76em;color:var(--text-d);line-height:1.4">Casos limítrofes → categoria <strong style="color:var(--text)">menos agregada</strong>.<br>Subestima a regressão — só reforça a conclusão.</div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
@@ -909,9 +970,9 @@ p em{color:var(--gold-l);font-style:italic}
         </div>
         <div class="eyebrow" style="font-size:.6em;color:var(--text-m)">Tabela 3 — Composição por intensidade tecnológica (anos selecionados)</div>
         <div id="br-chart-rows"></div>
-        <span class="fonte-abnt">Fonte: Elaborado pelo autor com base em Comex Stat/MDIC, 2026.</span>
-        <div class="card red-l" style="margin-top:.45em;padding:10px 14px">
-          <p style="font-size:.8em;margin:0"><strong>Fato crítico:</strong> o fluxo cresceu 52×, mas manufaturados caíram de US$ 320 mi (2001) para US$ 240 mi (2025) em termos absolutos. O Brasil exporta hoje <em>menos manufaturados</em> do que há 24 anos.</p>
+        <span class="fonte-abnt" style="margin-top:.15em">Fonte: Elaborado pelo autor com base em Comex Stat/MDIC, 2026.</span>
+        <div class="card red-l" style="margin-top:.3em;padding:8px 14px">
+          <p style="font-size:.82em;margin:0;line-height:1.45"><strong>Fato crítico:</strong> o fluxo cresceu 52×, mas manufaturados caíram em termos absolutos. O Brasil exporta hoje <em>menos manufaturados</em> que há 24 anos.</p>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:.55em;min-height:0;overflow:hidden">
@@ -927,20 +988,9 @@ p em{color:var(--gold-l);font-style:italic}
           </tbody>
         </table>
         <span class="fonte-abnt" style="flex-shrink:0;margin-top:-.2em">Fonte: Elaborado pelo autor com base em Comex Stat/MDIC, 2026.</span>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.55em;flex:1;min-height:0;overflow:hidden">
-          <div class="card red-bg" style="padding:.5em .65em;overflow:hidden">
-            <div class="sval" style="color:var(--red-l);font-size:1.1em;margin-bottom:.1em">2003–11</div>
-            <div style="font-family:var(--mono);font-size:.56em;color:var(--text-m);margin-bottom:.3em">Superciclo das commodities</div>
-            <p style="font-size:.67em;margin:0;line-height:1.6">A demanda chinesa torna a especialização em primários financeiramente vantajosa. O crescimento do PIB mascara a regressão estrutural em curso.</p>
-          </div>
-          <div class="card red-bg" style="padding:.5em .65em;overflow:hidden">
-            <div class="sval" style="color:var(--red-l);font-size:1.1em;margin-bottom:.1em">2013+</div>
-            <div style="font-family:var(--mono);font-size:.56em;color:var(--text-m);margin-bottom:.3em">Modernização sem industrialização</div>
-            <p style="font-size:.67em;margin:0;line-height:1.6">A renda do superciclo não financiou a transição industrial. Reprimarização se consolida mesmo com modernização do agronegócio.</p>
-          </div>
-        </div>
-        <div class="card gold-bg" style="padding:.65em 1em;flex-shrink:0">
-          <p style="font-size:.82em;margin:0"><strong>Diagnóstico furtadiano confirmado:</strong> modernização sem desenvolvimento. A escala mudou. A estrutura, não.</p>
+        <div style="flex:1;min-height:0"></div>
+        <div class="card gold-bg" style="padding:.75em 1em;flex-shrink:0">
+          <p style="font-size:.86em;margin:0"><strong>Diagnóstico furtadiano confirmado:</strong> modernização sem desenvolvimento. A escala mudou. A estrutura, não.</p>
         </div>
       </div>
     </div>
@@ -949,68 +999,118 @@ p em{color:var(--gold-l);font-style:italic}
 <!-- ══ SLIDE 7 · TRAJETÓRIA BAHIA ══ -->
 <div class="slide" id="sl7" data-tag="Trajetória — Bahia" data-sub="Industrialização e reprimarização: Pessoti e Spinola">
   <div class="noise"></div>
-  <div class="si">
+  <div class="si" style="padding:1.3em 3.2em 1.1em">
     <div class="eyebrow">Slide 07 · Industrialização baiana</div>
-    <h2>Bahia: da industrialização à <em>reprimarização</em></h2>
+    <h2 style="margin-bottom:.35em">Bahia: da industrialização à <em>reprimarização</em></h2>
     <div class="slide-rule"></div>
-    <div class="timeline anim" style="overflow:visible;flex:1;min-height:0;align-items:flex-start">
-      <div class="tm">
-        <div class="tm-dot"></div>
-        <div class="tm-yr">Séc. XIX</div>
-        <div class="tm-box">
-          <div class="tm-tit">Agroexportação</div>
-          <div class="tm-dsc">Açúcar no Recôncavo, cacau no sul, fumo. Grande propriedade, trabalho escravo, mercado externo. Nenhuma indústria moderna.</div>
-          <div class="tm-ref">Spinola (2001); Furtado (2007)</div>
+
+    <!-- TIMELINE HORIZONTAL CLÁSSICA -->
+    <div class="anim" style="flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;position:relative">
+
+      <!-- LINHA CENTRAL -->
+      <div id="tl-line" style="position:absolute;left:0;right:0;top:50%;height:2px;transform:translateY(-50%);z-index:1;background:linear-gradient(90deg,var(--gold-d) 0%,var(--gold) 30%,var(--teal) 65%,var(--teal-l) 100%)"></div>
+
+      <!-- GRID: linha superior (cards acima) / linha dos dots / linha inferior (cards abaixo) -->
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:1fr auto 1fr;width:100%;height:100%;align-items:stretch">
+
+        <!-- ROW 1: cards acima (cols 1,3,5) -->
+
+        <!-- Col 1 acima: Séc XIX -->
+        <div style="grid-column:1;grid-row:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:.5em">
+          <div style="background:var(--card);border:1px solid rgba(201,168,76,.25);border-top:2px solid var(--gold-d);padding:.5em .65em;text-align:center;width:88%">
+            <div style="font-family:var(--mono);font-size:.58em;color:var(--gold-d);letter-spacing:.08em;margin-bottom:.2em">Séc. XIX</div>
+            <div style="font-family:var(--serif);font-size:.9em;font-weight:700;color:var(--text);line-height:1.25">Agroexportação</div>
+          </div>
         </div>
-      </div>
-      <div class="tm">
-        <div class="tm-dot"></div>
-        <div class="tm-yr">1953</div>
-        <div class="tm-box">
-          <div class="tm-tit">RLAM · Petrobras</div>
-          <div class="tm-dsc">Refinaria Landulpho Alves em S. Francisco do Conde. Início dos investimentos estatais. Inflexão desenvolvimentista.</div>
-          <div class="tm-ref">Pessoti (2008); Spinola (2001)</div>
+        <!-- Col 2 acima: vazio -->
+        <div style="grid-column:2;grid-row:1"></div>
+        <!-- Col 3 acima: 1960s -->
+        <div style="grid-column:3;grid-row:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:.5em">
+          <div style="background:var(--card);border:1px solid rgba(201,168,76,.2);border-top:2px solid var(--gold);padding:.5em .65em;text-align:center;width:88%">
+            <div style="font-family:var(--mono);font-size:.58em;color:var(--gold);letter-spacing:.08em;margin-bottom:.2em">1960s</div>
+            <div style="font-family:var(--serif);font-size:.9em;font-weight:700;color:var(--text);line-height:1.25">CIA + SUDENE</div>
+          </div>
         </div>
-      </div>
-      <div class="tm">
-        <div class="tm-dot"></div>
-        <div class="tm-yr">1960s</div>
-        <div class="tm-box">
-          <div class="tm-tit">CIA + SUDENE</div>
-          <div class="tm-dsc">Centro Industrial de Aratu. SUDENE criada em 1959. Crescimento médio de 7% a.a. (Pessoti, 2008). Industrialização como projeto estatal.</div>
-          <div class="tm-ref">Pessoti (2008); Cano (2007)</div>
+        <!-- Col 4 acima: vazio -->
+        <div style="grid-column:4;grid-row:1"></div>
+        <!-- Col 5 acima: 1990s -->
+        <div style="grid-column:5;grid-row:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:.5em">
+          <div style="background:rgba(168,56,56,.12);border:1px solid rgba(168,56,56,.3);border-top:2px solid var(--red-l);padding:.5em .65em;text-align:center;width:88%">
+            <div style="font-family:var(--mono);font-size:.58em;color:var(--red-l);letter-spacing:.08em;margin-bottom:.2em">1990s</div>
+            <div style="font-family:var(--serif);font-size:.9em;font-weight:700;color:var(--text);line-height:1.25">Abertura · Consenso de Washington</div>
+          </div>
         </div>
-      </div>
-      <div class="tm">
-        <div class="tm-dot"></div>
-        <div class="tm-yr">1978</div>
-        <div class="tm-box">
-          <div class="tm-tit">COPEC · Camaçari</div>
-          <div class="tm-dsc">2º maior polo petroquímico da América Latina. Apogeu industrial baiano. Mas: tecnologia importada, emprego capital-intensivo, decisões fora do estado.</div>
-          <div class="tm-ref">Pessoti (2008); Spinola (2001)</div>
+        <!-- Col 6 acima: vazio -->
+        <div style="grid-column:6;grid-row:1"></div>
+
+        <!-- ROW 2: conectores + dots (linha central) -->
+
+        <div style="grid-column:1;grid-row:2;display:flex;flex-direction:column;align-items:center">
+          <div style="width:2px;height:.9em;background:var(--gold-d)"></div>
+          <div style="width:1em;height:1em;border-radius:50%;background:var(--gold-d);border:2px solid var(--bg);z-index:2;flex-shrink:0"></div>
+          <div style="flex:1"></div>
         </div>
-      </div>
-      <div class="tm">
-        <div class="tm-dot red"></div>
-        <div class="tm-yr">1990s</div>
-        <div class="tm-box red">
-          <div class="tm-tit">Abertura · Consenso de Washington</div>
-          <div class="tm-dsc">Retração do Estado, abertura comercial. Indústria de transformação cai de ~28% para menos de 20% do PIB estadual.</div>
-          <div class="tm-ref">Portal da Indústria (2025)</div>
+        <div style="grid-column:2;grid-row:2;display:flex;flex-direction:column;align-items:center">
+          <div style="flex:1"></div>
+          <div style="width:1em;height:1em;border-radius:50%;background:var(--gold);border:2px solid var(--bg);z-index:2;flex-shrink:0"></div>
+          <div style="width:2px;height:.9em;background:var(--gold)"></div>
         </div>
-      </div>
-      <div class="tm">
-        <div class="tm-dot teal"></div>
-        <div class="tm-yr">2000s–25</div>
-        <div class="tm-box teal">
-          <div class="tm-tit">China + Superciclo</div>
-          <div class="tm-dsc">Soja do MATOPIBA explode. Pauta baiana migra de insumos industriais para commodities agrícolas. Dependência estrutural reproduzida.</div>
-          <div class="tm-ref">MDIC/Comex Stat (2026); SEI (2026)</div>
+        <div style="grid-column:3;grid-row:2;display:flex;flex-direction:column;align-items:center">
+          <div style="width:2px;height:.9em;background:var(--gold)"></div>
+          <div style="width:1em;height:1em;border-radius:50%;background:var(--gold);border:2px solid var(--bg);z-index:2;flex-shrink:0"></div>
+          <div style="flex:1"></div>
         </div>
+        <div style="grid-column:4;grid-row:2;display:flex;flex-direction:column;align-items:center">
+          <div style="flex:1"></div>
+          <div style="width:1em;height:1em;border-radius:50%;background:var(--teal);border:2px solid var(--bg);z-index:2;flex-shrink:0"></div>
+          <div style="width:2px;height:.9em;background:var(--teal)"></div>
+        </div>
+        <div style="grid-column:5;grid-row:2;display:flex;flex-direction:column;align-items:center">
+          <div style="width:2px;height:.9em;background:var(--red-l)"></div>
+          <div style="width:1em;height:1em;border-radius:50%;background:var(--red-l);border:2px solid var(--bg);z-index:2;flex-shrink:0"></div>
+          <div style="flex:1"></div>
+        </div>
+        <div style="grid-column:6;grid-row:2;display:flex;flex-direction:column;align-items:center">
+          <div style="flex:1"></div>
+          <div style="width:1em;height:1em;border-radius:50%;background:var(--teal-l);border:2px solid var(--bg);z-index:2;flex-shrink:0"></div>
+          <div style="width:2px;height:.9em;background:var(--teal-l)"></div>
+        </div>
+
+        <!-- ROW 3: cards abaixo (cols 2,4,6) -->
+
+        <!-- Col 1 abaixo: vazio -->
+        <div style="grid-column:1;grid-row:3"></div>
+        <!-- Col 2 abaixo: 1953 -->
+        <div style="grid-column:2;grid-row:3;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:.5em">
+          <div style="background:var(--card);border:1px solid rgba(201,168,76,.2);border-bottom:2px solid var(--gold);padding:.5em .65em;text-align:center;width:88%">
+            <div style="font-family:var(--mono);font-size:.58em;color:var(--gold);letter-spacing:.08em;margin-bottom:.2em">1953</div>
+            <div style="font-family:var(--serif);font-size:.9em;font-weight:700;color:var(--text);line-height:1.25">RLAM · Petrobras</div>
+          </div>
+        </div>
+        <!-- Col 3 abaixo: vazio -->
+        <div style="grid-column:3;grid-row:3"></div>
+        <!-- Col 4 abaixo: 1978 -->
+        <div style="grid-column:4;grid-row:3;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:.5em">
+          <div style="background:rgba(58,138,138,.1);border:1px solid rgba(58,138,138,.3);border-bottom:2px solid var(--teal);padding:.5em .65em;text-align:center;width:88%">
+            <div style="font-family:var(--mono);font-size:.58em;color:var(--teal-l);letter-spacing:.08em;margin-bottom:.2em">1978</div>
+            <div style="font-family:var(--serif);font-size:.9em;font-weight:700;color:var(--text);line-height:1.25">COPEC · Camaçari</div>
+          </div>
+        </div>
+        <!-- Col 5 abaixo: vazio -->
+        <div style="grid-column:5;grid-row:3"></div>
+        <!-- Col 6 abaixo: 2000s -->
+        <div style="grid-column:6;grid-row:3;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:.5em">
+          <div style="background:rgba(58,138,138,.12);border:1px solid rgba(58,138,138,.3);border-bottom:2px solid var(--teal-l);padding:.5em .65em;text-align:center;width:88%">
+            <div style="font-family:var(--mono);font-size:.58em;color:var(--teal-l);letter-spacing:.08em;margin-bottom:.2em">2000s–25</div>
+            <div style="font-family:var(--serif);font-size:.9em;font-weight:700;color:var(--text);line-height:1.25">China + Superciclo</div>
+          </div>
+        </div>
+
       </div>
     </div>
-    <div class="card gold-bg anim" style="margin-top:.6em;padding:.7em 1em;flex-shrink:0">
-      <p style="font-size:.82em;margin:0"><strong>Diagnóstico histórico (Furtado aplicado à Bahia):</strong> a industrialização baiana concentrou-se em bens intermediários sem transferência tecnológica endógena, com decisões de investimento externas ao estado, exatamente o perfil que Furtado identificou como heterogeneidade estrutural que não se supera pelo crescimento convencional. O século XXI apenas reconfigurou quem detém a demanda externa: antes Europa e EUA, agora China. A lógica permanece.</p>
+
+    <div class="card gold-bg anim" style="margin-top:.7em;padding:.8em 1.1em;flex-shrink:0">
+      <p style="font-size:.86em;margin:0"><strong>Diagnóstico histórico:</strong> a industrialização baiana concentrou-se em bens intermediários. O século XXI apenas reconfigurou quem detém a demanda externa: antes Europa e EUA, agora China. <em>A lógica permanece.</em></p>
     </div>
   </div>
 </div>
@@ -1028,21 +1128,18 @@ p em{color:var(--gold-l);font-style:italic}
         <div class="mun-val">US$ 1,22 bi</div>
         <div class="mun-prod">Soja (89,6%) · Algodão (10,4%)</div>
         <div class="mun-bar"><div class="mun-fill" style="width:100%"></div></div>
-        <div class="mun-note">100% commodities agrícolas<br>2001: US$ 0,1 mi → 2025: US$ 1,22 bi (×12.200)<br>MATOPIBA, fronteira agrícola do oeste baiano</div>
       </div>
       <div class="mun cam">
         <div class="mun-nm">Camaçari · Polo Petroquímico</div>
         <div class="mun-val">US$ 250 mi</div>
         <div class="mun-prod">Pasta química de madeira (88,7%) · Polímeros (7,3%)</div>
         <div class="mun-bar"><div class="mun-fill" style="width:74%"></div></div>
-        <div class="mun-note">~96% insumos industriais de baixo valor<br>2009: US$ 306 mi → 2025: US$ 250 mi (queda de 18%)<br>Pauta inalterada desde 2001; sem sofisticação de valor agregado</div>
       </div>
       <div class="mun sfc">
         <div class="mun-nm">São Francisco do Conde</div>
         <div class="mun-val">US$ 1,5 mi</div>
         <div class="mun-prod">Derivados de petróleo (100%)</div>
         <div class="mun-bar"><div class="mun-fill" style="width:8%"></div></div>
-        <div class="mun-note">Inserção marginal e errática<br>Revela: seletividade territorial extrema<br>Dois municípios = quase toda a pauta</div>
       </div>
     </div>
     <!-- FONTE ABNT: cards municípios -->
@@ -1064,9 +1161,9 @@ p em{color:var(--gold-l);font-style:italic}
         <span class="fonte-abnt">Fonte: Elaborado pelo autor com base em Comex Stat/MDIC, 2026.</span>
       </div>
       <div class="card red-bg" style="padding:.85em 1.15em;display:flex;flex-direction:column;justify-content:center">
-        <div class="eyebrow" style="color:var(--red-l)">Regressão interna na própria pauta baiana</div>
-        <p style="font-size:.82em;margin-bottom:.55em">Em 2001, a pauta baiana era dominada pelos insumos do Polo de Camaçari: pasta química respondia por <strong>64,1% do total</strong>.</p>
-        <p style="font-size:.82em;margin:0">Em 2025, a soja responde por <strong>56,3%</strong>. A Bahia não apenas manteve o perfil de baixo valor agregado; ela <em>regrediu</em>: trocou progressivamente insumos industriais por commodities agrícolas brutas.</p>
+        <div class="eyebrow" style="color:var(--red-l)">Regressão dentro da própria pauta</div>
+        <p style="font-size:.85em;margin-bottom:.5em">2001: insumos do Polo de Camaçari dominam, pasta química com <strong>64,1%</strong>.</p>
+        <p style="font-size:.85em;margin:0">2025: soja com <strong>56,3%</strong>. A Bahia <em>regrediu</em>: trocou insumos industriais por commodities agrícolas brutas.</p>
       </div>
     </div>
   </div>
@@ -1083,30 +1180,27 @@ p em{color:var(--gold-l);font-style:italic}
       <div class="scale-block br">
         <div class="eyebrow" style="color:#8ab5d0">Escala Nacional</div>
         <h3>Brasil → China</h3>
-        <p>Manufaturados: <strong>17,7% → 0,2%</strong> em 24 anos. Top 5 commodities explicam 88% da pauta.</p>
-        <p>O volume cresceu 52×. A estrutura regrediu.</p>
-        <div class="s-finding">Diagnóstico: modernização sem desenvolvimento (Furtado) · Ausência de política industrial (Chang)</div>
+        <p>O volume cresceu. A estrutura regrediu.</p>
+        <div class="s-finding">Modernização sem desenvolvimento (Furtado) · Ausência de política industrial (Chang)</div>
       </div>
       <div class="scale-arrow-h">↓</div>
       <div class="scale-block ba">
         <div class="eyebrow" style="color:var(--gold)">Escala Estadual</div>
         <h3>Bahia → China</h3>
-        <p>Soja: <strong>18% → 56,3%</strong>. Camaçari em declínio: US$ 306 mi (2009) → US$ 250 mi (2025).</p>
-        <p>A pauta baiana regrediu <em>dentro da própria regressão</em>: de insumos industriais para commodities agrícolas.</p>
-        <div class="s-finding">Diagnóstico: heterogeneidade estrutural (Furtado) · Industrialização incompleta (Pessoti; Spinola)</div>
+        <p>A pauta regrediu <em>dentro da própria regressão</em>: de insumos industriais para commodities agrícolas.</p>
+        <div class="s-finding">Heterogeneidade estrutural (Furtado) · Industrialização incompleta (Pessoti; Spinola)</div>
       </div>
       <div class="scale-arrow-h">↓</div>
       <div class="scale-block mn">
         <div class="eyebrow" style="color:var(--teal-l)">Escala Municipal</div>
         <h3>LEM · Camaçari · SFC</h3>
-        <p><strong>LEM:</strong> 100% commodities agrícolas (US$ 1,22 bi). <strong>Camaçari:</strong> 96% insumos sem sofisticação. <strong>SFC:</strong> marginal e errático.</p>
         <p>Dois municípios concentram quase toda a pauta, em perfis complementares de inserção subordinada.</p>
-        <div class="s-finding">Diagnóstico: seletividade territorial da globalização hegemônica (Milton Santos)</div>
+        <div class="s-finding">Seletividade territorial da globalização hegemônica (Milton Santos)</div>
       </div>
     </div>
     <div class="card gold-bg anim" style="margin-top:.7em;padding:1.1em 1.5em;flex-shrink:0">
       <div class="eyebrow" style="color:var(--gold);font-size:.72em;margin-bottom:.5em">Por que analisar nas três escalas?</div>
-      <p style="font-size:.92em;margin:0;line-height:1.7">O recorte escalar não é apenas metodológico: <strong>é argumentativo</strong>. O mesmo padrão de dependência estrutural que aparece nos dados nacionais se confirma, aprofunda e territorializa à medida que descemos a escala. Mudar a escala não muda a lógica: ela revela como a dependência opera no território concreto, nos municípios reais, nas pessoas reais. Isso <strong>reforça</strong> o argumento furtadiano, não o enfraquece.</p>
+      <p style="font-size:.92em;margin:0;line-height:1.65">O recorte escalar não é apenas metodológico: <strong>é argumentativo</strong>. Mudar a escala não muda a lógica: ela revela como a dependência opera no território concreto, nos municípios reais. Isso <strong>reforça</strong> o argumento furtadiano.</p>
     </div>
   </div>
 </div>
@@ -1114,23 +1208,23 @@ p em{color:var(--gold-l);font-style:italic}
 <!-- ══ SLIDE 10 · RESPOSTA À PERGUNTA ══ -->
 <div class="slide" id="sl10" data-tag="Resposta à Pergunta" data-sub="Fechamento científico — hipótese confirmada">
   <div class="noise"></div>
-  <div class="si" style="font-size:.84em">
+  <div class="si" style="font-size:.86em;padding:1.3em 3.2em 1.1em">
     <div class="eyebrow">Slide 10 · Fechamento científico</div>
-    <h2>Resposta à <em>questão de pesquisa</em></h2>
+    <h2 style="margin-bottom:.35em">Resposta à <em>questão de pesquisa</em></h2>
     <div class="slide-rule"></div>
-    <div class="card gold-bg anim" style="padding:.7em 1.2em;margin-bottom:.6em;flex-shrink:0">
+    <div class="card gold-bg anim" style="padding:.7em 1.2em;margin-bottom:.55em;flex-shrink:0">
       <div class="eyebrow" style="color:var(--gold)">Questão de Pesquisa</div>
       <p style="font-family:var(--body);font-style:normal;font-size:.92em;color:var(--text);margin:0;line-height:1.65">Em que medida a inserção do Brasil e da Bahia nas relações comerciais com a China no século XXI reproduz o padrão de <strong style="color:var(--gold)">dependência estrutural</strong> identificado pela perspectiva furtadiana?</p>
     </div>
-    <div class="check-list anim" style="flex:1;gap:.5em">
-      <div class="chk" style="padding:.75em 1em"><div class="chk-icon" style="width:1.3em;height:1.3em;font-size:.8em">✓</div><div class="chk-txt"><span class="chk-lbl" style="font-size:.68em">Especialização produtiva em commodities</span><span class="chk-desc" style="font-size:.82em">88% da pauta BR→CN explicada por apenas 5 produtos primários em 2025. Soja (56,3%) domina a Bahia.</span></div></div>
-      <div class="chk" style="padding:.75em 1em"><div class="chk-icon" style="width:1.3em;height:1.3em;font-size:.8em">✓</div><div class="chk-txt"><span class="chk-lbl" style="font-size:.68em">Reprimarização da pauta exportadora</span><span class="chk-desc" style="font-size:.82em">Manufaturados: 17,7% (2001) → 0,2% (2025). Queda absoluta mesmo com fluxo 52× maior.</span></div></div>
-      <div class="chk" style="padding:.75em 1em"><div class="chk-icon" style="width:1.3em;height:1.3em;font-size:.8em">✓</div><div class="chk-txt"><span class="chk-lbl" style="font-size:.68em">Baixa internalização tecnológica</span><span class="chk-desc" style="font-size:.82em">Camaçari não avançou na cadeia de valor em 24 anos. Pauta inalterada, volume em queda desde 2009.</span></div></div>
-      <div class="chk" style="padding:.75em 1em"><div class="chk-icon" style="width:1.3em;height:1.3em;font-size:.8em">✓</div><div class="chk-txt"><span class="chk-lbl" style="font-size:.68em">Dependência de demanda externa</span><span class="chk-desc" style="font-size:.82em">A composição da pauta é determinada pela demanda chinesa por insumos, não por projeto regional deliberado.</span></div></div>
-      <div class="chk" style="padding:.75em 1em"><div class="chk-icon" style="width:1.3em;height:1.3em;font-size:.8em">✓</div><div class="chk-txt"><span class="chk-lbl" style="font-size:.68em">Globalização hegemônica: lógica centro-periferia</span><span class="chk-desc" style="font-size:.82em">A relação Sul-Sul reproduz a assimetria histórica: periferia fornece o que o centro processa (Prebisch; Milton Santos).</span></div></div>
+    <div class="check-list anim" style="flex:1;gap:.4em">
+      <div class="chk" style="padding:.5em 1em"><div class="chk-icon" style="width:1.3em;height:1.3em;font-size:.8em">✓</div><div class="chk-txt"><span class="chk-lbl" style="font-size:.68em">Especialização em commodities</span><span class="chk-desc" style="font-size:.86em">88% da pauta em 5 produtos primários · Soja domina com 56,3%</span></div></div>
+      <div class="chk" style="padding:.5em 1em"><div class="chk-icon" style="width:1.3em;height:1.3em;font-size:.8em">✓</div><div class="chk-txt"><span class="chk-lbl" style="font-size:.68em">Reprimarização da pauta</span><span class="chk-desc" style="font-size:.86em">Manufaturados: 17,7% → 0,2% · Queda absoluta mesmo com fluxo 52× maior</span></div></div>
+      <div class="chk" style="padding:.5em 1em"><div class="chk-icon" style="width:1.3em;height:1.3em;font-size:.8em">✓</div><div class="chk-txt"><span class="chk-lbl" style="font-size:.68em">Sem internalização tecnológica</span><span class="chk-desc" style="font-size:.86em">Camaçari: pauta inalterada em 24 anos, volume em queda desde 2009</span></div></div>
+      <div class="chk" style="padding:.5em 1em"><div class="chk-icon" style="width:1.3em;height:1.3em;font-size:.8em">✓</div><div class="chk-txt"><span class="chk-lbl" style="font-size:.68em">Dependência da demanda externa</span><span class="chk-desc" style="font-size:.86em">Pauta determinada pelo que a China precisa importar — não por projeto regional</span></div></div>
+      <div class="chk" style="padding:.5em 1em"><div class="chk-icon" style="width:1.3em;height:1.3em;font-size:.8em">✓</div><div class="chk-txt"><span class="chk-lbl" style="font-size:.68em">Centro-periferia no Sul-Sul</span><span class="chk-desc" style="font-size:.86em">Mudou o parceiro. A lógica não mudou.</span></div></div>
     </div>
-    <div class="anim" style="text-align:center;padding:.8em 1.4em;margin-top:.5em;flex-shrink:0;background:rgba(40,120,80,.12);border:1px solid rgba(40,160,80,.35);border-left:4px solid #40c070">
-      <p style="font-family:var(--serif);font-size:.95em;color:var(--text);margin:0;line-height:1.6"><span style="color:#40c070;font-size:1.1em;margin-right:.4em">✓</span><strong>Hipótese confirmada.</strong> Testamos Furtado com 25 anos de dados reais, buscando ativamente evidências contrárias. Furtado resistiu. <em style="color:#5dd090">O crescimento quantitativo não superou a dependência estrutural; aprofundou-a.</em></p>
+    <div class="anim" style="text-align:center;padding:.6em 1.4em;margin-top:.4em;flex-shrink:0;background:rgba(40,120,80,.12);border:1px solid rgba(40,160,80,.35);border-left:4px solid #40c070">
+      <p style="font-family:var(--serif);font-weight:500;font-size:.92em;color:var(--text);margin:0;line-height:1.5"><span style="color:#40c070;font-size:1.1em;margin-right:.4em">✓</span><strong>Hipótese confirmada.</strong> Testamos Furtado com 25 anos de dados reais, buscando ativamente evidências contrárias. Furtado resistiu. <em style="color:#5dd090">O crescimento quantitativo não superou a dependência estrutural; aprofundou-a.</em></p>
     </div>
   </div>
 </div>
@@ -1138,65 +1232,83 @@ p em{color:var(--gold-l);font-style:italic}
 <!-- ══ SLIDE 11 · CONCLUSÃO ══ -->
 <div class="slide" id="sl11" data-tag="Conclusão" data-sub="O diagnóstico não é o destino — globalização como possibilidade">
   <div class="noise"></div>
-  <div class="si" style="font-size:.88em">
+  <div class="si" style="padding:1.2em 3.2em 1em">
     <div class="eyebrow">Slide 11 · Considerações Finais</div>
-    <h2>O diagnóstico não é o <em>destino</em></h2>
+    <h2 style="margin-bottom:.3em">O diagnóstico não é o <em>destino</em></h2>
     <div class="slide-rule"></div>
-    <div style="display:grid;grid-template-columns:1fr 1.1fr .9fr;gap:.9em;flex:1;min-height:0">
-      <div style="display:flex;flex-direction:column;gap:.6em">
-        <div class="eyebrow" style="color:var(--teal-l)">Quatro direções de política</div>
-        <div class="card" style="flex:1;border-top:2px solid var(--teal);padding:.75em .9em">
-          <div class="eyebrow" style="color:var(--teal-l);font-size:.6em;margin-bottom:.3em">01</div>
-          <div style="font-size:.85em;color:var(--text);font-weight:600;margin-bottom:.25em">Conteúdo local</div>
-          <p style="font-size:.78em;margin:0">Exigir componentes nacionais nos contratos de investimento direto estrangeiro em setores estratégicos.</p>
+
+    <div style="flex:1;min-height:0;display:grid;grid-template-columns:1fr 1.3fr;gap:1.4em;align-items:stretch">
+
+      <!-- ESQUERDA: 4 direções + limitações -->
+      <div class="anim" style="display:flex;flex-direction:column;gap:.5em">
+        <div style="font-family:var(--mono);font-size:.6em;letter-spacing:.18em;color:var(--teal-l);margin-bottom:.1em">QUATRO DIREÇÕES DE POLÍTICA</div>
+
+        <!-- bullets compactos com número grande -->
+        <div style="display:flex;flex-direction:column;gap:.4em;flex:1">
+          <div style="display:flex;align-items:center;gap:.75em;background:var(--card);border-left:3px solid var(--teal);padding:.6em .9em">
+            <div style="font-family:var(--serif);font-size:1.6em;font-weight:800;color:rgba(69,212,212,.2);line-height:1;min-width:1.2em">01</div>
+            <div>
+              <div style="font-family:var(--mono);font-size:.58em;color:var(--teal-l);letter-spacing:.1em;margin-bottom:.15em">CONTEÚDO LOCAL</div>
+              <div style="font-size:.86em;color:var(--text)">Componentes nacionais nos contratos de IDE</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:.75em;background:var(--card);border-left:3px solid var(--teal);padding:.6em .9em">
+            <div style="font-family:var(--serif);font-size:1.6em;font-weight:800;color:rgba(69,212,212,.2);line-height:1;min-width:1.2em">02</div>
+            <div>
+              <div style="font-family:var(--mono);font-size:.58em;color:var(--teal-l);letter-spacing:.1em;margin-bottom:.15em">FORMAÇÃO TÉCNICA</div>
+              <div style="font-size:.86em;color:var(--text)">Renováveis e mobilidade elétrica</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:.75em;background:var(--card);border-left:3px solid var(--gold);padding:.6em .9em">
+            <div style="font-family:var(--serif);font-size:1.6em;font-weight:800;color:rgba(224,185,74,.15);line-height:1;min-width:1.2em">03</div>
+            <div>
+              <div style="font-family:var(--mono);font-size:.58em;color:var(--gold);letter-spacing:.1em;margin-bottom:.15em">INCENTIVOS CONDICIONADOS</div>
+              <div style="font-size:.86em;color:var(--text)">Atrelados à performance tecnológica</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:.75em;background:var(--card);border-left:3px solid var(--gold);padding:.6em .9em">
+            <div style="font-family:var(--serif);font-size:1.6em;font-weight:800;color:rgba(224,185,74,.15);line-height:1;min-width:1.2em">04</div>
+            <div>
+              <div style="font-family:var(--mono);font-size:.58em;color:var(--gold);letter-spacing:.1em;margin-bottom:.15em">FINANCIAMENTO PRODUTIVO</div>
+              <div style="font-size:.86em;color:var(--text)">Receitas do agronegócio → indústria</div>
+            </div>
+          </div>
         </div>
-        <div class="card" style="flex:1;border-top:2px solid var(--teal);padding:.75em .9em">
-          <div class="eyebrow" style="color:var(--teal-l);font-size:.6em;margin-bottom:.3em">02</div>
-          <div style="font-size:.85em;color:var(--text);font-weight:600;margin-bottom:.25em">Formação técnica</div>
-          <p style="font-size:.78em;margin:0">Educação em energias renováveis e mobilidade elétrica, aproveitando a janela aberta pelos investimentos diretos chineses no setor automotivo.</p>
-        </div>
-        <div class="card" style="flex:1;border-top:2px solid var(--gold);padding:.75em .9em">
-          <div class="eyebrow" style="color:var(--gold);font-size:.6em;margin-bottom:.3em">03</div>
-          <div style="font-size:.85em;color:var(--text);font-weight:600;margin-bottom:.25em">Incentivos condicionados</div>
-          <p style="font-size:.78em;margin:0">Incentivos fiscais atrelados à performance tecnológica, não apenas à presença física.</p>
-        </div>
-        <div class="card" style="flex:1;border-top:2px solid var(--gold);padding:.75em .9em">
-          <div class="eyebrow" style="color:var(--gold);font-size:.6em;margin-bottom:.3em">04</div>
-          <div style="font-size:.85em;color:var(--text);font-weight:600;margin-bottom:.25em">Financiamento produtivo</div>
-          <p style="font-size:.78em;margin:0">Receitas do agronegócio direcionadas para diversificação industrial, rompendo o ciclo primário.</p>
+
+        <!-- Limitações + Futuro: linha só -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4em;flex-shrink:0">
+          <div style="border-top:1px solid var(--border);padding:.45em .6em">
+            <div style="font-family:var(--mono);font-size:.52em;color:var(--red-l);margin-bottom:.2em">LIMITAÇÕES</div>
+            <div style="font-size:.72em;color:var(--text-m);line-height:1.4">Exportações · 2025 preliminar · sem econometria</div>
+          </div>
+          <div style="border-top:1px solid var(--border);padding:.45em .6em">
+            <div style="font-family:var(--mono);font-size:.52em;color:var(--gold);margin-bottom:.2em">PESQUISA FUTURA</div>
+            <div style="font-size:.72em;color:var(--text-m);line-height:1.4">Importações · IED chinês · econometria</div>
+          </div>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:.6em">
-        <div class="card teal-bg" style="flex:1;padding:.85em 1em">
-          <div class="eyebrow" style="color:var(--teal-l)">A janela de oportunidade</div>
-          <p style="font-size:.8em;margin-bottom:.5em">A chegada de investimentos diretos chineses no setor automotivo baiano não é apenas ameaça à autonomia produtiva; é uma <strong>janela de oportunidade</strong> para inserção qualitativamente distinta: não como fornecedora de insumos, mas como território capaz de capturar e difundir os ganhos da integração.</p>
-          <p style="font-size:.8em;margin:0">Isso exige <strong>Estado ativo</strong> (Chang) e <strong>projeto deliberado</strong> (Furtado).</p>
+
+      <!-- DIREITA: frase grande + Milton Santos -->
+      <div class="anim" style="display:flex;flex-direction:column;gap:.85em;justify-content:center">
+
+        <!-- Janela compacta -->
+        <div style="background:rgba(58,138,138,.1);border:1px solid rgba(58,138,138,.25);border-left:3px solid var(--teal);padding:.7em 1em">
+          <div style="font-family:var(--mono);font-size:.58em;color:var(--teal-l);letter-spacing:.12em;margin-bottom:.3em">A JANELA</div>
+          <div style="font-size:.88em;color:var(--text);line-height:1.4">IED chinês no automotivo baiano é uma <strong>janela</strong> — se acompanhado de <strong>Estado ativo</strong> (Chang) e <strong>projeto deliberado</strong> (Furtado).</div>
         </div>
-        <div class="card" style="flex:1;padding:.85em 1em;border-left:3px solid var(--purple-l);display:flex;flex-direction:column;gap:.55em">
-          <div class="eyebrow" style="color:var(--purple-l)">Milton Santos: globalização como possibilidade</div>
-          <p style="font-family:var(--body);font-style:normal;font-size:.86em;color:var(--text-d);line-height:1.6;margin:0;padding:.5em .7em;background:rgba(112,96,168,.06);border-left:2px solid var(--purple-l)">"A globalização mata a noção de solidariedade, devolve o homem à condição primitiva do cada um por si."</p>
-          <div style="font-family:var(--mono);font-size:.6em;color:var(--purple);margin-bottom:.3em">Por uma Outra Globalização · 2000</div>
-          <p style="font-size:.8em;margin:0;flex:1">A mesma base técnica que hoje serve ao capital transnacional poderia ser reorientada para as necessidades humanas. A globalização hegemônica não é a única possível. Outra configuração existe como <strong>projeto político deliberado</strong>.</p>
-          <div style="padding:.45em .7em;background:rgba(112,96,168,.1);border-left:2px solid var(--purple-l);font-size:.76em;color:var(--purple-l);margin-top:auto">O IHAC Milton Santos (UFBA) é a casa onde minha formação começou.</div>
+
+        <!-- Milton Santos -->
+        <div style="border-left:3px solid var(--purple-l);padding:.5em .85em">
+          <div style="font-family:var(--mono);font-size:.55em;color:var(--purple-l);letter-spacing:.12em;margin-bottom:.4em">MILTON SANTOS</div>
+          <div style="font-family:var(--serif);font-size:1.05em;font-weight:600;color:var(--text);line-height:1.4;color:rgba(255,255,255,.85)">"A globalização hegemônica não é a única possível: é um projeto político."</div>
         </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:.6em">
-        <div class="card red-bg" style="padding:.8em .95em">
-          <div class="eyebrow" style="color:var(--red-l)">Limitações</div>
-          <p style="font-size:.76em;margin-bottom:.3em">· Análise restrita a exportações</p>
-          <p style="font-size:.76em;margin-bottom:.3em">· Dados 2025 preliminares</p>
-          <p style="font-size:.76em;margin:0">· Sem modelos econométricos para isolar variáveis</p>
+
+        <!-- FRASE FINAL GRANDE -->
+        <div style="background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);padding:1em 1.2em">
+          <div style="font-family:var(--serif);font-size:1.25em;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:.5em">"Essa transformação não virá do mercado.<br><em style="color:var(--gold)">Virá, se vier, da política.</em>"</div>
+          <div style="font-family:var(--mono);font-size:.58em;color:var(--text-m)">Caio Soares · Considerações Finais · 2026</div>
         </div>
-        <div class="card gold-bg" style="padding:.8em .95em">
-          <div class="eyebrow" style="color:var(--gold)">Pesquisa futura</div>
-          <p style="font-size:.76em;margin-bottom:.3em">· Importações baianas da China</p>
-          <p style="font-size:.76em;margin-bottom:.3em">· IED chinês e encadeamentos regionais</p>
-          <p style="font-size:.76em;margin:0">· Econometria para testes de desindustrialização</p>
-        </div>
-        <div class="fquote" style="flex:1;display:flex;flex-direction:column;justify-content:center">
-          <q>"Essa transformação não virá do mercado.<br>Virá, se vier, da política."</q>
-          <div class="attr" style="margin-top:.5em">Caio Soares · Considerações Finais · 2026</div>
-        </div>
+
       </div>
     </div>
   </div>
